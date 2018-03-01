@@ -4,7 +4,14 @@ Metrolink Times provides an API that serves estimates for tram arrival times on 
 
 ## Installation
 
-`./setup.py install` should install/update the API. You will have to edit the config in `/etc/metrolinkTimes/metrolinkTimes.conf` to include your API Key for the [TfGM API](https://developer.tfgm.com/) and if you want to change the CORS Access Control Origin settings from allow all. The API **will not work** if you do not add a key for the TfGM API. If you want to change the default port the API is served on from 5000, add a `"port": <portNum>` line to the config. The config shouldn't be overwritten if you re-run install but you may have to manually add any new parameters that are added in the future.
+Run
+
+```
+useradd -r -s /usr/bin/nologin mltimes
+./setup.py install
+```
+
+This should add the service user and install/update the API. You will have to edit the config in `/etc/metrolinkTimes/metrolinkTimes.conf` to include your API Key for the [TfGM API](https://developer.tfgm.com/) and if you want to change the CORS Access Control Origin settings from allow all. The API **will not work** if you do not add a key for the TfGM API. If you want to change the default port the API is served on from 5000, add a `"port": <portNum>` line to the config. The config shouldn't be overwritten if you re-run install but you may have to manually add any new parameters that are added in the future.
 
 ## Usage
 

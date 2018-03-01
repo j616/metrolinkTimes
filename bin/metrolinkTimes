@@ -17,7 +17,7 @@ from metrolinkTimes.tramGraph import TramGraph
 import gevent.monkey
 gevent.monkey.patch_all()
 
-logging.basicConfig(filename='/var/log/metrolinkTimes.log',
+logging.basicConfig(filename='/var/log/metrolinkTimes/metrolinkTimes.log',
                     format='%(asctime)s %(levelname)s %(pathname)s %(lineno)s '
                            '%(message)s',
                     level=logging.ERROR)

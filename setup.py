@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 from pathlib import Path
 from distutils.core import setup
+import os
+from pwd import getpwnam
 
 dataFiles = [
     ('lib/systemd/system', ['lib/systemd/system/metrolinkTimes.service']),
@@ -8,6 +10,13 @@ dataFiles = [
 
 if not Path('/etc/metrolinkTimes/metrolinkTimes.conf').exists():
     dataFiles.append(('/etc/metrolinkTimes/', ['config/metrolinkTimes.conf']))
+
+logPath = '/var/log/metrolinkTimes/'
+if not Path(logPath).exists():
+
+    os.mkdir(logPath)
+    getpwnam('mltimes').pw_uid
+    os.chown(logPath, getpwnam('mltimes').pw_uid, getpwnam('mltimes').pw_gid)
 
 setup(name='metrolinkTimes',
       version='1.0',
