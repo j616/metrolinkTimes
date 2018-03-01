@@ -4,5 +4,5 @@ Wants=network-online.target
 After=network.target network-online.target
 
 [Service]
-ExecStart=/usr/bin/metrolinkTimes
+ExecStart=/usr/bin/env metrolinkTimes
 Restart=always
