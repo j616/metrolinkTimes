@@ -11,6 +11,7 @@ Metrolink Times provides an API that serves estimates for tram arrival times on 
 The API will present itself on port on port 5000 by default.
 
 ###/
+
 Returns
 
 ```
@@ -20,6 +21,7 @@ Returns
 ```
 
 ###/debug/
+
 Returns
 
 ```
@@ -67,6 +69,7 @@ Returns
 Platforms are identified as `<station name>_<platform atco code>`. Trams 'departing' have left the station and are in transet to to the next. Trams 'here' are either arriving at a station (As shown by flashing 'Arriving' on the displays at stations) or are at the platform. Unfortunately, the TfGM data doesn't provide seperate states for these. They do provide an 'arrived' and 'departing' state but the difference between these isn't clear and may be based on timetabled departure times.
 
 ###/station/
+
 Returns
 
 ```
@@ -76,6 +79,7 @@ Returns
 ```
 
 ###/station/<station name>/
+
 Returns
 
 ```
@@ -85,6 +89,7 @@ Returns
 ```
 
 ###/station/<station name>/<platform atco code>/
+
 Returns
 
 ```
