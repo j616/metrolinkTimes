@@ -1,3 +1,5 @@
+[![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+
 # Metrolink Times
 
 Metrolink Times provides an API that serves estimates for tram arrival times on the Manchester Metrolink network. Estimates use a rolling average for transit times between stops and dwell times at stops to provide reasonably accurate estimates that should addapt to traffic, changes in speed limits, heavy crowds etc.
