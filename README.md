@@ -8,7 +8,7 @@ Metrolink Times provides an API that serves estimates for tram arrival times on 
 
 ## Usage
 
-The API will present itself on port on port 5000 by default.
+The API will present itself on port on port 5000 by default. A systemd service named `metrolinkTimes` is installed and can be enabled if you wish. Otherwise, just run metrolinkTimes from the command line. Logs are in `/var/log/metrolinkTimes.log`.
 
 ### /
 
