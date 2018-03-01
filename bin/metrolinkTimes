@@ -1,0 +1,305 @@
+#!/usr/bin/env python3
+import json
+from gevent import sleep, spawn
+from datetime import datetime, timedelta
+import logging
+
+import tornado.ioloop
+import tornado.web
+import tornado.wsgi
+from tornado.web import RequestHandler
+from tornado import escape
+import gevent.wsgi
+
+from metrolinkTimes.tfgmMetrolinksAPI import TFGMMetrolinksAPI
+from metrolinkTimes.tramGraph import TramGraph
+
+import gevent.monkey
+gevent.monkey.patch_all()
+
+logging.basicConfig(filename='/var/log/metrolinkTimes.log',
+                    format='%(asctime)s %(levelname)s %(pathname)s %(lineno)s '
+                           '%(message)s',
+                    level=logging.ERROR)
+
+
+def dt_handler(obj):
+    if isinstance(obj, datetime):
+        return obj.isoformat()
+    elif isinstance(obj, timedelta):
+        return obj.total_seconds()
+
+    raise TypeError
+
+
+def json_encode(value):
+    return json.dumps(
+        value,
+        ensure_ascii=False,
+        indent=2,
+        sort_keys=True,
+        default=dt_handler)
+
+
+escape.json_encode = json_encode
+
+
+class GraphUpdater:
+    def __init__(self, graph):
+        self.api = TFGMMetrolinksAPI()
+        self.graph = graph
+        self.stationMappings = {
+            "Ashton-under-Lyne": "Ashton-Under-Lyne",
+            "Deansgate Castlefield": "Deansgate - Castlefield",
+            "Ashton": "Ashton-Under-Lyne",
+            "MCUK": "MediaCityUK",
+            "Newton Heath": "Newton Heath and Moston"
+        }
+
+    def update(self):
+        data = self.api.getData()
+
+        if data is None:
+            # Internet down?
+            return
+
+        tramsVia = []
+
+        for station in data:
+            for platform in data[station]:
+                nodeID = "{}_{}".format(station, platform)
+                if nodeID not in self.graph.getNodes():
+                    print("ERROR: Unknonw platfrom {}".format(nodeID))
+                    continue
+
+                pidTramData = []
+                message = None
+                updateTime = None
+
+                apiPID = data[station][platform][0]
+                if not (apiPID["MessageBoard"].startswith("^F0")
+                        or (apiPID["MessageBoard"] == "<no message>")):
+                    message = apiPID["MessageBoard"]
+
+                updateTime = datetime.strptime(
+                    apiPID["LastUpdated"],
+                    "%Y-%m-%dT%H:%M:%SZ")
+
+                if self.graph.getLastUpdateTime(nodeID) == updateTime:
+                    return
+
+                for i in range(4):
+                    if apiPID["Dest{}".format(i)] != "":
+                        stationName = apiPID["Dest{}".format(i)]
+                        # TODO: Shift this & station mappings to tramGraph
+                        validDests = (list(self.graph.getStations())
+                                      + [
+                                            "Terminates Here",
+                                            "See Tram Front",
+                                            "Not in Service"])
+                        viaName = None
+
+                        if " via " in stationName:
+                            splitName = stationName.split(" via ")
+                            stationName = splitName[0]
+                            viaName = splitName[1]
+                        if stationName in self.stationMappings:
+                            stationName = self.stationMappings[stationName]
+                        if viaName in self.stationMappings:
+                            viaName = self.stationMappings[viaName]
+                            if viaName not in tramsVia:
+                                tramsVia.append(viaName)
+                        if stationName not in validDests:
+                            logging.error(
+                                "Unknown station {}".format(stationName))
+                            continue
+                        if (viaName is not None) and (
+                          viaName not in validDests):
+                            logging.error("Unknown station {}".format(viaName))
+                            viaName = None
+
+                        pidTramData.append({
+                            "dest": stationName,
+                            "via": viaName,
+                            "carriages": apiPID["Carriages{}".format(i)],
+                            "status": apiPID["Status{}".format(i)],
+                            "wait": int(apiPID["Wait{}".format(i)])
+                        })
+
+                self.graph.updatePlatformPID(
+                    nodeID,
+                    pidTramData,
+                    message,
+                    updateTime)
+
+        self.graph.clearOldDeparted()
+        self.graph.locateTrams()
+        self.graph.predictTramTimes()
+        self.graph.clearNodePredictions()
+        self.graph.gatherTramPredictions()
+
+        tramsAts = self.graph.getTramsAts()
+        tramsAt = 0
+
+        tramsArrivings = self.graph.getTramsArrivings()
+        tramsArriving = 0
+
+        tramsApproachings = self.graph.getTramsApproachings()
+        tramsApproaching = 0
+
+        for node in tramsAts:
+            tramsAt = tramsAt + len(tramsAts[node])
+
+        for node in tramsArrivings:
+            tramsArriving = tramsArriving + len(tramsArrivings[node])
+
+        for node in tramsApproachings:
+            tramsApproaching = tramsApproaching + len(tramsApproachings[node])
+
+        logging.info("Len nodes without average: {}".format(
+            len(self.graph.nodesNoAvDwell())))
+        logging.info("Len edges without average: {}".format(
+            len(self.graph.edgesNoAvTrans())))
+        logging.info("trams at stations: {}".format(tramsAt))
+        logging.info("trams arriving at stations: {}".format(tramsArriving))
+        logging.info("trams approaching stations: {}".format(tramsApproaching))
+        logging.info("trams are going via {}".format(tramsVia))
+
+    def updateLoop(self):
+        while True:
+            self.update()
+            sleep(1)
+
+
+class BaseHandler(RequestHandler):
+    def set_default_headers(self, *args, **kwargs):
+        origin = "*"
+        with open("/etc/metrolinkTimes/metrolinkTimes.conf") as conf_file:
+            origin = json.load(conf_file)["Access-Control-Allow-Origin"]
+        self.set_header("Access-Control-Allow-Origin", origin)
+        self.set_header("Access-Control-Allow-Headers", "x-requested-with")
+        self.set_header("Access-Control-Allow-Methods", "GET, OPTIONS")
+
+
+class MainHandler(BaseHandler):
+    def get(self):
+        self.write({"paths": [
+            "debug/",
+            "station/"
+        ]})
+
+
+class DebugHandler(BaseHandler):
+    def get(self):
+        here = graph.getTramsHeres()
+        dep = graph.getTramsDeparteds()
+        ret = {
+            "missingAverages": {
+                "platforms": graph.nodesNoAvDwell(),
+                "edges": graph.edgesNoAvTrans()
+            },
+            "trams": {
+                "here": {k: here[k] for k in here if here[k] != []},
+                "departed": {k: dep[k] for k in dep if dep[k] != []}
+            }
+        }
+
+        self.write(ret)
+
+
+class StationHandler(BaseHandler):
+    def get(self):
+        ret = ["{}/".format(station) for station in graph.getStations()]
+        self.write({"stations": list(graph.getStations())})
+
+
+class StationNameHandler(BaseHandler):
+    def get(self, stationName):
+        if stationName not in graph.getStations():
+            raise tornado.web.HTTPError(404)
+        ret = ["{}/".format(platID) for platID in graph.getStationPlatforms(
+            stationName)]
+        self.write({"platforms": ret})
+
+
+class StationNamePlatHandler(BaseHandler):
+    def get(self, stationName, platID):
+        def getArg(name, default):
+            arg = self.get_query_arguments(name)
+            if arg == []:
+                arg = default
+            else:
+                arg = arg[0]
+
+            return arg
+
+        nodeID = "{}_{}".format(stationName, platID)
+        if nodeID not in graph.getNodes():
+            raise tornado.web.HTTPError(404)
+
+        ret = {
+            "updateTime": graph.getLastUpdateTime(nodeID),
+        }
+
+        if getArg("predictions", "true").lower() == "true":
+            predictions = graph.getNodePredictions()[nodeID]
+            if getArg("tramPredictions", "true").lower() == "false":
+                for tram in predictions:
+                    del(tram["predictions"])
+            ret["predictions"] = predictions
+            ret["here"] = graph.getTramsHeres()[nodeID]
+
+        if getArg("message", "true").lower() == "true":
+            ret["message"] = graph.getMessage(nodeID)
+
+        if getArg("meta", "false").lower() == "true":
+            dwellTimes = graph.getDwellTimes()[nodeID]
+            averageDwell = timedelta()
+            for dwellTime in dwellTimes:
+                averageDwell = averageDwell + dwellTime
+            if len(dwellTimes) > 0:
+                averageDwell = averageDwell/len(dwellTimes)
+            else:
+                averageDwell = None
+
+            pred = {}
+            for pNodeID in graph.getNodePreds(nodeID):
+                pred[pNodeID] = {
+                    "transitTimes": graph.getTransit(pNodeID, nodeID)
+                    }
+
+                (pred[pNodeID]["averageTransitTime"],
+                    isDirectAverage) = graph.getAverageTransit(pNodeID, nodeID)
+
+            ret["mapPos"] = {
+                "x": graph.getMapPos(nodeID)[0],
+                "y": graph.getMapPos(nodeID)[1]
+                }
+            ret["dwellTimes"] = dwellTimes
+            ret["averageDwellTime"] = averageDwell
+            ret["predecessors"] = pred
+
+        if getArg("departed", "false").lower() == "true":
+            ret["departed"] = graph.getTramsDeparteds()[nodeID]
+
+        self.write(ret)
+
+
+graph = TramGraph()
+gu = GraphUpdater(graph)
+spawn(gu.updateLoop)
+
+
+application = tornado.wsgi.WSGIApplication([
+   (r"/", MainHandler),
+   (r"/debug/?", DebugHandler),
+   (r"/station/?", StationHandler),
+   (r"/station/([^/]*)/?", StationNameHandler),
+   (r"/station/([^/]*)/([^/]*)/?", StationNamePlatHandler),
+])
+
+port = None
+with open("/etc/metrolinkTimes/metrolinkTimes.conf") as conf_file:
+    port = json.load(conf_file).get("port", 5000)
+server = gevent.wsgi.WSGIServer(('', port), application)
+server.serve_forever()
