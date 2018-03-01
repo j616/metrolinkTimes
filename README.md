@@ -13,7 +13,7 @@ The API will present itself on port on port 5000 by default.
 ###`/`
 Returns
 
-```json
+```
 {
     "paths": ["debug/", "station/"]
 }
@@ -22,7 +22,7 @@ Returns
 ###`/debug/`
 Returns
 
-```json
+```
 {
   "missingAverages": {
     "edges": [
@@ -69,7 +69,7 @@ Platforms are identified as `<station name>_<platform atco code>`. Trams 'depart
 ###`/station/`
 Returns
 
-```json
+```
 {
     "stations": ["<station names>/"]
 }
@@ -78,7 +78,7 @@ Returns
 ###`/station/<station name>/`
 Returns
 
-```json
+```
 {
     "platforms": ["<platform atco codes>/"]
 }
@@ -87,7 +87,7 @@ Returns
 ###`/station/<station name>/<platform atco code>/`
 Returns
 
-```json
+```
 {
   "averageDwellTime": <average dwell time in secs>,
   "dwellTimes": [
