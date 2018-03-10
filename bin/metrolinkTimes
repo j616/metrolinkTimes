@@ -216,11 +216,73 @@ class StationHandler(BaseHandler):
 
 class StationNameHandler(BaseHandler):
     def get(self, stationName):
+        def getArg(name, default):
+            arg = self.get_query_arguments(name)
+            if arg == []:
+                arg = default
+            else:
+                arg = arg[0]
+
+            return arg
+
         if stationName not in graph.getStations():
             raise tornado.web.HTTPError(404)
-        ret = ["{}/".format(platID) for platID in graph.getStationPlatforms(
-            stationName)]
-        self.write({"platforms": ret})
+
+        ret = {}
+
+        if getArg("verbose", "false").lower() != "true":
+            ret["platforms"] = ["{}/".format(platID) for platID in graph.getStationPlatforms(
+                stationName)]
+        else:
+            ret["platforms"] = {}
+            for platID in graph.getStationPlatforms(stationName):
+                nodeID = "{}_{}".format(stationName, platID)
+                ret["platforms"][platID] = {
+                    "updateTime": graph.getLastUpdateTime(nodeID),
+                }
+
+                if getArg("predictions", "true").lower() == "true":
+                    predictions = graph.getNodePredictions()[nodeID]
+                    if getArg("tramPredictions", "true").lower() == "false":
+                        for tram in predictions:
+                            del(tram["predictions"])
+                    ret["platforms"][platID]["predictions"] = predictions
+                    ret["platforms"][platID]["here"] = graph.getTramsHeres()[nodeID]
+
+                if getArg("message", "true").lower() == "true":
+                    ret["platforms"][platID]["message"] = graph.getMessage(nodeID)
+
+                if getArg("meta", "false").lower() == "true":
+                    dwellTimes = graph.getDwellTimes()[nodeID]
+                    averageDwell = timedelta()
+                    for dwellTime in dwellTimes:
+                        averageDwell = averageDwell + dwellTime
+                    if len(dwellTimes) > 0:
+                        averageDwell = averageDwell/len(dwellTimes)
+                    else:
+                        averageDwell = None
+
+                    pred = {}
+                    for pNodeID in graph.getNodePreds(nodeID):
+                        pred[pNodeID] = {
+                            "transitTimes": graph.getTransit(pNodeID, nodeID)
+                            }
+
+                        (pred[pNodeID]["averageTransitTime"],
+                            isDirectAverage) = graph.getAverageTransit(pNodeID, nodeID)
+
+                    ret["platforms"][platID]["mapPos"] = {
+                        "x": graph.getMapPos(nodeID)[0],
+                        "y": graph.getMapPos(nodeID)[1]
+                        }
+                    ret["platforms"][platID]["dwellTimes"] = dwellTimes
+                    ret["platforms"][platID]["averageDwellTime"] = averageDwell
+                    ret["platforms"][platID]["predecessors"] = pred
+
+            if getArg("departed", "false").lower() == "true":
+                ret["platforms"][platID]["departed"] = graph.getTramsDeparteds()[nodeID]
+
+        self.write(ret)
 
 
 class StationNamePlatHandler(BaseHandler):

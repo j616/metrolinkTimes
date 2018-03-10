@@ -95,6 +95,8 @@ Returns
 }
 ```
 
+Setting `verbose=true` in the query string will return a dict of platforms with the data for each. You can also use the platform quer strings for this data.
+
 ### /station/\<station name>/\<platform atco code>/
 
 Returns
