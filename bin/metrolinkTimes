@@ -82,6 +82,9 @@ class GraphUpdater:
                         or (apiPID["MessageBoard"] == "<no message>")):
                     message = apiPID["MessageBoard"]
 
+                # This seems to be how flashing is encoded. We'll get rid of it.
+                message.replace("^$", "")
+
                 updateTime = datetime.strptime(
                     apiPID["LastUpdated"],
                     "%Y-%m-%dT%H:%M:%SZ")
