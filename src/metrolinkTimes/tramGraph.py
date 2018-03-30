@@ -89,7 +89,7 @@ class TramGraph:
             if tramHere:
                 status = tram["status"]
                 del(tram["status"])
-                # We'll remove duplicates at the same time here
+                # We'll remove exact duplicates at the same time here
                 # Can happen on stops with multiple PIDs or with bugs in the
                 # data
                 if status == "Departing":
@@ -104,6 +104,7 @@ class TramGraph:
                 else:
                     logging.error("Unknown tram status: {}".format(status))
 
+    def deduplicateTrams(self, node):
         # Find doubles with a second entry as a single and remove the single
         # This gets around a bug in the TFGM data
         tramsAtArr = (self.DG.nodes[node]["tramsAt"]
@@ -292,6 +293,9 @@ class TramGraph:
     def locateTrams(self):
         for node in nx.nodes(self.DG):
             self.decodePID(node)
+
+        for node in nx.nodes(self.DG):
+            self.deduplicateTrams(node)
 
         for node in nx.nodes(self.DG):
             self.locateDeparting(node)
