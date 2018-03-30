@@ -140,12 +140,16 @@ class GraphUpdater:
         self.graph.decodePIDs()
         self.graph.clearOldDeparted()
         self.graph.locateDepartingTrams()
-        self.graph.locateTrams()
         self.graph.deduplicateAllTrams()
         self.graph.locateTramsAt()
-        self.graph.predictTramTimes()
         self.graph.clearNodePredictions()
-        self.graph.gatherTramPredictions()
+
+        self.graph.predictTramTimes(["tramsHere", "tramsDeparted"])
+        self.graph.gatherTramPredictions(["tramsHere", "tramsDeparted"])
+
+        self.graph.locateApproachingTrams()
+        self.graph.predictTramTimes(["tramsApproaching"])
+        self.graph.gatherTramPredictions(["tramsApproaching"])
 
         tramsAts = self.graph.getTramsAts()
         tramsAt = 0

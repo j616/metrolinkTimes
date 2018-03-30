@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 from datetime import datetime, timedelta
 import logging
 import os
-
+from copy import deepcopy
 
 class TramGraph:
     def __init__(self):
@@ -32,7 +32,6 @@ class TramGraph:
                 self.DG.nodes[nodeID]["tramsDeparting"] = []
                 self.DG.nodes[nodeID]["tramsArrived"] = []
                 self.DG.nodes[nodeID]["tramsDue"] = []
-                self.DG.nodes[nodeID]["prevTramsDue"] = []
 
                 self.DG.nodes[nodeID]["tramsApproaching"] = []
                 self.DG.nodes[nodeID]["prevTramsHere"] = []
@@ -73,8 +72,6 @@ class TramGraph:
         self.DG.nodes[node]["tramsDeparting"] = []
         self.DG.nodes[node]["tramsArrived"] = []
         self.DG.nodes[node]["tramsApproaching"] = []
-        self.DG.nodes[node]["prevTramsDue"] = self.DG.nodes[node][
-            "tramsDue"]
         self.DG.nodes[node]["tramsDue"] = []
         self.DG.nodes[node]["prevTramsHere"] = self.DG.nodes[node][
             "tramsHere"]
@@ -123,6 +120,10 @@ class TramGraph:
         for tram in tramsAtAppr:
             if tram["carriages"] == "Double":
                 for tram2 in tramsAtAppr:
+                    if "wait" not in tram:
+                        print(tram)
+                    if "wait" not in tram2:
+                        print(tram2)
                     if ((tram["dest"] == tram2["dest"])
                        and (tram["wait"] == tram2["wait"])
                        and (tram2["carriages"] == "Single")):
@@ -177,6 +178,22 @@ class TramGraph:
                         break
                 if not tramStartsHere:
                     break
+
+            # Use potentially less accurate method if above finds nothing
+            # Useful for places where one platform feeds multiple
+            # e.g. Deansgate into St Peters
+            # Delta allows for variance between our predictions & TfGM's
+            if tramStartsHere:
+                for pTram in self.DG.nodes[node]["predictedArrivals"]:
+                    tramTime = (self.DG.nodes[node]["updateTime"] +
+                                timedelta(minutes=tram["wait"]))
+                    tramDelta = abs(pTram["predictedArriveTime"] - tramTime)
+                    if (
+                       (tram["dest"] == pTram["dest"])
+                       and (tram["carriages"] == pTram["carriages"])
+                       and tramDelta < timedelta(minutes=2)):
+                        tramStartsHere = False
+                        break
 
             if tramStartsHere:
                 self.DG.nodes[node]["tramsApproaching"].append(
@@ -318,7 +335,7 @@ class TramGraph:
         for node in nx.nodes(self.DG):
             self.decodePID(node)
 
-    def locateTrams(self):
+    def locateApproachingTrams(self):
         for node in nx.nodes(self.DG):
             self.locateApproaching(node)
 
@@ -482,7 +499,7 @@ class TramGraph:
 
         return closestPlatform
 
-    def predictTramTimes(self):
+    def predictTramTimes(self, statuses):
         def getTramPredictions(startPlatform, departTime, tram):
             destPlatform = self.getDestPlatform(startPlatform, tram["dest"])
             predicted = None
@@ -510,27 +527,30 @@ class TramGraph:
             return predicted
 
         for node in nx.nodes(self.DG):
-            averageDwell = self.getAverageDwell(node)
-            if averageDwell is not None:
-                for tram in self.DG.nodes[node]["tramsHere"]:
-                    if tram["arriveTime"] is not None:
-                        tram["predictions"] = getTramPredictions(
-                            node, tram["arriveTime"] + averageDwell, tram)
+            if "tramsHere" in statuses:
+                averageDwell = self.getAverageDwell(node)
+                if averageDwell is not None:
+                    for tram in self.DG.nodes[node]["tramsHere"]:
+                        if tram["arriveTime"] is not None:
+                            tram["predictions"] = getTramPredictions(
+                                node, tram["arriveTime"] + averageDwell, tram)
 
-            for tram in self.DG.nodes[node]["tramsDeparted"]:
-                tram["predictions"] = getTramPredictions(
-                    node, tram["departTime"], tram)
+            if "tramsDeparted" in statuses:
+                for tram in self.DG.nodes[node]["tramsDeparted"]:
+                    tram["predictions"] = getTramPredictions(
+                        node, tram["departTime"], tram)
 
-            for tram in self.DG.nodes[node]["tramsApproaching"]:
-                departTime = (self.DG.nodes[node]["updateTime"] +
-                              timedelta(minutes=tram["wait"]))
-                tram["predictions"] = getTramPredictions(
-                    node, departTime, tram)
-                tram["predictions"][node] = departTime
+            if "tramsApproaching" in statuses:
+                for tram in self.DG.nodes[node]["tramsApproaching"]:
+                    departTime = (self.DG.nodes[node]["updateTime"] +
+                                  timedelta(minutes=tram["wait"]))
+                    tram["predictions"] = getTramPredictions(
+                        node, departTime, tram)
+                    tram["predictions"][node] = departTime
 
-    def gatherTramPredictions(self):
+    def gatherTramPredictions(self, statuses):
         for node in nx.nodes(self.DG):
-            for status in ["tramsHere", "tramsDeparted", "tramsApproaching"]:
+            for status in statuses:
                 trams = self.DG.nodes[node][status]
 
                 shortStatus = "here"
@@ -605,7 +625,7 @@ class TramGraph:
         return nx.get_node_attributes(self.DG, "tramsApproaching")
 
     def getTramsHeres(self):
-        tramsHere = nx.get_node_attributes(self.DG, "tramsHere")
+        tramsHere = deepcopy(nx.get_node_attributes(self.DG, "tramsHere"))
         for node in tramsHere:
             for tram in tramsHere[node]:
                 if "wait" in tram:
