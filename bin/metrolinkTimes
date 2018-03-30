@@ -137,8 +137,12 @@ class GraphUpdater:
                     message,
                     updateTime)
 
+        self.graph.decodePIDs()
         self.graph.clearOldDeparted()
+        self.graph.locateDepartingTrams()
         self.graph.locateTrams()
+        self.graph.deduplicateAllTrams()
+        self.graph.locateTramsAt()
         self.graph.predictTramTimes()
         self.graph.clearNodePredictions()
         self.graph.gatherTramPredictions()
