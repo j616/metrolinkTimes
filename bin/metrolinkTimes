@@ -51,6 +51,7 @@ class GraphUpdater:
         self.stationMappings = {
             "Ashton-under-Lyne": "Ashton-Under-Lyne",
             "Deansgate Castlefield": "Deansgate - Castlefield",
+            "Deansgate": "Deansgate - Castlefield",
             "Ashton": "Ashton-Under-Lyne",
             "MCUK": "MediaCityUK",
             "Newton Heath": "Newton Heath and Moston",
@@ -140,7 +141,7 @@ class GraphUpdater:
         self.graph.decodePIDs()
         self.graph.clearOldDeparted()
         self.graph.locateDepartingTrams()
-        self.graph.deduplicateAllTrams()
+        self.graph.deduplicateAllTrams()  # TODO: This won't work for subsequent stops atm because of splitting out of predictions below
         self.graph.locateTramsAt()
         self.graph.clearNodePredictions()
 
