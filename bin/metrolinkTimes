@@ -155,6 +155,15 @@ class GraphUpdater:
         self.graph.locateApproachingTrams()
         self.graph.predictTramTimes(["tramsApproaching"])
 
+        # Re-run to check for trams which haven't left their initial stop
+        # but look like they're starting further down their route too
+        self.graph.clearNodePredictions()
+        self.graph.gatherTramPredictions(["tramsHere",
+                                          "tramsDeparted",
+                                          "tramsApproaching"])
+        self.graph.locateApproachingTrams()
+        self.graph.predictTramTimes(["tramsApproaching"])
+
         # Clear initial predictions, which may contain duplicated trams
         self.graph.clearNodePredictions()
         # Only de-duplicate now all positions are known and predictions made
@@ -164,6 +173,8 @@ class GraphUpdater:
         self.graph.gatherTramPredictions(["tramsHere",
                                           "tramsDeparted",
                                           "tramsApproaching"])
+
+        self.graph.finalisePredictions()
 
         tramsAts = self.graph.getTramsAts()
         tramsAt = 0

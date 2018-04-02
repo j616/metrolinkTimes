@@ -77,6 +77,8 @@ class TramGraph:
         self.DG.nodes[node]["prevTramsHere"] = self.DG.nodes[node][
             "tramsHere"]
         self.DG.nodes[node]["tramsHere"] = []
+
+        pTramsMatched = {}  # Only match pTrams once
         for tram in self.DG.nodes[node]["pidTrams"]:
             tramHere = True
             if tram["dest"] in [
@@ -86,13 +88,17 @@ class TramGraph:
                 continue
 
             for pNode in self.DG.pred[node]:
+                if pNode not in pTramsMatched:
+                    pTramsMatched[pNode] = []
                 for pTram in self.DG.nodes[pNode]["pidTrams"]:
                     if (
+                        (pTram not in pTramsMatched[pNode]) and
                         (tram["dest"] == pTram["dest"]) and
                         (tram["carriages"] == pTram["carriages"]) and
                         (tram["wait"] > pTram["wait"])
                       ):
                         tramHere = False
+                        pTramsMatched[pNode].append(pTram)
             if tramHere:
                 status = tram["status"]
                 del(tram["status"])
@@ -152,6 +158,7 @@ class TramGraph:
                 tram["averageDwell"] = averageDwell
 
     def locateApproaching(self, node):
+        pTramsMatched = {}  # Only match pTrams once
         for tram in self.DG.nodes[node]["tramsDue"]:
             tramStartsHere = True
             wait = tram["wait"] if "wait" in tram else 0
@@ -160,13 +167,17 @@ class TramGraph:
                           + self.DG.nodes[pNode]["tramsDeparting"]
                           + self.DG.nodes[pNode]["tramsArrived"]
                           + self.DG.nodes[pNode]["tramsDue"])
+                if pNode not in pTramsMatched:
+                    pTramsMatched[pNode] = []
                 for pTram in pTrams:
                     pWait = pTram["wait"] if "wait" in pTram else 0
                     if (
-                       (tram["dest"] == pTram["dest"])
+                       (pTram not in pTramsMatched[pNode])
+                       and (tram["dest"] == pTram["dest"])
                        and (tram["carriages"] == pTram["carriages"])
-                       and wait > pWait):
+                       and (wait > pWait)):
                         tramStartsHere = False
+                        pTramsMatched[pNode].append(pTram)
                         break
                 if not tramStartsHere:
                     break
@@ -181,7 +192,8 @@ class TramGraph:
                                 timedelta(minutes=wait))
                     tramDelta = abs(pTram["predictedArriveTime"] - tramTime)
                     if (
-                       (tram["dest"] == pTram["dest"])
+                       (pTram["curLoc"]["platform"] != node)
+                       and (tram["dest"] == pTram["dest"])
                        and (tram["carriages"] == pTram["carriages"])
                        and tramDelta < timedelta(minutes=2)):
                         tramStartsHere = False
@@ -329,6 +341,7 @@ class TramGraph:
 
     def locateApproachingTrams(self):
         for node in nx.nodes(self.DG):
+            self.DG.nodes[node]["tramsApproaching"].clear()
             self.locateApproaching(node)
 
     def deduplicateAllTrams(self):
@@ -594,6 +607,13 @@ class TramGraph:
                 del(self.DG.nodes[node]["tramsDeparted"][delTram - offset])
                 offset = offset + 1
 
+    def finalisePredictions(self):
+        for node in nx.nodes(self.DG):
+            self.DG.nodes[node]["fPredictedArrivals"] = deepcopy(
+                self.DG.nodes[node]["predictedArrivals"])
+            self.DG.nodes[node]["fTramsHere"] = deepcopy(
+                self.DG.nodes[node]["tramsHere"])
+
     def clearNodePredictions(self):
         for node in nx.nodes(self.DG):
             self.DG.nodes[node]["predictedArrivals"].clear()
@@ -620,7 +640,7 @@ class TramGraph:
         return nx.get_node_attributes(self.DG, "tramsApproaching")
 
     def getTramsHeres(self):
-        tramsHere = deepcopy(nx.get_node_attributes(self.DG, "tramsHere"))
+        tramsHere = deepcopy(nx.get_node_attributes(self.DG, "fTramsHere"))
         for node in tramsHere:
             for tram in tramsHere[node]:
                 if "wait" in tram:
@@ -631,7 +651,7 @@ class TramGraph:
         return nx.get_node_attributes(self.DG, "tramsDeparted")
 
     def getNodePredictions(self):
-        return nx.get_node_attributes(self.DG, "predictedArrivals")
+        return nx.get_node_attributes(self.DG, "fPredictedArrivals")
 
     def getDwellTimes(self):
         return nx.get_node_attributes(self.DG, "dwellTimes")
