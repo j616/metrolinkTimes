@@ -40,6 +40,7 @@ class TFGMMetrolinksAPI:
 
         except Exception as e:
             logging.error("{}".format(e))
+            return None
 
 
 def dataTest(api):
