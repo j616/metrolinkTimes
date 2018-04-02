@@ -118,14 +118,11 @@ class TramGraph:
             for tram in self.DG.nodes[node][status]:
                 if tram["carriages"] == "Double":
                     for tram2 in self.DG.nodes[node][status]:
-                        if "wait" not in tram:
-                            logging.error("wait missing from tram: {}".format(
-                                tram))
-                        if "wait" not in tram2:
-                            logging.error("wait missing from tram2: {}".format(
-                                tram2))
+                        # Departed trams shouldn't have a wait
+                        tramWait = tram["wait"] if "wait" in tram else 0
+                        tram2Wait = tram2["wait"] if "wait" in tram2 else 0
                         if ((tram["dest"] == tram2["dest"])
-                           and (tram["wait"] == tram2["wait"])
+                           and (tramWait == tram2Wait)
                            and (tram2["carriages"] == "Single")):
                             self.DG.nodes[node][status].remove(tram2)
 
@@ -157,6 +154,7 @@ class TramGraph:
     def locateApproaching(self, node):
         for tram in self.DG.nodes[node]["tramsDue"]:
             tramStartsHere = True
+            wait = tram["wait"] if "wait" in tram else 0
             for pNode in self.DG.pred[node]:
                 pTrams = (self.DG.nodes[pNode]["tramsDeparted"]
                           + self.DG.nodes[pNode]["tramsDeparting"]
@@ -167,7 +165,7 @@ class TramGraph:
                     if (
                        (tram["dest"] == pTram["dest"])
                        and (tram["carriages"] == pTram["carriages"])
-                       and tram["wait"] > pWait):
+                       and wait > pWait):
                         tramStartsHere = False
                         break
                 if not tramStartsHere:
@@ -180,7 +178,7 @@ class TramGraph:
             if tramStartsHere:
                 for pTram in self.DG.nodes[node]["predictedArrivals"]:
                     tramTime = (self.DG.nodes[node]["updateTime"] +
-                                timedelta(minutes=tram["wait"]))
+                                timedelta(minutes=wait))
                     tramDelta = abs(pTram["predictedArriveTime"] - tramTime)
                     if (
                        (tram["dest"] == pTram["dest"])
