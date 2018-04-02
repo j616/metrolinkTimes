@@ -9,6 +9,7 @@ import logging
 import os
 from copy import deepcopy
 
+
 class TramGraph:
     def __init__(self):
         self.DG = nx.DiGraph()
@@ -113,27 +114,20 @@ class TramGraph:
     def deduplicateTrams(self, node):
         # Find doubles with a second entry as a single and remove the single
         # This gets around a bug in the TFGM data
-        tramsAtAppr = (self.DG.nodes[node]["tramsDeparting"]
-                       + self.DG.nodes[node]["tramsArrived"]
-                       + self.DG.nodes[node]["tramsApproaching"])
-
-        for tram in tramsAtAppr:
-            if tram["carriages"] == "Double":
-                for tram2 in tramsAtAppr:
-                    if "wait" not in tram:
-                        print(tram)
-                    if "wait" not in tram2:
-                        print(tram2)
-                    if ((tram["dest"] == tram2["dest"])
-                       and (tram["wait"] == tram2["wait"])
-                       and (tram2["carriages"] == "Single")):
-                        if tram2 in self.DG.nodes[node]["tramsDeparting"]:
-                            self.DG.nodes[node]["tramsDeparting"].remove(tram2)
-                        elif tram2 in self.DG.nodes[node]["tramsArrived"]:
-                            self.DG.nodes[node]["tramsArrived"].remove(tram2)
-                        elif tram2 in self.DG.nodes[node]["tramsApproaching"]:
-                            self.DG.nodes[node]["tramsApproaching"].remove(
-                                tram2)
+        for status in ["tramsHere", "tramsDeparted", "tramsApproaching"]:
+            for tram in self.DG.nodes[node][status]:
+                if tram["carriages"] == "Double":
+                    for tram2 in self.DG.nodes[node][status]:
+                        if "wait" not in tram:
+                            logging.error("wait missing from tram: {}".format(
+                                tram))
+                        if "wait" not in tram2:
+                            logging.error("wait missing from tram2: {}".format(
+                                tram2))
+                        if ((tram["dest"] == tram2["dest"])
+                           and (tram["wait"] == tram2["wait"])
+                           and (tram2["carriages"] == "Single")):
+                            self.DG.nodes[node][status].remove(tram2)
 
     def calcTramDwell(self, tramsDeparted, node):
         # Calculate dwell times for departed trams

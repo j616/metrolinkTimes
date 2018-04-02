@@ -72,7 +72,7 @@ class GraphUpdater:
             for platform in data[station]:
                 nodeID = "{}_{}".format(station, platform)
                 if nodeID not in self.graph.getNodes():
-                    print("ERROR: Unknonw platfrom {}".format(nodeID))
+                    logging.error("ERROR: Unknonw platfrom {}".format(nodeID))
                     continue
 
                 pidTramData = []
@@ -142,16 +142,28 @@ class GraphUpdater:
         self.graph.decodePIDs()
         self.graph.clearOldDeparted()
         self.graph.locateDepartingTrams()
-        self.graph.deduplicateAllTrams()  # TODO: This won't work for subsequent stops atm because of splitting out of predictions below
         self.graph.locateTramsAt()
         self.graph.clearNodePredictions()
 
+        # We need to predict trams at definitively known locations first
+        # so we can use these predictions to verify if trams are actually
+        # starting at other stops
         self.graph.predictTramTimes(["tramsHere", "tramsDeparted"])
         self.graph.gatherTramPredictions(["tramsHere", "tramsDeparted"])
 
+        # Use above predictions to check if trams are starting at other stops
         self.graph.locateApproachingTrams()
         self.graph.predictTramTimes(["tramsApproaching"])
-        self.graph.gatherTramPredictions(["tramsApproaching"])
+
+        # Clear initial predictions, which may contain duplicated trams
+        self.graph.clearNodePredictions()
+        # Only de-duplicate now all positions are known and predictions made
+        self.graph.deduplicateAllTrams()
+
+        # Gather de-duplicated predictions
+        self.graph.gatherTramPredictions(["tramsHere",
+                                          "tramsDeparted",
+                                          "tramsApproaching"])
 
         tramsAts = self.graph.getTramsAts()
         tramsAt = 0
