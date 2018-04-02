@@ -612,6 +612,9 @@ class TramGraph:
     def getLastUpdateTime(self, nodeID):
         return self.DG.nodes[nodeID].get("updateTime", datetime.min)
 
+    def getLastUpdateTimes(self):
+        return nx.get_node_attributes(self.DG, "updateTime")
+
     def getMessage(self, nodeID):
         return self.DG.nodes[nodeID].get("message")
 

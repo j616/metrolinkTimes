@@ -2,6 +2,7 @@
 import json
 from gevent import sleep, spawn
 from datetime import datetime, timedelta
+from sys import exit
 import logging
 
 import tornado.ioloop
@@ -83,7 +84,7 @@ class GraphUpdater:
                         or (apiPID["MessageBoard"] == "<no message>")):
                     message = apiPID["MessageBoard"]
 
-                # This seems to be how flashing is encoded. We'll get rid of it.
+                # This seems to be how flashing is encoded. We'll get rid of it
                 if message is not None:
                     message = message.replace("^$", "")
 
@@ -199,6 +200,7 @@ class MainHandler(BaseHandler):
     def get(self):
         self.write({"paths": [
             "debug/",
+            "health/",
             "station/"
         ]})
 
@@ -224,7 +226,7 @@ class DebugHandler(BaseHandler):
 class StationHandler(BaseHandler):
     def get(self):
         ret = ["{}/".format(station) for station in graph.getStations()]
-        self.write({"stations": list(graph.getStations())})
+        self.write({"stations": ret})
 
 
 class StationNameHandler(BaseHandler):
@@ -244,8 +246,9 @@ class StationNameHandler(BaseHandler):
         ret = {}
 
         if getArg("verbose", "false").lower() != "true":
-            ret["platforms"] = ["{}/".format(platID) for platID in graph.getStationPlatforms(
-                stationName)]
+            ret["platforms"] = [
+                "{}/".format(platID) for platID in graph.getStationPlatforms(
+                    stationName)]
         else:
             ret["platforms"] = {}
             for platID in graph.getStationPlatforms(stationName):
@@ -260,10 +263,12 @@ class StationNameHandler(BaseHandler):
                         for tram in predictions:
                             del(tram["predictions"])
                     ret["platforms"][platID]["predictions"] = predictions
-                    ret["platforms"][platID]["here"] = graph.getTramsHeres()[nodeID]
+                    ret["platforms"][platID]["here"] = graph.getTramsHeres()[
+                        nodeID]
 
                 if getArg("message", "true").lower() == "true":
-                    ret["platforms"][platID]["message"] = graph.getMessage(nodeID)
+                    ret["platforms"][platID]["message"] = graph.getMessage(
+                        nodeID)
 
                 if getArg("meta", "false").lower() == "true":
                     dwellTimes = graph.getDwellTimes()[nodeID]
@@ -282,7 +287,9 @@ class StationNameHandler(BaseHandler):
                             }
 
                         (pred[pNodeID]["averageTransitTime"],
-                            isDirectAverage) = graph.getAverageTransit(pNodeID, nodeID)
+                            isDirectAverage) = graph.getAverageTransit(
+                                pNodeID,
+                                nodeID)
 
                     ret["platforms"][platID]["mapPos"] = {
                         "x": graph.getMapPos(nodeID)[0],
@@ -293,7 +300,8 @@ class StationNameHandler(BaseHandler):
                     ret["platforms"][platID]["predecessors"] = pred
 
             if getArg("departed", "false").lower() == "true":
-                ret["platforms"][platID]["departed"] = graph.getTramsDeparteds()[nodeID]
+                ret["platforms"][platID]["departed"] = (
+                    graph.getTramsDeparteds()[nodeID])
 
         self.write(ret)
 
@@ -361,14 +369,27 @@ class StationNamePlatHandler(BaseHandler):
         self.write(ret)
 
 
+class HealthHandler(BaseHandler):
+    def get(self):
+        now = datetime.now()
+        lastUpdated = max(graph.getLastUpdateTimes().values())
+        updateDelta = now - lastUpdated
+
+        if updateDelta > timedelta(seconds=30):
+            raise tornado.web.HTTPError(500)
+
+        self.write("ok")
+
+
 graph = TramGraph()
 gu = GraphUpdater(graph)
-spawn(gu.updateLoop)
+spawn(gu.updateLoop).link_exception(lambda *args: exit("updateLoop died"))
 
 
 application = tornado.wsgi.WSGIApplication([
    (r"/", MainHandler),
    (r"/debug/?", DebugHandler),
+   (r"/health/?", HealthHandler),
    (r"/station/?", StationHandler),
    (r"/station/([^/]*)/?", StationNameHandler),
    (r"/station/([^/]*)/([^/]*)/?", StationNamePlatHandler),
