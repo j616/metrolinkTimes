@@ -174,6 +174,8 @@ class GraphUpdater:
                                           "tramsDeparted",
                                           "tramsApproaching"])
 
+        # This might not be needed. Could just look like doubling up because of
+        # routes being run on day of testing
         self.graph.finalisePredictions()
 
         tramsAts = self.graph.getTramsAts()
@@ -399,7 +401,7 @@ class HealthHandler(BaseHandler):
         updateDelta = now - lastUpdated
 
         if updateDelta > timedelta(seconds=30):
-            raise tornado.web.HTTPError(500)
+            exit(1)
 
         self.write("ok")
 
