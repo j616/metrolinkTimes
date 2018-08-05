@@ -16,6 +16,7 @@ class TramGraph:
         self.pos = {}
         self.stations = []
         self.firstRun = True
+        self.debounceCount = 2
 
         data = json.load(open("{}/data/stations.json".format(
             os.path.dirname(__file__))))
@@ -37,9 +38,11 @@ class TramGraph:
                 self.DG.nodes[nodeID]["tramsApproaching"] = []
                 self.DG.nodes[nodeID]["prevTramsHere"] = []
                 self.DG.nodes[nodeID]["tramsHere"] = []
+                self.DG.nodes[nodeID]["tramsHereDeb"] = []
                 self.DG.nodes[nodeID]["tramsDeparted"] = []
 
                 self.DG.nodes[nodeID]["predictedArrivals"] = []
+                self.DG.nodes[nodeID]["predictedArrivalsDeb"] = []
                 self.DG.nodes[nodeID]["dwellTimes"] = []
 
                 self.pos[nodeID] = [
@@ -159,6 +162,7 @@ class TramGraph:
 
     def locateApproaching(self, node):
         pTramsMatched = {}  # Only match pTrams once
+
         for tram in self.DG.nodes[node]["tramsDue"]:
             tramStartsHere = True
             wait = tram["wait"] if "wait" in tram else 0
@@ -200,8 +204,8 @@ class TramGraph:
                         break
 
             if tramStartsHere:
-                self.DG.nodes[node]["tramsApproaching"].append(
-                    tram)
+                tram["startsHere"] = tramStartsHere
+                self.DG.nodes[node]["tramsApproaching"].append(tram)
 
     def locateDeparting(self, node):
         # Locate departing trams
@@ -301,6 +305,8 @@ class TramGraph:
         else:
             logging.warning("No matching departed tram for tram arrived at "
                             "{}".format(node))
+            return False
+        return True
 
     def locateAt(self, node):
         # Locate arriving trams & update "tramsHere" array and transit times
@@ -325,7 +331,9 @@ class TramGraph:
                         tram["arriveTime"] = None
                     else:
                         tram["arriveTime"] = self.DG.nodes[node]["updateTime"]
-                        self.calcTramTransit(node, tram)
+                        transFound = self.calcTramTransit(node, tram)
+                        if not transFound:
+                            tram["startsHere"] = True
 
                 newTramsHere.append(tram)
 
@@ -577,17 +585,23 @@ class TramGraph:
                         if seenVia:
                             via = None
                         if tram["dest"] != self.DG.nodes[plat]["stationName"]:
-                            self.DG.nodes[plat]["predictedArrivals"].append({
+                            predTram = {
                                 "dest": tram["dest"],
                                 "via": via,
                                 "carriages": tram["carriages"],
+                                "notStarted": (status == "tramsApproaching"),
                                 "curLoc": {
                                     "platform": node,
-                                    "status": shortStatus,
+                                    "status": shortStatus
                                     },
                                 "predictedArriveTime": time,
                                 "predictions": tram["predictions"]
-                                })
+                                }
+
+                            if "wait" in tram:
+                                predTram["curLoc"]["pidWait"] = tram["wait"]
+                            self.DG.nodes[plat]["predictedArrivals"].append(
+                                predTram)
 
     def clearOldDeparted(self):
         # Attempt at fixing ghost trams hanging around in departed lists
@@ -607,8 +621,97 @@ class TramGraph:
                 del(self.DG.nodes[node]["tramsDeparted"][delTram - offset])
                 offset = offset + 1
 
+    def debounceNewArr(self, node):
+        newDeb = []
+        newPred = []
+
+        self.DG.nodes[node]["predictedArrivals"].sort(
+            key=lambda x: x["predictedArriveTime"]
+            )
+        self.DG.nodes[node]["predictedArrivalsDeb"].sort(
+            key=lambda x: x["predictedArriveTime"]
+            )
+
+        for tram in self.DG.nodes[node]["predictedArrivals"]:
+            if (
+               ("notStarted" in tram)
+               and tram["notStarted"]
+               ):
+                found = False
+                for dTram in self.DG.nodes[node]["predictedArrivalsDeb"]:
+                    if (
+                       (tram["dest"] == dTram["dest"])
+                       and (tram["carriages"] == dTram["carriages"])
+                       and (tram["curLoc"]["pidWait"]
+                            <= dTram["curLoc"]["pidWait"])
+                       and (not dTram.get("matched", False))
+                       ):
+                        found = True
+                        dTram["matched"] = True
+
+                        if dTram["debCount"] >= self.debounceCount:
+                            newPred.append(tram)
+
+                        tram["debCount"] = dTram["debCount"] + 1
+                        newDeb.append(tram)
+
+                        break
+
+                if not found:
+                    tram["debCount"] = 1
+                    newDeb.append(tram)
+            else:
+                newPred.append(tram)
+
+        for tram in self.DG.nodes[node]["predictedArrivalsDeb"]:
+            if not tram.get("matched", False):
+                logging.info(
+                    "Dropping debounced tram arriving at {}".format(node))
+
+        self.DG.nodes[node]["predictedArrivals"] = newPred
+        self.DG.nodes[node]["predictedArrivalsDeb"] = newDeb
+
+    def debounceNewHere(self, node):
+        newDeb = []
+        newHere = []
+
+        for tram in self.DG.nodes[node]["tramsHere"]:
+            if tram.get("startsHere", False):
+                found = False
+                for dTram in self.DG.nodes[node]["tramsHereDeb"]:
+                    if (
+                       (tram["dest"] == dTram["dest"])
+                       and (tram["carriages"] == dTram["carriages"])
+                       and (not dTram.get("matched", False))
+                       ):
+                        found = True
+                        dTram["matched"] = True
+
+                        if dTram["debCount"] >= self.debounceCount:
+                            newHere.append(tram)
+
+                        tram["debCount"] = dTram["debCount"] + 1
+                        newDeb.append(tram)
+
+                        break
+
+                if not found:
+                    tram["debCount"] = 1
+                    newDeb.append(tram)
+            else:
+                newHere.append(tram)
+
+        for tram in self.DG.nodes[node]["tramsHereDeb"]:
+            if not tram.get("matched", False):
+                logging.info("Dropping debounced tram at {}".format(node))
+
+        self.DG.nodes[node]["tramsHere"] = newHere
+        self.DG.nodes[node]["tramsHereDeb"] = newDeb
+
     def finalisePredictions(self):
         for node in nx.nodes(self.DG):
+            self.debounceNewArr(node)
+            self.debounceNewHere(node)
             self.DG.nodes[node]["fPredictedArrivals"] = deepcopy(
                 self.DG.nodes[node]["predictedArrivals"])
             self.DG.nodes[node]["fTramsHere"] = deepcopy(
