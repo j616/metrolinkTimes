@@ -169,6 +169,8 @@ class GraphUpdater:
         # Only de-duplicate now all positions are known and predictions made
         self.graph.deduplicateAllTrams()
 
+        self.graph.debounceNew()
+
         # Gather de-duplicated predictions
         self.graph.gatherTramPredictions(["tramsHere",
                                           "tramsDeparted",
