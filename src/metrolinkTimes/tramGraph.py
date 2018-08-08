@@ -137,7 +137,6 @@ class TramGraph:
             remove = []
             tramsLen = len(self.DG.nodes[node][status])
             for tramNo in range(tramsLen):
-                remove2 = []
                 tram = self.DG.nodes[node][status][tramNo]
                 for tram2No in range(tramsLen)[tramNo+1:]:
                     tram2 = self.DG.nodes[node][status][tram2No]
@@ -147,11 +146,11 @@ class TramGraph:
                     if ((tram["dest"] == tram2["dest"])
                        and (tramWait == tram2Wait)):
                         if tram.get("startsHere", False):
-                            remove.append(tram)
+                            if tram not in remove:
+                                remove.append(tram)
                         elif tram2.get("startsHere", False):
-                            remove2.append(tram2)
-                for tram2 in remove2:
-                    self.DG.nodes[node][status].remove(tram2)
+                            if tram2 not in remove:
+                                remove.append(tram2)
             for tram in remove:
                 self.DG.nodes[node][status].remove(tram)
 
