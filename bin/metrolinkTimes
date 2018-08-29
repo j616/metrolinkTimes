@@ -56,7 +56,8 @@ class GraphUpdater:
             "Ashton": "Ashton-Under-Lyne",
             "MCUK": "MediaCityUK",
             "Newton Heath": "Newton Heath and Moston",
-            "Victoria Millgate Siding": "Victoria"
+            "Victoria Millgate Siding": "Victoria",
+            "Rochdale Stn": "Rochdale Railway Station"
         }
 
     def update(self):
