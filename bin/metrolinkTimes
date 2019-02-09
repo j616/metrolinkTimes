@@ -196,7 +196,7 @@ class GraphUpdater:
         logging.info("trams departed stations: {}".format(tramsDeparted))
         logging.info("trams yet to start at stations: {}".format(
             tramsStarting))
-        logging.info("platforms with trams startin here: {}/{}".format(
+        logging.info("platforms with trams starting: {}/{}".format(
             platformsStarting,
             len(self.graph.getNodes())))
         logging.info("stations with trams starting ({}/{}): {}".format(
@@ -409,7 +409,8 @@ class HealthHandler(BaseHandler):
 
 async def main():
     gu = GraphUpdater(graph)
-    ul = asyncio.create_task(gu.updateLoop())
+    loop = asyncio.get_event_loop()
+    ul = loop.create_task(gu.updateLoop())
 
     application = tornado.web.Application([
        (r"/", MainHandler),
