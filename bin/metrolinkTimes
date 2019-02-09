@@ -1,27 +1,23 @@
 #!/usr/bin/env python3
+import asyncio
 import json
-from gevent import sleep, spawn
 from datetime import datetime, timedelta
 from sys import exit
 import logging
 
-import tornado.ioloop
+from tornado.ioloop import IOLoop
 import tornado.web
-import tornado.wsgi
+from tornado.httpserver import HTTPServer
 from tornado.web import RequestHandler
 from tornado import escape
-import gevent.pywsgi
 
 from metrolinkTimes.tfgmMetrolinksAPI import TFGMMetrolinksAPI
 from metrolinkTimes.tramGraph import TramGraph
 
-import gevent.monkey
-gevent.monkey.patch_all()
-
 logging.basicConfig(filename='/var/log/metrolinkTimes/metrolinkTimes.log',
                     format='%(asctime)s %(levelname)s %(pathname)s %(lineno)s '
                            '%(message)s',
-                    level=logging.ERROR)
+                    level=logging.INFO)
 
 
 def dt_handler(obj):
@@ -150,29 +146,40 @@ class GraphUpdater:
         # so we can use these predictions to verify if trams are actually
         # starting at other stops
         self.graph.predictTramTimes(["tramsHere", "tramsDeparted"])
-        self.graph.gatherTramPredictions(["tramsHere", "tramsDeparted"])
+        # self.graph.gatherTramPredictions(["tramsHere", "tramsDeparted"])
 
-        # Use above predictions to check if trams are starting at other stops
-        self.graph.locateApproachingTrams()
-        self.graph.predictTramTimes(["tramsApproaching"])
+        # # Use above predictions to check if trams are starting at other stops
+        # self.graph.locateApproachingTrams()
+        # self.graph.predictTramTimes(["tramsApproaching"])
 
-        # Re-run to check for trams which haven't left their initial stop
-        # but look like they're starting further down their route too
-        self.graph.clearNodePredictions()
-        self.graph.gatherTramPredictions(["tramsHere",
-                                          "tramsDeparted",
-                                          "tramsApproaching"])
-        self.graph.locateApproachingTrams()
-        self.graph.predictTramTimes(["tramsApproaching"])
+        # # Re-run to check for trams which haven't left their initial stop
+        # # but look like they're starting further down their route too
+        # self.graph.clearNodePredictions()
+        # self.graph.gatherTramPredictions(["tramsHere",
+        #                                   "tramsDeparted",
+        #                                   "tramsApproaching"])
+        # self.graph.locateApproachingTrams()
+        # self.graph.predictTramTimes(["tramsApproaching"])
 
-        # Clear initial predictions, which may contain duplicated trams
-        self.graph.clearNodePredictions()
-        # Only de-duplicate now all positions are known and predictions made
-        self.graph.deduplicateAllTrams()
+        # # Clear initial predictions, which may contain duplicated trams
+        # self.graph.clearNodePredictions()
+        # # Only de-duplicate now all positions are known and predictions made
+        # self.graph.deduplicateAllTrams()
 
         self.graph.debounceNew()
 
         # Gather de-duplicated predictions
+        # self.graph.gatherTramPredictions(["tramsHere",
+        #                                   "tramsDeparted",
+        #                                   "tramsApproaching"])
+        self.graph.gatherTramPredictions(["tramsHere", "tramsDeparted"])
+
+        self.graph.locateApproachingTrams()
+        self.graph.predictTramTimes(["tramsApproaching"])
+        self.graph.gatherTramPredictions(["tramsApproaching"])
+        self.graph.locateApproachingTrams()
+
+        self.graph.clearNodePredictions()
         self.graph.gatherTramPredictions(["tramsHere",
                                           "tramsDeparted",
                                           "tramsApproaching"])
@@ -184,34 +191,47 @@ class GraphUpdater:
         tramsAts = self.graph.getTramsAts()
         tramsAt = 0
 
-        tramsArrivings = self.graph.getTramsArrivings()
-        tramsArriving = 0
+        tramsDeparteds = self.graph.getTramsDeparteds()
+        tramsDeparted = 0
 
-        tramsApproachings = self.graph.getTramsApproachings()
-        tramsApproaching = 0
+        tramsStartings = self.graph.getTramsStarting()
+        tramsStarting = 0
+        platformsStarting = 0
+        stationsStarting = set()
 
         for node in tramsAts:
             tramsAt = tramsAt + len(tramsAts[node])
 
-        for node in tramsArrivings:
-            tramsArriving = tramsArriving + len(tramsArrivings[node])
+        for node in tramsDeparteds:
+            tramsDeparted = tramsDeparted + len(tramsDeparteds[node])
 
-        for node in tramsApproachings:
-            tramsApproaching = tramsApproaching + len(tramsApproachings[node])
+        for node in tramsStartings:
+            tramsStarting = tramsStarting + len(tramsStartings[node])
+            if len(tramsStartings[node]):
+                platformsStarting += 1
+                stationsStarting.add(self.graph.DG.nodes[node]["stationName"])
 
         logging.info("Len nodes without average: {}".format(
             len(self.graph.nodesNoAvDwell())))
         logging.info("Len edges without average: {}".format(
             len(self.graph.edgesNoAvTrans())))
         logging.info("trams at stations: {}".format(tramsAt))
-        logging.info("trams arriving at stations: {}".format(tramsArriving))
-        logging.info("trams approaching stations: {}".format(tramsApproaching))
+        logging.info("trams departed stations: {}".format(tramsDeparted))
+        logging.info("trams yet to start at stations: {}".format(
+            tramsStarting))
+        logging.info("platforms with trams starting: {}/{}".format(
+            platformsStarting,
+            len(self.graph.getNodes())))
+        logging.info("stations with trams starting ({}/{}): {}".format(
+            len(stationsStarting),
+            len(self.graph.getStations()),
+            stationsStarting))
         logging.info("trams are going via {}".format(tramsVia))
 
-    def updateLoop(self):
+    async def updateLoop(self):
         while True:
             self.update()
-            sleep(1)
+            await asyncio.sleep(1)
 
 
 class BaseHandler(RequestHandler):
@@ -237,6 +257,7 @@ class DebugHandler(BaseHandler):
     def get(self):
         here = graph.getTramsHeres()
         dep = graph.getTramsDeparteds()
+        start = graph.getTramsStarting()
         ret = {
             "missingAverages": {
                 "platforms": graph.nodesNoAvDwell(),
@@ -244,7 +265,8 @@ class DebugHandler(BaseHandler):
             },
             "trams": {
                 "here": {k: here[k] for k in here if here[k] != []},
-                "departed": {k: dep[k] for k in dep if dep[k] != []}
+                "departed": {k: dep[k] for k in dep if dep[k] != []},
+                "starting": {k: start[k] for k in start if start[k] != []}
             }
         }
 
@@ -408,23 +430,29 @@ class HealthHandler(BaseHandler):
 
         self.write("ok")
 
+async def main():
+    gu = GraphUpdater(graph)
+    ul = asyncio.create_task(gu.updateLoop())
 
-graph = TramGraph()
-gu = GraphUpdater(graph)
-spawn(gu.updateLoop).link_exception(lambda *args: exit("updateLoop died"))
+    application = tornado.web.Application([
+       (r"/", MainHandler),
+       (r"/debug/?", DebugHandler),
+       (r"/health/?", HealthHandler),
+       (r"/station/?", StationHandler),
+       (r"/station/([^/]*)/?", StationNameHandler),
+       (r"/station/([^/]*)/([^/]*)/?", StationNamePlatHandler),
+    ])
 
+    port = None
+    with open("/etc/metrolinkTimes/metrolinkTimes.conf") as conf_file:
+        port = json.load(conf_file).get("port", 5000)
 
-application = tornado.wsgi.WSGIApplication([
-   (r"/", MainHandler),
-   (r"/debug/?", DebugHandler),
-   (r"/health/?", HealthHandler),
-   (r"/station/?", StationHandler),
-   (r"/station/([^/]*)/?", StationNameHandler),
-   (r"/station/([^/]*)/([^/]*)/?", StationNamePlatHandler),
-])
+    server = HTTPServer(application)
+    server.listen(port)
 
-port = None
-with open("/etc/metrolinkTimes/metrolinkTimes.conf") as conf_file:
-    port = json.load(conf_file).get("port", 5000)
-server = gevent.pywsgi.WSGIServer(('', port), application)
-server.serve_forever()
+    await ul
+
+if __name__ == '__main__':
+    graph = TramGraph()
+    io_loop = IOLoop.current()
+    io_loop.run_sync(main)
