@@ -196,7 +196,7 @@ class GraphUpdater:
         logging.info("trams departed stations: {}".format(tramsDeparted))
         logging.info("trams yet to start at stations: {}".format(
             tramsStarting))
-        logging.info("platforms with trams starting: {}/{}".format(
+        logging.info("platforms with trams startin here: {}/{}".format(
             platformsStarting,
             len(self.graph.getNodes())))
         logging.info("stations with trams starting ({}/{}): {}".format(
