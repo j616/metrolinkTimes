@@ -1,4 +1,4 @@
-#!/usr/bin/env python3.7
+#!/usr/bin/python3.7
 from pathlib import Path
 from distutils.core import setup
 import os
