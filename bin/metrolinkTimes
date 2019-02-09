@@ -17,7 +17,7 @@ from metrolinkTimes.tramGraph import TramGraph
 logging.basicConfig(filename='/var/log/metrolinkTimes/metrolinkTimes.log',
                     format='%(asctime)s %(levelname)s %(pathname)s %(lineno)s '
                            '%(message)s',
-                    level=logging.INFO)
+                    level=logging.ERROR)
 
 
 def dt_handler(obj):
@@ -146,32 +146,9 @@ class GraphUpdater:
         # so we can use these predictions to verify if trams are actually
         # starting at other stops
         self.graph.predictTramTimes(["tramsHere", "tramsDeparted"])
-        # self.graph.gatherTramPredictions(["tramsHere", "tramsDeparted"])
-
-        # # Use above predictions to check if trams are starting at other stops
-        # self.graph.locateApproachingTrams()
-        # self.graph.predictTramTimes(["tramsApproaching"])
-
-        # # Re-run to check for trams which haven't left their initial stop
-        # # but look like they're starting further down their route too
-        # self.graph.clearNodePredictions()
-        # self.graph.gatherTramPredictions(["tramsHere",
-        #                                   "tramsDeparted",
-        #                                   "tramsApproaching"])
-        # self.graph.locateApproachingTrams()
-        # self.graph.predictTramTimes(["tramsApproaching"])
-
-        # # Clear initial predictions, which may contain duplicated trams
-        # self.graph.clearNodePredictions()
-        # # Only de-duplicate now all positions are known and predictions made
-        # self.graph.deduplicateAllTrams()
 
         self.graph.debounceNew()
 
-        # Gather de-duplicated predictions
-        # self.graph.gatherTramPredictions(["tramsHere",
-        #                                   "tramsDeparted",
-        #                                   "tramsApproaching"])
         self.graph.gatherTramPredictions(["tramsHere", "tramsDeparted"])
 
         self.graph.locateApproachingTrams()
