@@ -19,7 +19,7 @@ if not Path(logPath).exists():
     os.chown(logPath, getpwnam('mltimes').pw_uid, getpwnam('mltimes').pw_gid)
 
 setup(name='metrolinkTimes',
-      version='1.2',
+      version='1.3',
       description=('Track trams on the metrolink network & estimate their due '
                    'times'),
       author='James Sandford',
