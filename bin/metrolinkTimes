@@ -165,7 +165,7 @@ class GraphUpdater:
         # routes being run on day of testing
         self.graph.finalisePredictions()
 
-        tramsAts = self.graph.getTramsAts()
+        tramsAts = self.graph.getTramsHeres()
         tramsAt = 0
 
         tramsDeparteds = self.graph.getTramsDeparteds()

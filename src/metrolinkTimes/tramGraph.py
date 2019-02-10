@@ -108,40 +108,6 @@ class TramGraph:
             else:
                 logging.error("Unknown tram status: {}".format(status))
 
-    def deduplicateTrams(self, node):
-        # Find doubles with a second entry as a single and remove the single
-        # This gets around a bug in the TFGM data
-
-        # First, get rid of duplicates that look like new trams between stops
-        for pNode in self.DG.pred[node]:
-            for tram in self.DG.nodes[pNode]["tramsDeparted"]:
-                for tram2 in self.DG.nodes[node]["tramsApproaching"]:
-                    if (tram["dest"] == tram2["dest"]):
-                        self.DG.nodes[node]["tramsApproaching"].remove(tram2)
-
-        # Get rid of duplicates appearing as approaching starting stops or at
-        # stops
-        for status in ["tramsHere", "tramsApproaching"]:
-            remove = []
-            tramsLen = len(self.DG.nodes[node][status])
-            for tramNo in range(tramsLen):
-                tram = self.DG.nodes[node][status][tramNo]
-                for tram2No in range(tramsLen)[tramNo+1:]:
-                    tram2 = self.DG.nodes[node][status][tram2No]
-                    # Departed trams shouldn't have a wait
-                    tramWait = tram["wait"] if "wait" in tram else 0
-                    tram2Wait = tram2["wait"] if "wait" in tram2 else 0
-                    if ((tram["dest"] == tram2["dest"])
-                       and (tramWait == tram2Wait)):
-                        if tram.get("startsHere", False):
-                            if tram not in remove:
-                                remove.append(tram)
-                        elif tram2.get("startsHere", False):
-                            if tram2 not in remove:
-                                remove.append(tram2)
-            for tram in remove:
-                self.DG.nodes[node][status].remove(tram)
-
     def calcTramDwell(self, tramsDeparted, node):
         # Calculate dwell times for departed trams
         if tramsDeparted != []:
@@ -336,10 +302,6 @@ class TramGraph:
         for node in nx.nodes(self.DG):
             self.DG.nodes[node]["tramsApproaching"].clear()
             self.locateApproaching(node)
-
-    def deduplicateAllTrams(self):
-        for node in nx.nodes(self.DG):
-            self.deduplicateTrams(node)
 
     def locateDepartingTrams(self):
         for node in nx.nodes(self.DG):
@@ -686,15 +648,6 @@ class TramGraph:
     def getMessage(self, nodeID):
         return self.DG.nodes[nodeID].get("message")
 
-    def getTramsAts(self):
-        return nx.get_node_attributes(self.DG, "tramsDeparting")
-
-    def getTramsArrivings(self):
-        return nx.get_node_attributes(self.DG, "tramsArrived")
-
-    def getTramsApproachings(self):
-        return nx.get_node_attributes(self.DG, "tramsApproaching")
-
     def getTramsStarting(self):
         tramsApproachings = deepcopy(
             nx.get_node_attributes(self.DG, "fTramsApproaching"))
@@ -710,7 +663,7 @@ class TramGraph:
         return tramsHere
 
     def getTramsDeparteds(self):
-        return nx.get_node_attributes(self.DG, "tramsDeparted")
+        return nx.get_node_attributes(self.DG, "fTramsDeparted")
 
     def getNodePredictions(self):
         return nx.get_node_attributes(self.DG, "fPredictedArrivals")
