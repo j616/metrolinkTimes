@@ -1,4 +1,4 @@
-#!/usr/bin/python3.7
+#!/usr/bin/python3
 from pathlib import Path
 from distutils.core import setup
 import os
@@ -19,7 +19,7 @@ if not Path(logPath).exists():
     os.chown(logPath, getpwnam('mltimes').pw_uid, getpwnam('mltimes').pw_gid)
 
 setup(name='metrolinkTimes',
-      version='1.6',
+      version='1.7',
       description=('Track trams on the metrolink network & estimate their due '
                    'times'),
       author='James Sandford',
