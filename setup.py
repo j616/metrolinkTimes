@@ -31,5 +31,10 @@ setup(name='metrolinkTimes',
       package_dir={'metrolinkTimes': 'src/metrolinkTimes'},
       package_data={'metrolinkTimes': ['data/stations.json']},
       scripts=['bin/metrolinkTimes'],
-      data_files=dataFiles
+      data_files=dataFiles,
+      install_requires=[
+        "networkx",
+        "matplotlib",
+        "tornado"
+      ]
       )
