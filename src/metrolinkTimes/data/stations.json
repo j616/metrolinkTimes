@@ -1,2092 +1,2092 @@
 {
- "MediaCityUK": {
-  "9400ZZMAMCU2": {
-   "line": "Eccles",
-   "direction": "Incoming",
-   "tla": "MEC",
-   "map": {
-    "x": -9,
-    "y": 2
-   },
-   "stationsBefore": ["9400ZZMABWY2", "9400ZZMAHCY2"]
-  },
-  "9400ZZMAMCU1": {
-   "line": "Eccles",
-   "direction": "Incoming",
-   "tla": "MEC",
-   "map": {
-    "x": -9,
-    "y": 2.5
-   },
-   "stationsBefore": ["9400ZZMABWY2", "9400ZZMAHCY2"]
+  "MediaCityUK": {
+    "9400ZZMAMCU2": {
+      "line": "Eccles",
+      "direction": "Incoming",
+      "tla": "MEC",
+      "map": {
+        "x": -9,
+        "y": 2
+      },
+      "stationsBefore": ["9400ZZMABWY2", "9400ZZMAHCY2"]
+    },
+    "9400ZZMAMCU1": {
+      "line": "Eccles",
+      "direction": "Incoming",
+      "tla": "MEC",
+      "map": {
+        "x": -9,
+        "y": 2.5
+      },
+      "stationsBefore": ["9400ZZMABWY2", "9400ZZMAHCY2"]
+    }
+  },
+  "Manchester Airport": {
+    "9400ZZMAAIR1": {
+      "line": "Airport",
+      "direction": "Incoming",
+      "tla": "AIR",
+      "map": {
+        "x": -21,
+        "y": -0.5
+      },
+      "stationsBefore": ["9400ZZMASDW1"]
+    }
+  },
+  "Baguley": {
+    "9400ZZMABAG1": {
+      "line": "Airport",
+      "direction": "Outgoing",
+      "tla": "BAG",
+      "map": {
+        "x": -12,
+        "y": -1
+      },
+      "stationsBefore": ["9400ZZMAMRD1"]
+    },
+    "9400ZZMABAG2": {
+      "line": "Airport",
+      "direction": "Incoming",
+      "tla": "BAG",
+      "map": {
+        "x": -12,
+        "y": -0.5
+      },
+      "stationsBefore": ["9400ZZMARND2"]
+    }
+  },
+  "Benchill": {
+    "9400ZZMABLL1": {
+      "line": "Airport",
+      "direction": "Outgoing",
+      "tla": "BCH",
+      "map": {
+        "x": -15,
+        "y": -1
+      },
+      "stationsBefore": ["9400ZZMAMFT1"]
+    },
+    "9400ZZMABLL2": {
+      "line": "Airport",
+      "direction": "Incoming",
+      "tla": "BCH",
+      "map": {
+        "x": -15,
+        "y": -0.5
+      },
+      "stationsBefore": ["9400ZZMACSS2"]
+    }
+  },
+  "Barlow Moor Road": {
+    "9400ZZMABAR1": {
+      "line": "Airport",
+      "direction": "Outgoing",
+      "tla": "BMR",
+      "map": {
+        "x": -7,
+        "y": -1
+      },
+      "stationsBefore": ["9400ZZMASTW2"]
+    },
+    "9400ZZMABAR2": {
+      "line": "Airport",
+      "direction": "Incoming",
+      "tla": "BMR",
+      "map": {
+        "x": -7,
+        "y": -0.5
+      },
+      "stationsBefore": ["9400ZZMASWP2"]
+    }
+  },
+  "Crossacres": {
+    "9400ZZMACSS1": {
+      "line": "Airport",
+      "direction": "Outgoing",
+      "tla": "CRO",
+      "map": {
+        "x": -16,
+        "y": -1
+      },
+      "stationsBefore": ["9400ZZMABLL1"]
+    },
+    "9400ZZMACSS2": {
+      "line": "Airport",
+      "direction": "Incoming",
+      "tla": "CRO",
+      "map": {
+        "x": -16,
+        "y": -0.5
+      },
+      "stationsBefore": ["9400ZZMAWYT2"]
+    }
+  },
+  "Martinscroft": {
+    "9400ZZMAMFT1": {
+      "line": "Airport",
+      "direction": "Outgoing",
+      "tla": "MAR",
+      "map": {
+        "x": -14,
+        "y": -1
+      },
+      "stationsBefore": ["9400ZZMARND1"]
+    },
+    "9400ZZMAMFT2": {
+      "line": "Airport",
+      "direction": "Incoming",
+      "tla": "MAR",
+      "map": {
+        "x": -14,
+        "y": -0.5
+      },
+      "stationsBefore": ["9400ZZMABLL2"]
+    }
+  },
+  "Moor Road": {
+    "9400ZZMAMRD1": {
+      "line": "Airport",
+      "direction": "Outgoing",
+      "tla": "MRD",
+      "map": {
+        "x": -11,
+        "y": -1
+      },
+      "stationsBefore": ["9400ZZMAWPK1"]
+    },
+    "9400ZZMAMRD2": {
+      "line": "Airport",
+      "direction": "Incoming",
+      "tla": "MRD",
+      "map": {
+        "x": -11,
+        "y": -0.5
+      },
+      "stationsBefore": ["9400ZZMABAG2"]
+    }
+  },
+  "Northern Moor": {
+    "9400ZZMANMR1": {
+      "line": "Airport",
+      "direction": "Outgoing",
+      "tla": "NMR",
+      "map": {
+        "x": -9,
+        "y": -1
+      },
+      "stationsBefore": ["9400ZZMASWP1"]
+    },
+    "9400ZZMANMR2": {
+      "line": "Airport",
+      "direction": "Incoming",
+      "tla": "NMR",
+      "map": {
+        "x": -9,
+        "y": -0.5
+      },
+      "stationsBefore": ["9400ZZMAWPK2"]
+    }
+  },
+  "Peel Hall": {
+    "9400ZZMAPLL1": {
+      "line": "Airport",
+      "direction": "Outgoing",
+      "tla": "PLH",
+      "map": {
+        "x": -19,
+        "y": -1
+      },
+      "stationsBefore": ["9400ZZMARWD1"]
+    },
+    "9400ZZMAPLL2": {
+      "line": "Airport",
+      "direction": "Incoming",
+      "tla": "PLH",
+      "map": {
+        "x": -19,
+        "y": -0.5
+      },
+      "stationsBefore": ["9400ZZMASDW2"]
+    }
+  },
+  "Robinswood Road": {
+    "9400ZZMARWD1": {
+      "line": "Airport",
+      "direction": "Outgoing",
+      "tla": "RBN",
+      "map": {
+        "x": -18,
+        "y": -1
+      },
+      "stationsBefore": ["9400ZZMAWYT1"]
+    },
+    "9400ZZMARWD2": {
+      "line": "Airport",
+      "direction": "Incoming",
+      "tla": "RBN",
+      "map": {
+        "x": -18,
+        "y": -0.5
+      },
+      "stationsBefore": ["9400ZZMAPLL2"]
+    }
+  },
+  "Roundthorn": {
+    "9400ZZMARND1": {
+      "line": "Airport",
+      "direction": "Outgoing",
+      "tla": "RTH",
+      "map": {
+        "x": -13,
+        "y": -1
+      },
+      "stationsBefore": ["9400ZZMABAG1"]
+    },
+    "9400ZZMARND2": {
+      "line": "Airport",
+      "direction": "Incoming",
+      "tla": "RTH",
+      "map": {
+        "x": -13,
+        "y": -0.5
+      },
+      "stationsBefore": ["9400ZZMAMFT2"]
+    }
+  },
+  "Shadowmoss": {
+    "9400ZZMASDW1": {
+      "line": "Airport",
+      "direction": "Outgoing",
+      "tla": "SHD",
+      "map": {
+        "x": -20,
+        "y": -1
+      },
+      "stationsBefore": ["9400ZZMAPLL1"]
+    },
+    "9400ZZMASDW2": {
+      "line": "Airport",
+      "direction": "Incoming",
+      "tla": "SHD",
+      "map": {
+        "x": -20,
+        "y": -0.5
+      },
+      "stationsBefore": ["9400ZZMAAIR1"]
+    }
+  },
+  "Sale Water Park": {
+    "9400ZZMASWP1": {
+      "line": "Airport",
+      "direction": "Outgoing",
+      "tla": "SWP",
+      "map": {
+        "x": -8,
+        "y": -1
+      },
+      "stationsBefore": ["9400ZZMABAR1"]
+    },
+    "9400ZZMASWP2": {
+      "line": "Airport",
+      "direction": "Incoming",
+      "tla": "SWP",
+      "map": {
+        "x": -8,
+        "y": -0.5
+      },
+      "stationsBefore": ["9400ZZMANMR2"]
+    }
+  },
+  "Wythenshawe Park": {
+    "9400ZZMAWPK1": {
+      "line": "Airport",
+      "direction": "Outgoing",
+      "tla": "WPK",
+      "map": {
+        "x": -10,
+        "y": -1
+      },
+      "stationsBefore": ["9400ZZMANMR1"]
+    },
+    "9400ZZMAWPK2": {
+      "line": "Airport",
+      "direction": "Incoming",
+      "tla": "WPK",
+      "map": {
+        "x": -10,
+        "y": -0.5
+      },
+      "stationsBefore": ["9400ZZMAMRD2"]
+    }
+  },
+  "Wythenshawe Town Centre": {
+    "9400ZZMAWYT2": {
+      "line": "Airport",
+      "direction": "Incoming",
+      "tla": "WYC",
+      "map": {
+        "x": -17,
+        "y": -0.5
+      },
+      "stationsBefore": ["9400ZZMARWD2"]
+    },
+    "9400ZZMAWYT1": {
+      "line": "Airport",
+      "direction": "Outgoing",
+      "tla": "WYC",
+      "map": {
+        "x": -17,
+        "y": -1
+      },
+      "stationsBefore": ["9400ZZMACSS1"]
+    }
+  },
+  "Altrincham": {
+    "9400ZZMAALT1": {
+      "line": "Altrincham",
+      "direction": "Incoming",
+      "tla": "ALT",
+      "map": {
+        "x": -11,
+        "y": 0.5
+      },
+      "stationsBefore": ["9400ZZMANAV2"]
+    },
+    "9400ZZMAALT2": {
+      "line": "Altrincham",
+      "direction": "Incoming",
+      "tla": "ALT",
+      "map": {
+        "x": -11,
+        "y": 0
+      },
+      "stationsBefore": ["9400ZZMANAV2"]
+    }
+  },
+  "Brooklands": {
+    "9400ZZMABKS2": {
+      "line": "Altrincham",
+      "direction": "Incoming",
+      "tla": "BRK",
+      "map": {
+        "x": -8,
+        "y": 0.5
+      },
+      "stationsBefore": ["9400ZZMATIM2"]
+    },
+    "9400ZZMABKS1": {
+      "line": "Altrincham",
+      "direction": "Outgoing",
+      "tla": "BRK",
+      "map": {
+        "x": -8,
+        "y": 0
+      },
+      "stationsBefore": ["9400ZZMASLE1"]
+    }
+  },
+  "Dane Road": {
+    "9400ZZMADNE1": {
+      "line": "Altrincham",
+      "direction": "Incoming",
+      "tla": "DAN",
+      "map": {
+        "x": -6,
+        "y": 0.5
+      },
+      "stationsBefore": ["9400ZZMASLE2"]
+    },
+    "9400ZZMADNE2": {
+      "line": "Altrincham",
+      "direction": "Outgoing",
+      "tla": "DAN",
+      "map": {
+        "x": -6,
+        "y": 0
+      },
+      "stationsBefore": ["9400ZZMASFD1"]
+    }
+  },
+  "Deansgate - Castlefield": {
+    "9400ZZMAGMX2": {
+      "line": "Altrincham",
+      "direction": "Outgoing",
+      "tla": "GMX",
+      "terminating": true,
+      "map": {
+        "x": -1,
+        "y": 0.3
+      },
+      "stationsBefore": ["9400ZZMASTP3", "9400ZZMACRN1", "9400ZZMASTP4"]
+    },
+    "9400ZZMAGMX3": {
+      "line": "Altrincham",
+      "direction": "Outgoing",
+      "tla": "GMX",
+      "map": {
+        "x": -1,
+        "y": 0
+      },
+      "stationsBefore": ["9400ZZMASTP3", "9400ZZMASTP4"]
+    },
+    "9400ZZMAGMX1": {
+      "line": "Altrincham",
+      "direction": "Incoming",
+      "tla": "GMX",
+      "map": {
+        "x": -1,
+        "y": 0.6
+      },
+      "stationsBefore": ["9400ZZMACRN1"]
+    }
+  },
+  "Old Trafford": {
+    "9400ZZMAOLD1": {
+      "line": "Altrincham",
+      "direction": "Incoming",
+      "tla": "OLD",
+      "map": {
+        "x": -4,
+        "y": 0.5
+      },
+      "stationsBefore": ["9400ZZMASFD2"]
+    },
+    "9400ZZMAOLD2": {
+      "line": "Altrincham",
+      "direction": "Outgoing",
+      "tla": "OLD",
+      "map": {
+        "x": -4,
+        "y": 0
+      },
+      "stationsBefore": ["9400ZZMATRA2"]
+    }
+  },
+  "Sale": {
+    "9400ZZMASLE2": {
+      "line": "Altrincham",
+      "direction": "Incoming",
+      "tla": "SAL",
+      "map": {
+        "x": -7,
+        "y": 0.5
+      },
+      "stationsBefore": ["9400ZZMABKS2"]
+    },
+    "9400ZZMASLE1": {
+      "line": "Altrincham",
+      "direction": "Outgoing",
+      "tla": "SAL",
+      "map": {
+        "x": -7,
+        "y": 0
+      },
+      "stationsBefore": ["9400ZZMADNE2"]
+    }
+  },
+  "Shudehill": {
+    "9400ZZMASHU2": {
+      "line": "Altrincham",
+      "direction": "Incoming",
+      "tla": "SHL",
+      "map": {
+        "x": 3,
+        "y": -1
+      },
+      "stationsBefore": ["9400ZZMAVIC3", "9400ZZMAVIC4"]
+    },
+    "9400ZZMASHU1": {
+      "line": "Altrincham",
+      "direction": "Outgoing",
+      "tla": "SHL",
+      "map": {
+        "x": 3,
+        "y": -0.5
+      },
+      "stationsBefore": ["9400ZZMAMKT2"]
+    }
+  },
+  "Stretford": {
+    "9400ZZMASFD2": {
+      "line": "Altrincham",
+      "direction": "Incoming",
+      "tla": "STR",
+      "map": {
+        "x": -5,
+        "y": 0.5
+      },
+      "stationsBefore": ["9400ZZMADNE1"]
+    },
+    "9400ZZMASFD1": {
+      "line": "Altrincham",
+      "direction": "Outgoing",
+      "tla": "STR",
+      "map": {
+        "x": -5,
+        "y": 0
+      },
+      "stationsBefore": ["9400ZZMAOLD2"]
+    }
+  },
+  "Trafford Bar": {
+    "9400ZZMATRA1": {
+      "line": "Altrincham",
+      "direction": "Incoming",
+      "tla": "TFB",
+      "map": {
+        "x": -3,
+        "y": 0.5
+      },
+      "stationsBefore": ["9400ZZMAFIR1", "9400ZZMAOLD1"]
+    },
+    "9400ZZMATRA2": {
+      "line": "Altrincham",
+      "direction": "Outgoing",
+      "tla": "TFB",
+      "map": {
+        "x": -3,
+        "y": 0
+      },
+      "stationsBefore": ["9400ZZMACRN2"]
+    }
+  },
+  "Timperley": {
+    "9400ZZMATIM2": {
+      "line": "Altrincham",
+      "direction": "Incoming",
+      "tla": "TMP",
+      "map": {
+        "x": -9,
+        "y": 0.5
+      },
+      "stationsBefore": ["9400ZZMANAV1"]
+    },
+    "9400ZZMATIM1": {
+      "line": "Altrincham",
+      "direction": "Outgoing",
+      "tla": "TMP",
+      "map": {
+        "x": -9,
+        "y": 0
+      },
+      "stationsBefore": ["9400ZZMABKS1"]
+    }
+  },
+  "Victoria": {
+    "9400ZZMAVIC4": {
+      "line": "Altrincham",
+      "direction": "Incoming",
+      "tla": "VIC",
+      "map": {
+        "x": 4,
+        "y": 0
+      },
+      "stationsBefore": ["9400ZZMAMON2", "9400ZZMAQRD2"]
+    },
+    "9400ZZMAVIC3": {
+      "line": "Altrincham",
+      "direction": "Incoming",
+      "tla": "VIC",
+      "terminating": true,
+      "map": {
+        "x": 4,
+        "y": 0.25
+      },
+      "stationsBefore": ["9400ZZMAMON2", "9400ZZMAQRD2"]
+    },
+    "9400ZZMAVIC2": {
+      "line": "Altrincham",
+      "direction": "Outgoing",
+      "tla": "VIC",
+      "terminating": true,
+      "map": {
+        "x": 4,
+        "y": 0.5
+      },
+      "stationsBefore": ["9400ZZMASHU1", "9400ZZMAEXS2"]
+    },
+    "9400ZZMAVIC1": {
+      "line": "Altrincham",
+      "direction": "Outgoing",
+      "tla": "VIC",
+      "map": {
+        "x": 4,
+        "y": 0.75
+      },
+      "stationsBefore": ["9400ZZMASHU1", "9400ZZMAEXS2"]
+    }
+  },
+  "Abraham Moss": {
+    "9400ZZMAABM2": {
+      "line": "Bury",
+      "direction": "Incoming",
+      "tla": "ABM",
+      "map": {
+        "x": 7,
+        "y": 1
+      },
+      "stationsBefore": ["9400ZZMACRU2"]
+    },
+    "9400ZZMAABM1": {
+      "line": "Bury",
+      "direction": "Outgoing",
+      "tla": "ABM",
+      "map": {
+        "x": 7,
+        "y": 1.5
+      },
+      "stationsBefore": ["9400ZZMAQRD1"]
+    }
+  },
+  "Bowker Vale": {
+    "9400ZZMABOW2": {
+      "line": "Bury",
+      "direction": "Incoming",
+      "tla": "BKV",
+      "map": {
+        "x": 8,
+        "y": 1
+      },
+      "stationsBefore": ["9400ZZMAHEA2"]
+    },
+    "9400ZZMABOW1": {
+      "line": "Bury",
+      "direction": "Outgoing",
+      "tla": "BKV",
+      "map": {
+        "x": 8,
+        "y": 1.5
+      },
+      "stationsBefore": ["9400ZZMACRU1"]
+    }
+  },
+  "Besses O\u2019 Th\u2019 Barn": {
+    "9400ZZMABOB2": {
+      "line": "Bury",
+      "direction": "Incoming",
+      "tla": "BOB",
+      "map": {
+        "x": 11,
+        "y": 1
+      },
+      "stationsBefore": ["9400ZZMAWFD2"]
+    },
+    "9400ZZMABOB1": {
+      "line": "Bury",
+      "direction": "Outgoing",
+      "tla": "BOB",
+      "map": {
+        "x": 11,
+        "y": 1.5
+      },
+      "stationsBefore": ["9400ZZMAPWC1"]
+    }
+  },
+  "Bury": {
+    "9400ZZMABUR2": {
+      "line": "Bury",
+      "direction": "Incoming",
+      "tla": "BRY",
+      "map": {
+        "x": 14,
+        "y": 1
+      },
+      "stationsBefore": ["9400ZZMARAD1"]
+    },
+    "9400ZZMABUR1": {
+      "line": "Bury",
+      "direction": "Incoming",
+      "tla": "BRY",
+      "map": {
+        "x": 14,
+        "y": 1.5
+      },
+      "stationsBefore": ["9400ZZMARAD1"]
+    }
+  },
+  "Crumpsall": {
+    "9400ZZMACRU2": {
+      "line": "Bury",
+      "direction": "Incoming",
+      "tla": "CRP",
+      "map": {
+        "x": 7,
+        "y": 1
+      },
+      "stationsBefore": ["9400ZZMABOW2"]
+    },
+    "9400ZZMACRU1": {
+      "line": "Bury",
+      "direction": "Outgoing",
+      "tla": "CRP",
+      "map": {
+        "x": 7,
+        "y": 1.5
+      },
+      "stationsBefore": ["9400ZZMAABM1"]
+    }
+  },
+  "Heaton Park": {
+    "9400ZZMAHEA1": {
+      "line": "Bury",
+      "direction": "Outgoing",
+      "tla": "HPK",
+      "map": {
+        "x": 9,
+        "y": 1.5
+      },
+      "stationsBefore": ["9400ZZMABOW1"]
+    },
+    "9400ZZMAHEA2": {
+      "line": "Bury",
+      "direction": "Incoming",
+      "tla": "HPK",
+      "map": {
+        "x": 9,
+        "y": 1
+      },
+      "stationsBefore": ["9400ZZMAPWC2"]
+    }
+  },
+  "Market Street": {
+    "9400ZZMAMKT1": {
+      "line": "Bury",
+      "direction": "Incoming",
+      "tla": "MKT",
+      "map": {
+        "x": 2,
+        "y": -1
+      },
+      "stationsBefore": ["9400ZZMASHU2"]
+    },
+    "9400ZZMAMKT2": {
+      "line": "Bury",
+      "direction": "Outgoing",
+      "tla": "MKT",
+      "map": {
+        "x": 2,
+        "y": -0.5
+      },
+      "stationsBefore": ["9400ZZMAPGD2", "9400ZZMASTP1"]
+    }
+  },
+  "Piccadilly Gardens": {
+    "9400ZZMAPGD2": {
+      "line": "Bury",
+      "direction": "Incoming",
+      "tla": "PCG",
+      "map": {
+        "x": 1,
+        "y": -2
+      },
+      "stationsBefore": ["9400ZZMAPIC2"]
+    },
+    "9400ZZMAPGD1": {
+      "line": "Bury",
+      "direction": "Outgoing",
+      "tla": "PCG",
+      "map": {
+        "x": 1.5,
+        "y": -2
+      },
+      "stationsBefore": ["9400ZZMASTP1", "9400ZZMAMKT1"]
+    }
+  },
+  "Piccadilly": {
+    "9400ZZMAPIC1": {
+      "line": "Bury",
+      "direction": "Outgoing",
+      "tla": "PIC",
+      "map": {
+        "x": 2,
+        "y": -2.5
+      },
+      "stationsBefore": ["9400ZZMAPGD1"]
+    },
+    "9400ZZMAPIC2": {
+      "line": "Bury",
+      "direction": "Incoming",
+      "tla": "PIC",
+      "map": {
+        "x": 2,
+        "y": -3
+      },
+      "stationsBefore": ["9400ZZMANIS2"]
+    }
+  },
+  "Prestwich": {
+    "9400ZZMAPWC2": {
+      "line": "Bury",
+      "direction": "Incoming",
+      "tla": "PRS",
+      "map": {
+        "x": 10,
+        "y": 1
+      },
+      "stationsBefore": ["9400ZZMABOB2"]
+    },
+    "9400ZZMAPWC1": {
+      "line": "Bury",
+      "direction": "Outgoing",
+      "tla": "PRS",
+      "map": {
+        "x": 10,
+        "y": 1.5
+      },
+      "stationsBefore": ["9400ZZMAHEA1"]
+    }
+  },
+  "Queens Road": {
+    "9400ZZMAQRD2": {
+      "line": "Bury",
+      "direction": "Incoming",
+      "tla": "QNS",
+      "map": {
+        "x": 5,
+        "y": 1
+      },
+      "stationsBefore": ["9400ZZMAABM2"]
+    },
+    "9400ZZMAQRD1": {
+      "line": "Bury",
+      "direction": "Outgoing",
+      "tla": "QNS",
+      "map": {
+        "x": 5,
+        "y": 1.5
+      },
+      "stationsBefore": ["9400ZZMAVIC1", "9400ZZMAVIC2"]
+    }
+  },
+  "Radcliffe": {
+    "9400ZZMARAD1": {
+      "line": "Bury",
+      "direction": "Outgoing",
+      "tla": "RAD",
+      "map": {
+        "x": 13,
+        "y": 1.5
+      },
+      "stationsBefore": ["9400ZZMAWFD1"]
+    },
+    "9400ZZMARAD2": {
+      "line": "Bury",
+      "direction": "Incoming",
+      "tla": "RAD",
+      "map": {
+        "x": 13,
+        "y": 1
+      },
+      "stationsBefore": ["9400ZZMABUR2", "9400ZZMABUR1"]
+    }
+  },
+  "Whitefield": {
+    "9400ZZMAWFD2": {
+      "line": "Bury",
+      "direction": "Incoming",
+      "tla": "WFD",
+      "map": {
+        "x": 12,
+        "y": 1
+      },
+      "stationsBefore": ["9400ZZMARAD2"]
+    },
+    "9400ZZMAWFD1": {
+      "line": "Bury",
+      "direction": "Outgoing",
+      "tla": "WFD",
+      "map": {
+        "x": 12,
+        "y": 1.5
+      },
+      "stationsBefore": ["9400ZZMABOB1"]
+    }
+  },
+  "Ashton-Under-Lyne": {
+    "9400ZZMAAUL1": {
+      "line": "East Manchester",
+      "direction": "Outgoing",
+      "tla": "ASH",
+      "map": {
+        "x": 14,
+        "y": -2.5
+      },
+      "stationsBefore": ["9400ZZMAAWT1"]
+    },
+    "9400ZZMAAUL2": {
+      "line": "East Manchester",
+      "direction": "Incoming",
+      "tla": "ASH",
+      "map": {
+        "x": 14,
+        "y": -3
+      },
+      "stationsBefore": ["9400ZZMAAWT1"]
+    }
+  },
+  "Ashton Moss": {
+    "9400ZZMAAMO1": {
+      "line": "East Manchester",
+      "direction": "Outgoing",
+      "tla": "ASM",
+      "map": {
+        "x": 12,
+        "y": -2.5
+      },
+      "stationsBefore": ["9400ZZMAAUD1"]
+    },
+    "9400ZZMAAMO2": {
+      "line": "East Manchester",
+      "direction": "Incoming",
+      "tla": "ASM",
+      "map": {
+        "x": 12,
+        "y": -3
+      },
+      "stationsBefore": ["9400ZZMAAWT2"]
+    }
+  },
+  "Ashton West": {
+    "9400ZZMAAWT1": {
+      "line": "East Manchester",
+      "direction": "Outgoing",
+      "tla": "ASW",
+      "map": {
+        "x": 13,
+        "y": -2.5
+      },
+      "stationsBefore": ["9400ZZMAAMO1"]
+    },
+    "9400ZZMAAWT2": {
+      "line": "East Manchester",
+      "direction": "Incoming",
+      "tla": "ASW",
+      "map": {
+        "x": 13,
+        "y": -3
+      },
+      "stationsBefore": ["9400ZZMAAUL1", "9400ZZMAAUL2"]
+    }
+  },
+  "Audenshaw": {
+    "9400ZZMAAUD1": {
+      "line": "East Manchester",
+      "direction": "Outgoing",
+      "tla": "AUD",
+      "map": {
+        "x": 11,
+        "y": -2.5
+      },
+      "stationsBefore": ["9400ZZMADRO1"]
+    },
+    "9400ZZMAAUD2": {
+      "line": "East Manchester",
+      "direction": "Incoming",
+      "tla": "AUD",
+      "map": {
+        "x": 11,
+        "y": -3
+      },
+      "stationsBefore": ["9400ZZMAAMO2"]
+    }
+  },
+  "Cemetery Road": {
+    "9400ZZMACEM1": {
+      "line": "East Manchester",
+      "direction": "Outgoing",
+      "tla": "CER",
+      "map": {
+        "x": 9,
+        "y": -2.5
+      },
+      "stationsBefore": ["9400ZZMAELN2"]
+    },
+    "9400ZZMACEM2": {
+      "line": "East Manchester",
+      "direction": "Incoming",
+      "tla": "CER",
+      "map": {
+        "x": 9,
+        "y": -3
+      },
+      "stationsBefore": ["9400ZZMADRO2"]
+    }
+  },
+  "Clayton Hall": {
+    "9400ZZMACLN2": {
+      "line": "East Manchester",
+      "direction": "Outgoing",
+      "tla": "CLA",
+      "map": {
+        "x": 7,
+        "y": -2.5
+      },
+      "stationsBefore": ["9400ZZMAVPK1"]
+    },
+    "9400ZZMACLN1": {
+      "line": "East Manchester",
+      "direction": "Incoming",
+      "tla": "CLA",
+      "map": {
+        "x": 7,
+        "y": -3
+      },
+      "stationsBefore": ["9400ZZMAELN1"]
+    }
+  },
+  "Droylsden": {
+    "9400ZZMADRO1": {
+      "line": "East Manchester",
+      "direction": "Outgoing",
+      "tla": "DYL",
+      "map": {
+        "x": 10,
+        "y": -2.5
+      },
+      "stationsBefore": ["9400ZZMACEM1"]
+    },
+    "9400ZZMADRO2": {
+      "line": "East Manchester",
+      "direction": "Incoming",
+      "tla": "DYL",
+      "map": {
+        "x": 10,
+        "y": -3
+      },
+      "stationsBefore": ["9400ZZMAAUD2"]
+    }
+  },
+  "Edge Lane": {
+    "9400ZZMAELN2": {
+      "line": "East Manchester",
+      "direction": "Outgoing",
+      "tla": "EDL",
+      "map": {
+        "x": 8,
+        "y": -2.5
+      },
+      "stationsBefore": ["9400ZZMACLN2"]
+    },
+    "9400ZZMAELN1": {
+      "line": "East Manchester",
+      "direction": "Incoming",
+      "tla": "EDL",
+      "map": {
+        "x": 8,
+        "y": -3
+      },
+      "stationsBefore": ["9400ZZMACEM2"]
+    }
+  },
+  "Holt Town": {
+    "9400ZZMAHTN1": {
+      "line": "East Manchester",
+      "direction": "Outgoing",
+      "tla": "HOT",
+      "map": {
+        "x": 4,
+        "y": -2.5
+      },
+      "stationsBefore": ["9400ZZMANIS1"]
+    },
+    "9400ZZMAHTN2": {
+      "line": "East Manchester",
+      "direction": "Incoming",
+      "tla": "HOT",
+      "map": {
+        "x": 4,
+        "y": -3
+      },
+      "stationsBefore": ["9400ZZMAECS2"]
+    }
+  },
+  "New Islington": {
+    "9400ZZMANIS1": {
+      "line": "East Manchester",
+      "direction": "Outgoing",
+      "tla": "NIS",
+      "map": {
+        "x": 3,
+        "y": -2.5
+      },
+      "stationsBefore": ["9400ZZMAPIC1"]
+    },
+    "9400ZZMANIS2": {
+      "line": "East Manchester",
+      "direction": "Incoming",
+      "tla": "NIS",
+      "map": {
+        "x": 3,
+        "y": -3
+      },
+      "stationsBefore": ["9400ZZMAHTN2"]
+    }
+  },
+  "Etihad Campus": {
+    "9400ZZMAECS2": {
+      "line": "East Manchester",
+      "direction": "Incoming",
+      "tla": "SPC",
+      "map": {
+        "x": 5,
+        "y": -3
+      },
+      "stationsBefore": ["9400ZZMAVPK2"]
+    },
+    "9400ZZMAECS1": {
+      "line": "East Manchester",
+      "direction": "Outgoing",
+      "tla": "SPC",
+      "map": {
+        "x": 5,
+        "y": -2.5
+      },
+      "stationsBefore": ["9400ZZMAHTN1"]
+    }
+  },
+  "Velopark": {
+    "9400ZZMAVPK1": {
+      "line": "East Manchester",
+      "direction": "Outgoing",
+      "tla": "VEL",
+      "map": {
+        "x": 6,
+        "y": -2.5
+      },
+      "stationsBefore": ["9400ZZMAECS1"]
+    },
+    "9400ZZMAVPK2": {
+      "line": "East Manchester",
+      "direction": "Incoming",
+      "tla": "VEL",
+      "map": {
+        "x": 6,
+        "y": -3
+      },
+      "stationsBefore": ["9400ZZMACLN1"]
+    }
+  },
+  "Anchorage": {
+    "9400ZZMAANC2": {
+      "line": "Eccles",
+      "direction": "Incoming",
+      "tla": "ANC",
+      "map": {
+        "x": -6,
+        "y": 2.5
+      },
+      "stationsBefore": ["9400ZZMAHCY1"]
+    },
+    "9400ZZMAANC1": {
+      "line": "Eccles",
+      "direction": "Outgoing",
+      "tla": "ANC",
+      "map": {
+        "x": -6,
+        "y": 2
+      },
+      "stationsBefore": ["9400ZZMASQY2"]
+    }
+  },
+  "Broadway": {
+    "9400ZZMABWY2": {
+      "line": "Eccles",
+      "direction": "Incoming",
+      "tla": "BDW",
+      "map": {
+        "x": -8,
+        "y": 3
+      },
+      "stationsBefore": ["9400ZZMALWY2"]
+    },
+    "9400ZZMABWY1": {
+      "line": "Eccles",
+      "direction": "Outgoing",
+      "tla": "BDW",
+      "map": {
+        "x": -8.5,
+        "y": 3
+      },
+      "stationsBefore": ["9400ZZMAMCU2", "9400ZZMAHCY2", "9400ZZMAMCU1"]
+    }
+  },
+  "Cornbrook": {
+    "9400ZZMACRN1": {
+      "line": "Eccles",
+      "direction": "Incoming",
+      "tla": "CNK",
+      "map": {
+        "x": -2,
+        "y": 0.5
+      },
+      "stationsBefore": ["9400ZZMATRA1", "9400ZZMAPOM1"]
+    },
+    "9400ZZMACRN2": {
+      "line": "Eccles",
+      "direction": "Outgoing",
+      "tla": "CNK",
+      "map": {
+        "x": -2,
+        "y": 0
+      },
+      "stationsBefore": ["9400ZZMAGMX3", "9400ZZMAGMX2"]
+    }
+  },
+  "Eccles": {
+    "9400ZZMAECC1": {
+      "line": "Eccles",
+      "direction": "Incoming",
+      "tla": "ECC",
+      "map": {
+        "x": -12,
+        "y": 4.5
+      },
+      "stationsBefore": ["9400ZZMALDY1"]
+    }
+  },
+  "Exchange Quay": {
+    "9400ZZMAEXC2": {
+      "line": "Eccles",
+      "direction": "Incoming",
+      "tla": "EXQ",
+      "map": {
+        "x": -4,
+        "y": 2.5
+      },
+      "stationsBefore": ["9400ZZMASQY1"]
+    },
+    "9400ZZMAEXC1": {
+      "line": "Eccles",
+      "direction": "Outgoing",
+      "tla": "EXQ",
+      "map": {
+        "x": -4,
+        "y": 2
+      },
+      "stationsBefore": ["9400ZZMAPOM2"]
+    }
+  },
+  "Exchange Square": {
+    "9400ZZMAEXS2": {
+      "line": "Eccles",
+      "direction": "Outgoing",
+      "tla": "EXS",
+      "map": {
+        "x": 1,
+        "y": 0.5
+      },
+      "stationsBefore": ["9400ZZMASTP2"]
+    },
+    "9400ZZMAEXS1": {
+      "line": "Eccles",
+      "direction": "Incoming",
+      "tla": "EXS",
+      "map": {
+        "x": 1,
+        "y": 0
+      },
+      "stationsBefore": ["9400ZZMAVIC3", "9400ZZMAVIC4"]
+    }
+  },
+  "Harbour City": {
+    "9400ZZMAHCY1": {
+      "line": "Eccles",
+      "direction": "Incoming",
+      "tla": "HBC",
+      "map": {
+        "x": -7,
+        "y": 2.5
+      },
+      "stationsBefore": ["9400ZZMAMCU2", "9400ZZMABWY2", "9400ZZMAMCU1"]
+    },
+    "9400ZZMAHCY2": {
+      "line": "Eccles",
+      "direction": "Outgoing",
+      "tla": "HBC",
+      "map": {
+        "x": -7,
+        "y": 2
+      },
+      "stationsBefore": ["9400ZZMAANC1"]
+    }
+  },
+  "Ladywell": {
+    "9400ZZMALDY2": {
+      "line": "Eccles",
+      "direction": "Incoming",
+      "tla": "LDW",
+      "map": {
+        "x": -11,
+        "y": 4.5
+      },
+      "stationsBefore": ["9400ZZMAECC1"]
+    },
+    "9400ZZMALDY1": {
+      "line": "Eccles",
+      "direction": "Outgoing",
+      "tla": "LDW",
+      "map": {
+        "x": -11,
+        "y": 4
+      },
+      "stationsBefore": ["9400ZZMAWST1"]
+    }
+  },
+  "Langworthy": {
+    "9400ZZMALWY2": {
+      "line": "Eccles",
+      "direction": "Incoming",
+      "tla": "LGW",
+      "map": {
+        "x": -9,
+        "y": 4.5
+      },
+      "stationsBefore": ["9400ZZMAWST2"]
+    },
+    "9400ZZMALWY1": {
+      "line": "Eccles",
+      "direction": "Outgoing",
+      "tla": "LGW",
+      "map": {
+        "x": -9,
+        "y": 4
+      },
+      "stationsBefore": ["9400ZZMABWY1"]
+    }
+  },
+  "Pomona": {
+    "9400ZZMAPOM1": {
+      "line": "Eccles",
+      "direction": "Incoming",
+      "tla": "POM",
+      "map": {
+        "x": -3,
+        "y": 1.5
+      },
+      "stationsBefore": ["9400ZZMAEXC2"]
+    },
+    "9400ZZMAPOM2": {
+      "line": "Eccles",
+      "direction": "Outgoing",
+      "tla": "POM",
+      "map": {
+        "x": -3,
+        "y": 1
+      },
+      "stationsBefore": ["9400ZZMACRN2"]
+    }
+  },
+  "Salford Quays": {
+    "9400ZZMASQY1": {
+      "line": "Eccles",
+      "direction": "Incoming",
+      "tla": "SFQ",
+      "map": {
+        "x": -5,
+        "y": 2.5
+      },
+      "stationsBefore": ["9400ZZMAANC2"]
+    },
+    "9400ZZMASQY2": {
+      "line": "Eccles",
+      "direction": "Outgoing",
+      "tla": "SFQ",
+      "map": {
+        "x": -5,
+        "y": 2
+      },
+      "stationsBefore": ["9400ZZMAEXC1"]
+    }
+  },
+  "Weaste": {
+    "9400ZZMAWST1": {
+      "line": "Eccles",
+      "direction": "Outgoing",
+      "tla": "WST",
+      "map": {
+        "x": -10,
+        "y": 4
+      },
+      "stationsBefore": ["9400ZZMALWY1"]
+    },
+    "9400ZZMAWST2": {
+      "line": "Eccles",
+      "direction": "Incoming",
+      "tla": "WST",
+      "map": {
+        "x": -10,
+        "y": 4.5
+      },
+      "stationsBefore": ["9400ZZMALDY2"]
+    }
+  },
+  "Central Park": {
+    "9400ZZMACTP2": {
+      "line": "Oldham & Rochdale",
+      "direction": "Outgoing",
+      "tla": "CEP",
+      "map": {
+        "x": 6,
+        "y": 0.5
+      },
+      "stationsBefore": ["9400ZZMAMON1"]
+    },
+    "9400ZZMACTP1": {
+      "line": "Oldham & Rochdale",
+      "direction": "Incoming",
+      "tla": "CEP",
+      "map": {
+        "x": 6,
+        "y": 0
+      },
+      "stationsBefore": ["9400ZZMANEW1"]
+    }
+  },
+  "Derker": {
+    "9400ZZMADER1": {
+      "line": "Oldham & Rochdale",
+      "direction": "Outgoing",
+      "tla": "DER",
+      "map": {
+        "x": 16,
+        "y": 0.5
+      },
+      "stationsBefore": ["9400ZZMAOMP1"]
+    },
+    "9400ZZMADER2": {
+      "line": "Oldham & Rochdale",
+      "direction": "Incoming",
+      "tla": "DER",
+      "map": {
+        "x": 16,
+        "y": 0
+      },
+      "stationsBefore": ["9400ZZMASHA2", "9400ZZMASHA3"]
+    }
+  },
+  "Failsworth": {
+    "9400ZZMAFWH1": {
+      "line": "Oldham & Rochdale",
+      "direction": "Outgoing",
+      "tla": "FAL",
+      "map": {
+        "x": 8,
+        "y": 0.5
+      },
+      "stationsBefore": ["9400ZZMANEW2"]
+    },
+    "9400ZZMAFWH2": {
+      "line": "Oldham & Rochdale",
+      "direction": "Incoming",
+      "tla": "FAL",
+      "map": {
+        "x": 8,
+        "y": 0
+      },
+      "stationsBefore": ["9400ZZMAHOL2"]
+    }
+  },
+  "Freehold": {
+    "9400ZZMAFRE1": {
+      "line": "Oldham & Rochdale",
+      "direction": "Outgoing",
+      "tla": "FRE",
+      "map": {
+        "x": 11,
+        "y": 0.5
+      },
+      "stationsBefore": ["9400ZZMASCH1"]
+    },
+    "9400ZZMAFRE2": {
+      "line": "Oldham & Rochdale",
+      "direction": "Incoming",
+      "tla": "FRE",
+      "map": {
+        "x": 11,
+        "y": 0
+      },
+      "stationsBefore": ["9400ZZMAWWD2"]
+    }
+  },
+  "Hollinwood": {
+    "9400ZZMAHOL1": {
+      "line": "Oldham & Rochdale",
+      "direction": "Outgoing",
+      "tla": "HOL",
+      "map": {
+        "x": 9,
+        "y": 0.5
+      },
+      "stationsBefore": ["9400ZZMAFWH1"]
+    },
+    "9400ZZMAHOL2": {
+      "line": "Oldham & Rochdale",
+      "direction": "Incoming",
+      "tla": "HOL",
+      "map": {
+        "x": 9,
+        "y": 0
+      },
+      "stationsBefore": ["9400ZZMASCH2"]
+    }
+  },
+  "Kingsway Business Park": {
+    "9400ZZMAKNY1": {
+      "line": "Oldham & Rochdale",
+      "direction": "Outgoing",
+      "tla": "KIN",
+      "map": {
+        "x": 20,
+        "y": 0.5
+      },
+      "stationsBefore": ["9400ZZMAMIL1"]
+    },
+    "9400ZZMAKNY2": {
+      "line": "Oldham & Rochdale",
+      "direction": "Incoming",
+      "tla": "KIN",
+      "map": {
+        "x": 20,
+        "y": 0
+      },
+      "stationsBefore": ["9400ZZMANBD2"]
+    }
+  },
+  "Milnrow": {
+    "9400ZZMAMIL1": {
+      "line": "Oldham & Rochdale",
+      "direction": "Outgoing",
+      "tla": "MIL",
+      "map": {
+        "x": 19,
+        "y": 0.5
+      },
+      "stationsBefore": ["9400ZZMANHY1"]
+    },
+    "9400ZZMAMIL2": {
+      "line": "Oldham & Rochdale",
+      "direction": "Incoming",
+      "tla": "MIL",
+      "map": {
+        "x": 19,
+        "y": 0
+      },
+      "stationsBefore": ["9400ZZMAKNY2"]
+    }
+  },
+  "Monsall": {
+    "9400ZZMAMON1": {
+      "line": "Oldham & Rochdale",
+      "direction": "Outgoing",
+      "tla": "MON",
+      "map": {
+        "x": 5,
+        "y": 0.5
+      },
+      "stationsBefore": ["9400ZZMAVIC1", "9400ZZMAVIC2"]
+    },
+    "9400ZZMAMON2": {
+      "line": "Oldham & Rochdale",
+      "direction": "Incoming",
+      "tla": "MON",
+      "map": {
+        "x": 5,
+        "y": 0
+      },
+      "stationsBefore": ["9400ZZMACTP1"]
+    }
+  },
+  "Newbold": {
+    "9400ZZMANBD1": {
+      "line": "Oldham & Rochdale",
+      "direction": "Outgoing",
+      "tla": "NEB",
+      "map": {
+        "x": 21,
+        "y": 0.5
+      },
+      "stationsBefore": ["9400ZZMAKNY1"]
+    },
+    "9400ZZMANBD2": {
+      "line": "Oldham & Rochdale",
+      "direction": "Incoming",
+      "tla": "NEB",
+      "map": {
+        "x": 21,
+        "y": 0
+      },
+      "stationsBefore": ["9400ZZMARRS2"]
+    }
+  },
+  "Newhey": {
+    "9400ZZMANHY1": {
+      "line": "Oldham & Rochdale",
+      "direction": "Outgoing",
+      "tla": "NEH",
+      "map": {
+        "x": 18,
+        "y": 0.5
+      },
+      "stationsBefore": ["9400ZZMASHA1"]
+    },
+    "9400ZZMANHY2": {
+      "line": "Oldham & Rochdale",
+      "direction": "Incoming",
+      "tla": "NEH",
+      "map": {
+        "x": 18,
+        "y": 0
+      },
+      "stationsBefore": ["9400ZZMAMIL2"]
+    }
+  },
+  "Newton Heath and Moston": {
+    "9400ZZMANEW1": {
+      "line": "Oldham & Rochdale",
+      "direction": "Incoming",
+      "tla": "NHM",
+      "map": {
+        "x": 7,
+        "y": 0
+      },
+      "stationsBefore": ["9400ZZMAFWH2"]
+    },
+    "9400ZZMANEW2": {
+      "line": "Oldham & Rochdale",
+      "direction": "Outgoing",
+      "tla": "NHM",
+      "map": {
+        "x": 7,
+        "y": 0.5
+      },
+      "stationsBefore": ["9400ZZMACTP2"]
+    }
+  },
+  "Oldham Central": {
+    "9400ZZMAOMC1": {
+      "line": "Oldham & Rochdale",
+      "direction": "Outgoing",
+      "tla": "OHC",
+      "map": {
+        "x": 14,
+        "y": 0.5
+      },
+      "stationsBefore": ["9400ZZMAOKS1"]
+    },
+    "9400ZZMAOMC2": {
+      "line": "Oldham & Rochdale",
+      "direction": "Incoming",
+      "tla": "OHC",
+      "map": {
+        "x": 14,
+        "y": 0
+      },
+      "stationsBefore": ["9400ZZMAOMP2"]
+    }
+  },
+  "Oldham King Street": {
+    "9400ZZMAOKS1": {
+      "line": "Oldham & Rochdale",
+      "direction": "Outgoing",
+      "tla": "OHK",
+      "map": {
+        "x": 13,
+        "y": 0.5
+      },
+      "stationsBefore": ["9400ZZMAWWD1"]
+    },
+    "9400ZZMAOKS2": {
+      "line": "Oldham & Rochdale",
+      "direction": "Incoming",
+      "tla": "OHK",
+      "map": {
+        "x": 13,
+        "y": 0
+      },
+      "stationsBefore": ["9400ZZMAOMC2"]
+    }
+  },
+  "Oldham Mumps": {
+    "9400ZZMAOMP1": {
+      "line": "Oldham & Rochdale",
+      "direction": "Outgoing",
+      "tla": "OHM",
+      "map": {
+        "x": 15,
+        "y": 0.5
+      },
+      "stationsBefore": ["9400ZZMAOMC1"]
+    },
+    "9400ZZMAOMP2": {
+      "line": "Oldham & Rochdale",
+      "direction": "Incoming",
+      "tla": "OHM",
+      "map": {
+        "x": 15,
+        "y": 0
+      },
+      "stationsBefore": ["9400ZZMADER2"]
+    }
+  },
+  "Rochdale Railway Station": {
+    "9400ZZMARRS1": {
+      "line": "Oldham & Rochdale",
+      "direction": "Outgoing",
+      "tla": "ROC",
+      "map": {
+        "x": 22,
+        "y": 0.5
+      },
+      "stationsBefore": ["9400ZZMANBD1"]
+    },
+    "9400ZZMARRS2": {
+      "line": "Oldham & Rochdale",
+      "direction": "Incoming",
+      "tla": "ROC",
+      "map": {
+        "x": 22,
+        "y": 0
+      },
+      "stationsBefore": ["9400ZZMARIN2", "9400ZZMARIN1"]
+    }
+  },
+  "Rochdale Town Centre": {
+    "9400ZZMARIN1": {
+      "line": "Oldham & Rochdale",
+      "direction": "Incoming",
+      "tla": "RTC",
+      "map": {
+        "x": 23,
+        "y": 0.5
+      },
+      "stationsBefore": ["9400ZZMARRS1"]
+    },
+    "9400ZZMARIN2": {
+      "line": "Oldham & Rochdale",
+      "direction": "Incoming",
+      "tla": "RTC",
+      "map": {
+        "x": 23,
+        "y": 0
+      },
+      "stationsBefore": ["9400ZZMARRS1"]
+    }
+  },
+  "Shaw and Crompton": {
+    "9400ZZMASHA1": {
+      "line": "Oldham & Rochdale",
+      "direction": "Outgoing",
+      "tla": "SHC",
+      "map": {
+        "x": 17,
+        "y": 0.6
+      },
+      "stationsBefore": ["9400ZZMADER1"]
+    },
+    "9400ZZMASHA2": {
+      "line": "Oldham & Rochdale",
+      "direction": "Incoming",
+      "tla": "SHC",
+      "map": {
+        "x": 17,
+        "y": 0.3
+      },
+      "stationsBefore": ["9400ZZMANHY2"]
+    },
+    "9400ZZMASHA3": {
+      "line": "Oldham & Rochdale",
+      "direction": "Incoming",
+      "tla": "SHC",
+      "terminating": true,
+      "map": {
+        "x": 17,
+        "y": 0
+      },
+      "stationsBefore": ["9400ZZMADER1"]
+    }
+  },
+  "South Chadderton": {
+    "9400ZZMASCH1": {
+      "line": "Oldham & Rochdale",
+      "direction": "Outgoing",
+      "tla": "SOC",
+      "map": {
+        "x": 10,
+        "y": 0.5
+      },
+      "stationsBefore": ["9400ZZMAHOL1"]
+    },
+    "9400ZZMASCH2": {
+      "line": "Oldham & Rochdale",
+      "direction": "Incoming",
+      "tla": "SOC",
+      "map": {
+        "x": 10,
+        "y": 0
+      },
+      "stationsBefore": ["9400ZZMAFRE2"]
+    }
+  },
+  "Westwood": {
+    "9400ZZMAWWD1": {
+      "line": "Oldham & Rochdale",
+      "direction": "Outgoing",
+      "tla": "WWD",
+      "map": {
+        "x": 12,
+        "y": 0.5
+      },
+      "stationsBefore": ["9400ZZMAFRE1"]
+    },
+    "9400ZZMAWWD2": {
+      "line": "Oldham & Rochdale",
+      "direction": "Incoming",
+      "tla": "WWD",
+      "map": {
+        "x": 12,
+        "y": 0
+      },
+      "stationsBefore": ["9400ZZMAOKS2"]
+    }
+  },
+  "Burton Road": {
+    "9400ZZMABNR2": {
+      "line": "South Manchester",
+      "direction": "Outgoing",
+      "tla": "BRT",
+      "map": {
+        "x": -8,
+        "y": -2
+      },
+      "stationsBefore": ["9400ZZMAWIT2"]
+    },
+    "9400ZZMABNR1": {
+      "line": "South Manchester",
+      "direction": "Incoming",
+      "tla": "BRT",
+      "map": {
+        "x": -8,
+        "y": -1.5
+      },
+      "stationsBefore": ["9400ZZMAWTD1"]
+    }
+  },
+  "Chorlton": {
+    "9400ZZMACHO1": {
+      "line": "South Manchester",
+      "direction": "Outgoing",
+      "tla": "CHO",
+      "map": {
+        "x": -5,
+        "y": -1
+      },
+      "stationsBefore": ["9400ZZMAFIR2"]
+    },
+    "9400ZZMACHO2": {
+      "line": "South Manchester",
+      "direction": "Incoming",
+      "tla": "CHO",
+      "map": {
+        "x": -5,
+        "y": -0.5
+      },
+      "stationsBefore": ["9400ZZMASTW1"]
+    }
+  },
+  "Didsbury Village": {
+    "9400ZZMADID2": {
+      "line": "South Manchester",
+      "direction": "Outgoing",
+      "tla": "DDV",
+      "map": {
+        "x": -10,
+        "y": -2
+      },
+      "stationsBefore": ["9400ZZMAWTD2"]
+    },
+    "9400ZZMADID1": {
+      "line": "South Manchester",
+      "direction": "Incoming",
+      "tla": "DDV",
+      "map": {
+        "x": -10,
+        "y": -1.5
+      },
+      "stationsBefore": ["9400ZZMAEDY2", "9400ZZMAEDY1"]
+    }
+  },
+  "East Didsbury": {
+    "9400ZZMAEDY2": {
+      "line": "South Manchester",
+      "direction": "Incoming",
+      "tla": "EDD",
+      "map": {
+        "x": -11,
+        "y": -2
+      },
+      "stationsBefore": ["9400ZZMADID2"]
+    },
+    "9400ZZMAEDY1": {
+      "line": "South Manchester",
+      "direction": "Incoming",
+      "tla": "EDD",
+      "map": {
+        "x": -11,
+        "y": -1.5
+      },
+      "stationsBefore": ["9400ZZMADID2"]
+    }
+  },
+  "Firswood": {
+    "9400ZZMAFIR2": {
+      "line": "South Manchester",
+      "direction": "Outgoing",
+      "tla": "FIR",
+      "map": {
+        "x": -4,
+        "y": -1
+      },
+      "stationsBefore": ["9400ZZMATRA2"]
+    },
+    "9400ZZMAFIR1": {
+      "line": "South Manchester",
+      "direction": "Incoming",
+      "tla": "FIR",
+      "map": {
+        "x": -4,
+        "y": -0.5
+      },
+      "stationsBefore": ["9400ZZMACHO2"]
+    }
+  },
+  "St Werburgh\u2019s Road": {
+    "9400ZZMASTW2": {
+      "line": "South Manchester",
+      "direction": "Outgoing",
+      "tla": "SWR",
+      "map": {
+        "x": -6,
+        "y": -1
+      },
+      "stationsBefore": ["9400ZZMACHO1"]
+    },
+    "9400ZZMASTW1": {
+      "line": "South Manchester",
+      "direction": "Incoming",
+      "tla": "SWR",
+      "map": {
+        "x": -6,
+        "y": -0.5
+      },
+      "stationsBefore": ["9400ZZMABAR2", "9400ZZMAWIT1"]
+    }
+  },
+  "West Didsbury": {
+    "9400ZZMAWTD2": {
+      "line": "South Manchester",
+      "direction": "Outgoing",
+      "tla": "WDD",
+      "map": {
+        "x": -9,
+        "y": -2
+      },
+      "stationsBefore": ["9400ZZMABNR2"]
+    },
+    "9400ZZMAWTD1": {
+      "line": "South Manchester",
+      "direction": "Incoming",
+      "tla": "WDD",
+      "map": {
+        "x": -9,
+        "y": -1.5
+      },
+      "stationsBefore": ["9400ZZMADID1"]
+    }
+  },
+  "Withington": {
+    "9400ZZMAWIT2": {
+      "line": "South Manchester",
+      "direction": "Outgoing",
+      "tla": "WTH",
+      "map": {
+        "x": -7,
+        "y": -2
+      },
+      "stationsBefore": ["9400ZZMASTW2"]
+    },
+    "9400ZZMAWIT1": {
+      "line": "South Manchester",
+      "direction": "Incoming",
+      "tla": "WTH",
+      "map": {
+        "x": -7,
+        "y": -1.5
+      },
+      "stationsBefore": ["9400ZZMABNR1"]
+    }
+  },
+  "St Peter's Square": {
+    "9400ZZMASTP4": {
+      "line": "Eccles",
+      "direction": "Outgoing",
+      "tla": "SPS",
+      "map": {
+        "x": 0,
+        "y": 0
+      },
+      "stationsBefore": ["9400ZZMAPGD2", "9400ZZMAMKT1"]
+    },
+    "9400ZZMASTP1": {
+      "line": "Eccles",
+      "direction": "Incoming",
+      "tla": "SPS",
+      "map": {
+        "x": 0,
+        "y": 0.75
+      },
+      "stationsBefore": ["9400ZZMAGMX1", "9400ZZMAGMX2"]
+    },
+    "9400ZZMASTP3": {
+      "line": "Eccles",
+      "direction": "Outgoing",
+      "tla": "SPS",
+      "map": {
+        "x": 0,
+        "y": 0.25
+      },
+      "stationsBefore": ["9400ZZMAEXS1"]
+    },
+    "9400ZZMASTP2": {
+      "line": "Eccles",
+      "direction": "Incoming",
+      "tla": "SPS",
+      "map": {
+        "x": 0,
+        "y": 0.5
+      },
+      "stationsBefore": ["9400ZZMAGMX1", "9400ZZMAGMX2"]
+    }
+  },
+  "Navigation Road": {
+    "9400ZZMANAV1": {
+      "line": "Altrincham",
+      "direction": "Incoming",
+      "tla": "NAV",
+      "map": {
+        "x": -10,
+        "y": 0.5
+      },
+      "stationsBefore": ["9400ZZMAALT1", "9400ZZMAALT2"]
+    },
+    "9400ZZMANAV2": {
+      "line": "Altrincham",
+      "direction": "Outgoing",
+      "tla": "NAV",
+      "map": {
+        "x": -10,
+        "y": 0
+      },
+      "stationsBefore": ["9400ZZMATIM1"]
+    }
   }
- },
- "Manchester Airport": {
-  "9400ZZMAAIR1": {
-   "line": "Airport",
-   "direction": "Incoming",
-   "tla": "AIR",
-   "map": {
-    "x": -21,
-    "y": -0.5
-   },
-   "stationsBefore": ["9400ZZMASDW1"]
-  }
- },
- "Baguley": {
-  "9400ZZMABAG1": {
-   "line": "Airport",
-   "direction": "Outgoing",
-   "tla": "BAG",
-   "map": {
-    "x": -12,
-    "y": -1
-   },
-   "stationsBefore": ["9400ZZMAMRD1"]
-  },
-  "9400ZZMABAG2": {
-   "line": "Airport",
-   "direction": "Incoming",
-   "tla": "BAG",
-   "map": {
-    "x": -12,
-    "y": -0.5
-   },
-   "stationsBefore": ["9400ZZMARND2"]
-  }
- },
- "Benchill": {
-  "9400ZZMABLL1": {
-   "line": "Airport",
-   "direction": "Outgoing",
-   "tla": "BCH",
-   "map": {
-    "x": -15,
-    "y": -1
-   },
-   "stationsBefore": ["9400ZZMAMFT1"]
-  },
-  "9400ZZMABLL2": {
-   "line": "Airport",
-   "direction": "Incoming",
-   "tla": "BCH",
-   "map": {
-    "x": -15,
-    "y": -0.5
-   },
-   "stationsBefore": ["9400ZZMACSS2"]
-  }
- },
- "Barlow Moor Road": {
-  "9400ZZMABAR1": {
-   "line": "Airport",
-   "direction": "Outgoing",
-   "tla": "BMR",
-   "map": {
-    "x": -7,
-    "y": -1
-   },
-   "stationsBefore": ["9400ZZMASTW2"]
-  },
-  "9400ZZMABAR2": {
-   "line": "Airport",
-   "direction": "Incoming",
-   "tla": "BMR",
-   "map": {
-    "x": -7,
-    "y": -0.5
-   },
-   "stationsBefore": ["9400ZZMASWP2"]
-  }
- },
- "Crossacres": {
-  "9400ZZMACSS1": {
-   "line": "Airport",
-   "direction": "Outgoing",
-   "tla": "CRO",
-   "map": {
-    "x": -16,
-    "y": -1
-   },
-   "stationsBefore": ["9400ZZMABLL1"]
-  },
-  "9400ZZMACSS2": {
-   "line": "Airport",
-   "direction": "Incoming",
-   "tla": "CRO",
-   "map": {
-    "x": -16,
-    "y": -0.5
-   },
-   "stationsBefore": ["9400ZZMAWYT2"]
-  }
- },
- "Martinscroft": {
-  "9400ZZMAMFT1": {
-   "line": "Airport",
-   "direction": "Outgoing",
-   "tla": "MAR",
-   "map": {
-    "x": -14,
-    "y": -1
-   },
-   "stationsBefore": ["9400ZZMARND1"]
-  },
-  "9400ZZMAMFT2": {
-   "line": "Airport",
-   "direction": "Incoming",
-   "tla": "MAR",
-   "map": {
-    "x": -14,
-    "y": -0.5
-   },
-   "stationsBefore": ["9400ZZMABLL2"]
-  }
- },
- "Moor Road": {
-  "9400ZZMAMRD1": {
-   "line": "Airport",
-   "direction": "Outgoing",
-   "tla": "MRD",
-   "map": {
-    "x": -11,
-    "y": -1
-   },
-   "stationsBefore": ["9400ZZMAWPK1"]
-  },
-  "9400ZZMAMRD2": {
-   "line": "Airport",
-   "direction": "Incoming",
-   "tla": "MRD",
-   "map": {
-    "x": -11,
-    "y": -0.5
-   },
-   "stationsBefore": ["9400ZZMABAG2"]
-  }
- },
- "Northern Moor": {
-  "9400ZZMANMR1": {
-   "line": "Airport",
-   "direction": "Outgoing",
-   "tla": "NMR",
-   "map": {
-    "x": -9,
-    "y": -1
-   },
-   "stationsBefore": ["9400ZZMASWP1"]
-  },
-  "9400ZZMANMR2": {
-   "line": "Airport",
-   "direction": "Incoming",
-   "tla": "NMR",
-   "map": {
-    "x": -9,
-    "y": -0.5
-   },
-   "stationsBefore": ["9400ZZMAWPK2"]
-  }
- },
- "Peel Hall": {
-  "9400ZZMAPLL1": {
-   "line": "Airport",
-   "direction": "Outgoing",
-   "tla": "PLH",
-   "map": {
-    "x": -19,
-    "y": -1
-   },
-   "stationsBefore": ["9400ZZMARWD1"]
-  },
-  "9400ZZMAPLL2": {
-   "line": "Airport",
-   "direction": "Incoming",
-   "tla": "PLH",
-   "map": {
-    "x": -19,
-    "y": -0.5
-   },
-   "stationsBefore": ["9400ZZMASDW2"]
-  }
- },
- "Robinswood Road": {
-  "9400ZZMARWD1": {
-   "line": "Airport",
-   "direction": "Outgoing",
-   "tla": "RBN",
-   "map": {
-    "x": -18,
-    "y": -1
-   },
-   "stationsBefore": ["9400ZZMAWYT1"]
-  },
-  "9400ZZMARWD2": {
-   "line": "Airport",
-   "direction": "Incoming",
-   "tla": "RBN",
-   "map": {
-    "x": -18,
-    "y": -0.5
-   },
-   "stationsBefore": ["9400ZZMAPLL2"]
-  }
- },
- "Roundthorn": {
-  "9400ZZMARND1": {
-   "line": "Airport",
-   "direction": "Outgoing",
-   "tla": "RTH",
-   "map": {
-    "x": -13,
-    "y": -1
-   },
-   "stationsBefore": ["9400ZZMABAG1"]
-  },
-  "9400ZZMARND2": {
-   "line": "Airport",
-   "direction": "Incoming",
-   "tla": "RTH",
-   "map": {
-    "x": -13,
-    "y": -0.5
-   },
-   "stationsBefore": ["9400ZZMAMFT2"]
-  }
- },
- "Shadowmoss": {
-  "9400ZZMASDW1": {
-   "line": "Airport",
-   "direction": "Outgoing",
-   "tla": "SHD",
-   "map": {
-    "x": -20,
-    "y": -1
-   },
-   "stationsBefore": ["9400ZZMAPLL1"]
-  },
-  "9400ZZMASDW2": {
-   "line": "Airport",
-   "direction": "Incoming",
-   "tla": "SHD",
-   "map": {
-    "x": -20,
-    "y": -0.5
-   },
-   "stationsBefore": ["9400ZZMAAIR1"]
-  }
- },
- "Sale Water Park": {
-  "9400ZZMASWP1": {
-   "line": "Airport",
-   "direction": "Outgoing",
-   "tla": "SWP",
-   "map": {
-    "x": -8,
-    "y": -1
-   },
-   "stationsBefore": ["9400ZZMABAR1"]
-  },
-  "9400ZZMASWP2": {
-   "line": "Airport",
-   "direction": "Incoming",
-   "tla": "SWP",
-   "map": {
-    "x": -8,
-    "y": -0.5
-   },
-   "stationsBefore": ["9400ZZMANMR2"]
-  }
- },
- "Wythenshawe Park": {
-  "9400ZZMAWPK1": {
-   "line": "Airport",
-   "direction": "Outgoing",
-   "tla": "WPK",
-   "map": {
-    "x": -10,
-    "y": -1
-   },
-   "stationsBefore": ["9400ZZMANMR1"]
-  },
-  "9400ZZMAWPK2": {
-   "line": "Airport",
-   "direction": "Incoming",
-   "tla": "WPK",
-   "map": {
-    "x": -10,
-    "y": -0.5
-   },
-   "stationsBefore": ["9400ZZMAMRD2"]
-  }
- },
- "Wythenshawe Town Centre": {
-  "9400ZZMAWYT2": {
-   "line": "Airport",
-   "direction": "Incoming",
-   "tla": "WYC",
-   "map": {
-    "x": -17,
-    "y": -0.5
-   },
-   "stationsBefore": ["9400ZZMARWD2"]
-  },
-  "9400ZZMAWYT1": {
-   "line": "Airport",
-   "direction": "Outgoing",
-   "tla": "WYC",
-   "map": {
-    "x": -17,
-    "y": -1
-   },
-   "stationsBefore": ["9400ZZMACSS1"]
-  }
- },
- "Altrincham": {
-  "9400ZZMAALT1": {
-   "line": "Altrincham",
-   "direction": "Incoming",
-   "tla": "ALT",
-   "map": {
-    "x": -11,
-    "y": 0.5
-   },
-   "stationsBefore": ["9400ZZMANAV2"]
-  },
-  "9400ZZMAALT2": {
-   "line": "Altrincham",
-   "direction": "Incoming",
-   "tla": "ALT",
-   "map": {
-    "x": -11,
-    "y": 0
-   },
-   "stationsBefore": ["9400ZZMANAV2"]
-  }
- },
- "Brooklands": {
-  "9400ZZMABKS2": {
-   "line": "Altrincham",
-   "direction": "Incoming",
-   "tla": "BRK",
-   "map": {
-    "x": -8,
-    "y": 0.5
-   },
-   "stationsBefore": ["9400ZZMATIM2"]
-  },
-  "9400ZZMABKS1": {
-   "line": "Altrincham",
-   "direction": "Outgoing",
-   "tla": "BRK",
-   "map": {
-    "x": -8,
-    "y": 0
-   },
-   "stationsBefore": ["9400ZZMASLE1"]
-  }
- },
- "Dane Road": {
-  "9400ZZMADNE1": {
-   "line": "Altrincham",
-   "direction": "Incoming",
-   "tla": "DAN",
-   "map": {
-    "x": -6,
-    "y": 0.5
-   },
-   "stationsBefore": ["9400ZZMASLE2"]
-  },
-  "9400ZZMADNE2": {
-   "line": "Altrincham",
-   "direction": "Outgoing",
-   "tla": "DAN",
-   "map": {
-    "x": -6,
-    "y": 0
-   },
-   "stationsBefore": ["9400ZZMASFD1"]
-  }
- },
- "Deansgate - Castlefield": {
-  "9400ZZMAGMX2": {
-   "line": "Altrincham",
-   "direction": "Outgoing",
-   "tla": "GMX",
-   "terminating": true,
-   "map": {
-    "x": -1,
-    "y": 0.3
-   },
-   "stationsBefore": ["9400ZZMASTP3", "9400ZZMACRN1", "9400ZZMASTP4"]
-  },
-  "9400ZZMAGMX3": {
-   "line": "Altrincham",
-   "direction": "Outgoing",
-   "tla": "GMX",
-   "map": {
-    "x": -1,
-    "y": 0
-   },
-   "stationsBefore": ["9400ZZMASTP3", "9400ZZMASTP4"]
-  },
-  "9400ZZMAGMX1": {
-   "line": "Altrincham",
-   "direction": "Incoming",
-   "tla": "GMX",
-   "map": {
-    "x": -1,
-    "y": 0.6
-   },
-   "stationsBefore": ["9400ZZMACRN1"]
-  }
- },
- "Old Trafford": {
-  "9400ZZMAOLD1": {
-   "line": "Altrincham",
-   "direction": "Incoming",
-   "tla": "OLD",
-   "map": {
-    "x": -4,
-    "y": 0.5
-   },
-   "stationsBefore": ["9400ZZMASFD2"]
-  },
-  "9400ZZMAOLD2": {
-   "line": "Altrincham",
-   "direction": "Outgoing",
-   "tla": "OLD",
-   "map": {
-    "x": -4,
-    "y": 0
-   },
-   "stationsBefore": ["9400ZZMATRA2"]
-  }
- },
- "Sale": {
-  "9400ZZMASLE2": {
-   "line": "Altrincham",
-   "direction": "Incoming",
-   "tla": "SAL",
-   "map": {
-    "x": -7,
-    "y": 0.5
-   },
-   "stationsBefore": ["9400ZZMABKS2"]
-  },
-  "9400ZZMASLE1": {
-   "line": "Altrincham",
-   "direction": "Outgoing",
-   "tla": "SAL",
-   "map": {
-    "x": -7,
-    "y": 0
-   },
-   "stationsBefore": ["9400ZZMADNE2"]
-  }
- },
- "Shudehill": {
-  "9400ZZMASHU2": {
-   "line": "Altrincham",
-   "direction": "Incoming",
-   "tla": "SHL",
-   "map": {
-    "x": 3,
-    "y": -1
-   },
-   "stationsBefore": ["9400ZZMAVIC3", "9400ZZMAVIC4"]
-  },
-  "9400ZZMASHU1": {
-   "line": "Altrincham",
-   "direction": "Outgoing",
-   "tla": "SHL",
-   "map": {
-    "x": 3,
-    "y": -0.5
-   },
-   "stationsBefore": ["9400ZZMAMKT2"]
-  }
- },
- "Stretford": {
-  "9400ZZMASFD2": {
-   "line": "Altrincham",
-   "direction": "Incoming",
-   "tla": "STR",
-   "map": {
-    "x": -5,
-    "y": 0.5
-   },
-   "stationsBefore": ["9400ZZMADNE1"]
-  },
-  "9400ZZMASFD1": {
-   "line": "Altrincham",
-   "direction": "Outgoing",
-   "tla": "STR",
-   "map": {
-    "x": -5,
-    "y": 0
-   },
-   "stationsBefore": ["9400ZZMAOLD2"]
-  }
- },
- "Trafford Bar": {
-  "9400ZZMATRA1": {
-   "line": "Altrincham",
-   "direction": "Incoming",
-   "tla": "TFB",
-   "map": {
-    "x": -3,
-    "y": 0.5
-   },
-   "stationsBefore": ["9400ZZMAFIR1", "9400ZZMAOLD1"]
-  },
-  "9400ZZMATRA2": {
-   "line": "Altrincham",
-   "direction": "Outgoing",
-   "tla": "TFB",
-   "map": {
-    "x": -3,
-    "y": 0
-   },
-   "stationsBefore": ["9400ZZMACRN2"]
-  }
- },
- "Timperley": {
-  "9400ZZMATIM2": {
-   "line": "Altrincham",
-   "direction": "Incoming",
-   "tla": "TMP",
-   "map": {
-    "x": -9,
-    "y": 0.5
-   },
-   "stationsBefore": ["9400ZZMANAV1"]
-  },
-  "9400ZZMATIM1": {
-   "line": "Altrincham",
-   "direction": "Outgoing",
-   "tla": "TMP",
-   "map": {
-    "x": -9,
-    "y": 0
-   },
-   "stationsBefore": ["9400ZZMABKS1"]
-  }
- },
- "Victoria": {
-  "9400ZZMAVIC4": {
-   "line": "Altrincham",
-   "direction": "Incoming",
-   "tla": "VIC",
-   "map": {
-    "x": 4,
-    "y": 0
-   },
-   "stationsBefore": ["9400ZZMAMON2", "9400ZZMAQRD2"]
-  },
-  "9400ZZMAVIC3": {
-   "line": "Altrincham",
-   "direction": "Incoming",
-   "tla": "VIC",
-   "terminating": true,
-   "map": {
-    "x": 4,
-    "y": 0.25
-   },
-   "stationsBefore": ["9400ZZMAMON2", "9400ZZMAQRD2"]
-  },
-  "9400ZZMAVIC2": {
-   "line": "Altrincham",
-   "direction": "Outgoing",
-   "tla": "VIC",
-   "terminating": true,
-   "map": {
-    "x": 4,
-    "y": 0.5
-   },
-   "stationsBefore": ["9400ZZMASHU1", "9400ZZMAEXS2"]
-  },
-  "9400ZZMAVIC1": {
-   "line": "Altrincham",
-   "direction": "Outgoing",
-   "tla": "VIC",
-   "map": {
-    "x": 4,
-    "y": 0.75
-   },
-   "stationsBefore": ["9400ZZMASHU1", "9400ZZMAEXS2"]
-  }
- },
- "Abraham Moss": {
-  "9400ZZMAABM2": {
-   "line": "Bury",
-   "direction": "Incoming",
-   "tla": "ABM",
-   "map": {
-    "x": 7,
-    "y": 1
-   },
-   "stationsBefore": ["9400ZZMACRU2"]
-  },
-  "9400ZZMAABM1": {
-   "line": "Bury",
-   "direction": "Outgoing",
-   "tla": "ABM",
-   "map": {
-    "x": 7,
-    "y": 1.5
-   },
-   "stationsBefore": ["9400ZZMAQRD1"]
-  }
- },
- "Bowker Vale": {
-  "9400ZZMABOW2": {
-   "line": "Bury",
-   "direction": "Incoming",
-   "tla": "BKV",
-   "map": {
-    "x": 8,
-    "y": 1
-   },
-   "stationsBefore": ["9400ZZMAHEA2"]
-  },
-  "9400ZZMABOW1": {
-   "line": "Bury",
-   "direction": "Outgoing",
-   "tla": "BKV",
-   "map": {
-    "x": 8,
-    "y": 1.5
-   },
-   "stationsBefore": ["9400ZZMACRU1"]
-  }
- },
- "Besses O\u2019 Th\u2019 Barn": {
-  "9400ZZMABOB2": {
-   "line": "Bury",
-   "direction": "Incoming",
-   "tla": "BOB",
-   "map": {
-    "x": 11,
-    "y": 1
-   },
-   "stationsBefore": ["9400ZZMAWFD2"]
-  },
-  "9400ZZMABOB1": {
-   "line": "Bury",
-   "direction": "Outgoing",
-   "tla": "BOB",
-   "map": {
-    "x": 11,
-    "y": 1.5
-   },
-   "stationsBefore": ["9400ZZMAPWC1"]
-  }
- },
- "Bury": {
-  "9400ZZMABUR2": {
-   "line": "Bury",
-   "direction": "Incoming",
-   "tla": "BRY",
-   "map": {
-    "x": 14,
-    "y": 1
-   },
-   "stationsBefore": ["9400ZZMARAD1"]
-  },
-  "9400ZZMABUR1": {
-   "line": "Bury",
-   "direction": "Incoming",
-   "tla": "BRY",
-   "map": {
-    "x": 14,
-    "y": 1.5
-   },
-   "stationsBefore": ["9400ZZMARAD1"]
-  }
- },
- "Crumpsall": {
-  "9400ZZMACRU2": {
-   "line": "Bury",
-   "direction": "Incoming",
-   "tla": "CRP",
-   "map": {
-    "x": 7,
-    "y": 1
-   },
-   "stationsBefore": ["9400ZZMABOW2"]
-  },
-  "9400ZZMACRU1": {
-   "line": "Bury",
-   "direction": "Outgoing",
-   "tla": "CRP",
-   "map": {
-    "x": 7,
-    "y": 1.5
-   },
-   "stationsBefore": ["9400ZZMAABM1"]
-  }
- },
- "Heaton Park": {
-  "9400ZZMAHEA1": {
-   "line": "Bury",
-   "direction": "Outgoing",
-   "tla": "HPK",
-   "map": {
-    "x": 9,
-    "y": 1.5
-   },
-   "stationsBefore": ["9400ZZMABOW1"]
-  },
-  "9400ZZMAHEA2": {
-   "line": "Bury",
-   "direction": "Incoming",
-   "tla": "HPK",
-   "map": {
-    "x": 9,
-    "y": 1
-   },
-   "stationsBefore": ["9400ZZMAPWC2"]
-  }
- },
- "Market Street": {
-  "9400ZZMAMKT1": {
-   "line": "Bury",
-   "direction": "Incoming",
-   "tla": "MKT",
-   "map": {
-    "x": 2,
-    "y": -1
-   },
-   "stationsBefore": ["9400ZZMASHU2"]
-  },
-  "9400ZZMAMKT2": {
-   "line": "Bury",
-   "direction": "Outgoing",
-   "tla": "MKT",
-   "map": {
-    "x": 2,
-    "y": -0.5
-   },
-   "stationsBefore": ["9400ZZMAPGD2", "9400ZZMASTP1"]
-  }
- },
- "Piccadilly Gardens": {
-  "9400ZZMAPGD2": {
-   "line": "Bury",
-   "direction": "Incoming",
-   "tla": "PCG",
-   "map": {
-    "x": 1,
-    "y": -2
-   },
-   "stationsBefore": ["9400ZZMAPIC2"]
-  },
-  "9400ZZMAPGD1": {
-   "line": "Bury",
-   "direction": "Outgoing",
-   "tla": "PCG",
-   "map": {
-    "x": 1.5,
-    "y": -2
-   },
-   "stationsBefore": ["9400ZZMASTP1", "9400ZZMAMKT1"]
-  }
- },
- "Piccadilly": {
-  "9400ZZMAPIC1": {
-   "line": "Bury",
-   "direction": "Outgoing",
-   "tla": "PIC",
-   "map": {
-    "x": 2,
-    "y": -2.5
-   },
-   "stationsBefore": ["9400ZZMAPGD1"]
-  },
-  "9400ZZMAPIC2": {
-   "line": "Bury",
-   "direction": "Incoming",
-   "tla": "PIC",
-   "map": {
-    "x": 2,
-    "y": -3
-   },
-   "stationsBefore": ["9400ZZMANIS2"]
-  }
- },
- "Prestwich": {
-  "9400ZZMAPWC2": {
-   "line": "Bury",
-   "direction": "Incoming",
-   "tla": "PRS",
-   "map": {
-    "x": 10,
-    "y": 1
-   },
-   "stationsBefore": ["9400ZZMABOB2"]
-  },
-  "9400ZZMAPWC1": {
-   "line": "Bury",
-   "direction": "Outgoing",
-   "tla": "PRS",
-   "map": {
-    "x": 10,
-    "y": 1.5
-   },
-   "stationsBefore": ["9400ZZMAHEA1"]
-  }
- },
- "Queens Road": {
-  "9400ZZMAQRD2": {
-   "line": "Bury",
-   "direction": "Incoming",
-   "tla": "QNS",
-   "map": {
-    "x": 5,
-    "y": 1
-   },
-   "stationsBefore": ["9400ZZMAABM2"]
-  },
-  "9400ZZMAQRD1": {
-   "line": "Bury",
-   "direction": "Outgoing",
-   "tla": "QNS",
-   "map": {
-    "x": 5,
-    "y": 1.5
-   },
-   "stationsBefore": ["9400ZZMAVIC1", "9400ZZMAVIC2"]
-  }
- },
- "Radcliffe": {
-  "9400ZZMARAD1": {
-   "line": "Bury",
-   "direction": "Outgoing",
-   "tla": "RAD",
-   "map": {
-    "x": 13,
-    "y": 1.5
-   },
-   "stationsBefore": ["9400ZZMAWFD1"]
-  },
-  "9400ZZMARAD2": {
-   "line": "Bury",
-   "direction": "Incoming",
-   "tla": "RAD",
-   "map": {
-    "x": 13,
-    "y": 1
-   },
-   "stationsBefore": ["9400ZZMABUR2", "9400ZZMABUR1"]
-  }
- },
- "Whitefield": {
-  "9400ZZMAWFD2": {
-   "line": "Bury",
-   "direction": "Incoming",
-   "tla": "WFD",
-   "map": {
-    "x": 12,
-    "y": 1
-   },
-   "stationsBefore": ["9400ZZMARAD2"]
-  },
-  "9400ZZMAWFD1": {
-   "line": "Bury",
-   "direction": "Outgoing",
-   "tla": "WFD",
-   "map": {
-    "x": 12,
-    "y": 1.5
-   },
-   "stationsBefore": ["9400ZZMABOB1"]
-  }
- },
- "Ashton-Under-Lyne": {
-  "9400ZZMAAUL1": {
-   "line": "East Manchester",
-   "direction": "Outgoing",
-   "tla": "ASH",
-   "map": {
-    "x": 14,
-    "y": -2.5
-   },
-   "stationsBefore": ["9400ZZMAAWT1"]
-  },
-  "9400ZZMAAUL2": {
-   "line": "East Manchester",
-   "direction": "Incoming",
-   "tla": "ASH",
-   "map": {
-    "x": 14,
-    "y": -3
-   },
-   "stationsBefore": ["9400ZZMAAWT1"]
-  }
- },
- "Ashton Moss": {
-  "9400ZZMAAMO1": {
-   "line": "East Manchester",
-   "direction": "Outgoing",
-   "tla": "ASM",
-   "map": {
-    "x": 12,
-    "y": -2.5
-   },
-   "stationsBefore": ["9400ZZMAAUD1"]
-  },
-  "9400ZZMAAMO2": {
-   "line": "East Manchester",
-   "direction": "Incoming",
-   "tla": "ASM",
-   "map": {
-    "x": 12,
-    "y": -3
-   },
-   "stationsBefore": ["9400ZZMAAWT2"]
-  }
- },
- "Ashton West": {
-  "9400ZZMAAWT1": {
-   "line": "East Manchester",
-   "direction": "Outgoing",
-   "tla": "ASW",
-   "map": {
-    "x": 13,
-    "y": -2.5
-   },
-   "stationsBefore": ["9400ZZMAAMO1"]
-  },
-  "9400ZZMAAWT2": {
-   "line": "East Manchester",
-   "direction": "Incoming",
-   "tla": "ASW",
-   "map": {
-    "x": 13,
-    "y": -3
-   },
-   "stationsBefore": ["9400ZZMAAUL1", "9400ZZMAAUL2"]
-  }
- },
- "Audenshaw": {
-  "9400ZZMAAUD1": {
-   "line": "East Manchester",
-   "direction": "Outgoing",
-   "tla": "AUD",
-   "map": {
-    "x": 11,
-    "y": -2.5
-   },
-   "stationsBefore": ["9400ZZMADRO1"]
-  },
-  "9400ZZMAAUD2": {
-   "line": "East Manchester",
-   "direction": "Incoming",
-   "tla": "AUD",
-   "map": {
-    "x": 11,
-    "y": -3
-   },
-   "stationsBefore": ["9400ZZMAAMO2"]
-  }
- },
- "Cemetery Road": {
-  "9400ZZMACEM1": {
-   "line": "East Manchester",
-   "direction": "Outgoing",
-   "tla": "CER",
-   "map": {
-    "x": 9,
-    "y": -2.5
-   },
-   "stationsBefore": ["9400ZZMAELN2"]
-  },
-  "9400ZZMACEM2": {
-   "line": "East Manchester",
-   "direction": "Incoming",
-   "tla": "CER",
-   "map": {
-    "x": 9,
-    "y": -3
-   },
-   "stationsBefore": ["9400ZZMADRO2"]
-  }
- },
- "Clayton Hall": {
-  "9400ZZMACLN2": {
-   "line": "East Manchester",
-   "direction": "Outgoing",
-   "tla": "CLA",
-   "map": {
-    "x": 7,
-    "y": -2.5
-   },
-   "stationsBefore": ["9400ZZMAVPK1"]
-  },
-  "9400ZZMACLN1": {
-   "line": "East Manchester",
-   "direction": "Incoming",
-   "tla": "CLA",
-   "map": {
-    "x": 7,
-    "y": -3
-   },
-   "stationsBefore": ["9400ZZMAELN1"]
-  }
- },
- "Droylsden": {
-  "9400ZZMADRO1": {
-   "line": "East Manchester",
-   "direction": "Outgoing",
-   "tla": "DYL",
-   "map": {
-    "x": 10,
-    "y": -2.5
-   },
-   "stationsBefore": ["9400ZZMACEM1"]
-  },
-  "9400ZZMADRO2": {
-   "line": "East Manchester",
-   "direction": "Incoming",
-   "tla": "DYL",
-   "map": {
-    "x": 10,
-    "y": -3
-   },
-   "stationsBefore": ["9400ZZMAAUD2"]
-  }
- },
- "Edge Lane": {
-  "9400ZZMAELN2": {
-   "line": "East Manchester",
-   "direction": "Outgoing",
-   "tla": "EDL",
-   "map": {
-    "x": 8,
-    "y": -2.5
-   },
-   "stationsBefore": ["9400ZZMACLN2"]
-  },
-  "9400ZZMAELN1": {
-   "line": "East Manchester",
-   "direction": "Incoming",
-   "tla": "EDL",
-   "map": {
-    "x": 8,
-    "y": -3
-   },
-   "stationsBefore": ["9400ZZMACEM2"]
-  }
- },
- "Holt Town": {
-  "9400ZZMAHTN1": {
-   "line": "East Manchester",
-   "direction": "Outgoing",
-   "tla": "HOT",
-   "map": {
-    "x": 4,
-    "y": -2.5
-   },
-   "stationsBefore": ["9400ZZMANIS1"]
-  },
-  "9400ZZMAHTN2": {
-   "line": "East Manchester",
-   "direction": "Incoming",
-   "tla": "HOT",
-   "map": {
-    "x": 4,
-    "y": -3
-   },
-   "stationsBefore": ["9400ZZMAECS2"]
-  }
- },
- "New Islington": {
-  "9400ZZMANIS1": {
-   "line": "East Manchester",
-   "direction": "Outgoing",
-   "tla": "NIS",
-   "map": {
-    "x": 3,
-    "y": -2.5
-   },
-   "stationsBefore": ["9400ZZMAPIC1"]
-  },
-  "9400ZZMANIS2": {
-   "line": "East Manchester",
-   "direction": "Incoming",
-   "tla": "NIS",
-   "map": {
-    "x": 3,
-    "y": -3
-   },
-   "stationsBefore": ["9400ZZMAHTN2"]
-  }
- },
- "Etihad Campus": {
-  "9400ZZMAECS2": {
-   "line": "East Manchester",
-   "direction": "Incoming",
-   "tla": "SPC",
-   "map": {
-    "x": 5,
-    "y": -3
-   },
-   "stationsBefore": ["9400ZZMAVPK2"]
-  },
-  "9400ZZMAECS1": {
-   "line": "East Manchester",
-   "direction": "Outgoing",
-   "tla": "SPC",
-   "map": {
-    "x": 5,
-    "y": -2.5
-   },
-   "stationsBefore": ["9400ZZMAHTN1"]
-  }
- },
- "Velopark": {
-  "9400ZZMAVPK1": {
-   "line": "East Manchester",
-   "direction": "Outgoing",
-   "tla": "VEL",
-   "map": {
-    "x": 6,
-    "y": -2.5
-   },
-   "stationsBefore": ["9400ZZMAECS1"]
-  },
-  "9400ZZMAVPK2": {
-   "line": "East Manchester",
-   "direction": "Incoming",
-   "tla": "VEL",
-   "map": {
-    "x": 6,
-    "y": -3
-   },
-   "stationsBefore": ["9400ZZMACLN1"]
-  }
- },
- "Anchorage": {
-  "9400ZZMAANC2": {
-   "line": "Eccles",
-   "direction": "Incoming",
-   "tla": "ANC",
-   "map": {
-    "x": -6,
-    "y": 2.5
-   },
-   "stationsBefore": ["9400ZZMAHCY1"]
-  },
-  "9400ZZMAANC1": {
-   "line": "Eccles",
-   "direction": "Outgoing",
-   "tla": "ANC",
-   "map": {
-    "x": -6,
-    "y": 2
-   },
-   "stationsBefore": ["9400ZZMASQY2"]
-  }
- },
- "Broadway": {
-  "9400ZZMABWY2": {
-   "line": "Eccles",
-   "direction": "Incoming",
-   "tla": "BDW",
-   "map": {
-    "x": -8,
-    "y": 3
-   },
-   "stationsBefore": ["9400ZZMALWY2"]
-  },
-  "9400ZZMABWY1": {
-   "line": "Eccles",
-   "direction": "Outgoing",
-   "tla": "BDW",
-   "map": {
-    "x": -8.5,
-    "y": 3
-   },
-   "stationsBefore": ["9400ZZMAMCU2", "9400ZZMAHCY2", "9400ZZMAMCU1"]
-  }
- },
- "Cornbrook": {
-  "9400ZZMACRN1": {
-   "line": "Eccles",
-   "direction": "Incoming",
-   "tla": "CNK",
-   "map": {
-    "x": -2,
-    "y": 0.5
-   },
-   "stationsBefore": ["9400ZZMATRA1", "9400ZZMAPOM1"]
-  },
-  "9400ZZMACRN2": {
-   "line": "Eccles",
-   "direction": "Outgoing",
-   "tla": "CNK",
-   "map": {
-    "x": -2,
-    "y": 0
-   },
-   "stationsBefore": ["9400ZZMAGMX3", "9400ZZMAGMX2"]
-  }
- },
- "Eccles": {
-  "9400ZZMAECC1": {
-   "line": "Eccles",
-   "direction": "Incoming",
-   "tla": "ECC",
-   "map": {
-    "x": -12,
-    "y": 4.5
-   },
-   "stationsBefore": ["9400ZZMALDY1"]
-  }
- },
- "Exchange Quay": {
-  "9400ZZMAEXC2": {
-   "line": "Eccles",
-   "direction": "Incoming",
-   "tla": "EXQ",
-   "map": {
-    "x": -4,
-    "y": 2.5
-   },
-   "stationsBefore": ["9400ZZMASQY1"]
-  },
-  "9400ZZMAEXC1": {
-   "line": "Eccles",
-   "direction": "Outgoing",
-   "tla": "EXQ",
-   "map": {
-    "x": -4,
-    "y": 2
-   },
-   "stationsBefore": ["9400ZZMAPOM2"]
-  }
- },
- "Exchange Square": {
-  "9400ZZMAEXS2": {
-   "line": "Eccles",
-   "direction": "Outgoing",
-   "tla": "EXS",
-   "map": {
-    "x": 1,
-    "y": 0.5
-   },
-   "stationsBefore": ["9400ZZMASTP2"]
-  },
-  "9400ZZMAEXS1": {
-   "line": "Eccles",
-   "direction": "Incoming",
-   "tla": "EXS",
-   "map": {
-    "x": 1,
-    "y": 0
-   },
-   "stationsBefore": ["9400ZZMAVIC3", "9400ZZMAVIC4"]
-  }
- },
- "Harbour City": {
-  "9400ZZMAHCY1": {
-   "line": "Eccles",
-   "direction": "Incoming",
-   "tla": "HBC",
-   "map": {
-    "x": -7,
-    "y": 2.5
-   },
-   "stationsBefore": ["9400ZZMAMCU2", "9400ZZMABWY2", "9400ZZMAMCU1"]
-  },
-  "9400ZZMAHCY2": {
-   "line": "Eccles",
-   "direction": "Outgoing",
-   "tla": "HBC",
-   "map": {
-    "x": -7,
-    "y": 2
-   },
-   "stationsBefore": ["9400ZZMAANC1"]
-  }
- },
- "Ladywell": {
-  "9400ZZMALDY2": {
-   "line": "Eccles",
-   "direction": "Incoming",
-   "tla": "LDW",
-   "map": {
-    "x": -11,
-    "y": 4.5
-   },
-   "stationsBefore": ["9400ZZMAECC1"]
-  },
-  "9400ZZMALDY1": {
-   "line": "Eccles",
-   "direction": "Outgoing",
-   "tla": "LDW",
-   "map": {
-    "x": -11,
-    "y": 4
-   },
-   "stationsBefore": ["9400ZZMAWST1"]
-  }
- },
- "Langworthy": {
-  "9400ZZMALWY2": {
-   "line": "Eccles",
-   "direction": "Incoming",
-   "tla": "LGW",
-   "map": {
-    "x": -9,
-    "y": 4.5
-   },
-   "stationsBefore": ["9400ZZMAWST2"]
-  },
-  "9400ZZMALWY1": {
-   "line": "Eccles",
-   "direction": "Outgoing",
-   "tla": "LGW",
-   "map": {
-    "x": -9,
-    "y": 4
-   },
-   "stationsBefore": ["9400ZZMABWY1"]
-  }
- },
- "Pomona": {
-  "9400ZZMAPOM1": {
-   "line": "Eccles",
-   "direction": "Incoming",
-   "tla": "POM",
-   "map": {
-    "x": -3,
-    "y": 1.5
-   },
-   "stationsBefore": ["9400ZZMAEXC2"]
-  },
-  "9400ZZMAPOM2": {
-   "line": "Eccles",
-   "direction": "Outgoing",
-   "tla": "POM",
-   "map": {
-    "x": -3,
-    "y": 1
-   },
-   "stationsBefore": ["9400ZZMACRN2"]
-  }
- },
- "Salford Quays": {
-  "9400ZZMASQY1": {
-   "line": "Eccles",
-   "direction": "Incoming",
-   "tla": "SFQ",
-   "map": {
-    "x": -5,
-    "y": 2.5
-   },
-   "stationsBefore": ["9400ZZMAANC2"]
-  },
-  "9400ZZMASQY2": {
-   "line": "Eccles",
-   "direction": "Outgoing",
-   "tla": "SFQ",
-   "map": {
-    "x": -5,
-    "y": 2
-   },
-   "stationsBefore": ["9400ZZMAEXC1"]
-  }
- },
- "Weaste": {
-  "9400ZZMAWST1": {
-   "line": "Eccles",
-   "direction": "Outgoing",
-   "tla": "WST",
-   "map": {
-    "x": -10,
-    "y": 4
-   },
-   "stationsBefore": ["9400ZZMALWY1"]
-  },
-  "9400ZZMAWST2": {
-   "line": "Eccles",
-   "direction": "Incoming",
-   "tla": "WST",
-   "map": {
-    "x": -10,
-    "y": 4.5
-   },
-   "stationsBefore": ["9400ZZMALDY2"]
-  }
- },
- "Central Park": {
-  "9400ZZMACTP2": {
-   "line": "Oldham & Rochdale",
-   "direction": "Outgoing",
-   "tla": "CEP",
-   "map": {
-    "x": 6,
-    "y": 0.5
-   },
-   "stationsBefore": ["9400ZZMAMON1"]
-  },
-  "9400ZZMACTP1": {
-   "line": "Oldham & Rochdale",
-   "direction": "Incoming",
-   "tla": "CEP",
-   "map": {
-    "x": 6,
-    "y": 0
-   },
-   "stationsBefore": ["9400ZZMANEW1"]
-  }
- },
- "Derker": {
-  "9400ZZMADER1": {
-   "line": "Oldham & Rochdale",
-   "direction": "Outgoing",
-   "tla": "DER",
-   "map": {
-    "x": 16,
-    "y": 0.5
-   },
-   "stationsBefore": ["9400ZZMAOMP1"]
-  },
-  "9400ZZMADER2": {
-   "line": "Oldham & Rochdale",
-   "direction": "Incoming",
-   "tla": "DER",
-   "map": {
-    "x": 16,
-    "y": 0
-   },
-   "stationsBefore": ["9400ZZMASHA2", "9400ZZMASHA3"]
-  }
- },
- "Failsworth": {
-  "9400ZZMAFWH1": {
-   "line": "Oldham & Rochdale",
-   "direction": "Outgoing",
-   "tla": "FAL",
-   "map": {
-    "x": 8,
-    "y": 0.5
-   },
-   "stationsBefore": ["9400ZZMANEW2"]
-  },
-  "9400ZZMAFWH2": {
-   "line": "Oldham & Rochdale",
-   "direction": "Incoming",
-   "tla": "FAL",
-   "map": {
-    "x": 8,
-    "y": 0
-   },
-   "stationsBefore": ["9400ZZMAHOL2"]
-  }
- },
- "Freehold": {
-  "9400ZZMAFRE1": {
-   "line": "Oldham & Rochdale",
-   "direction": "Outgoing",
-   "tla": "FRE",
-   "map": {
-    "x": 11,
-    "y": 0.5
-   },
-   "stationsBefore": ["9400ZZMASCH1"]
-  },
-  "9400ZZMAFRE2": {
-   "line": "Oldham & Rochdale",
-   "direction": "Incoming",
-   "tla": "FRE",
-   "map": {
-    "x": 11,
-    "y": 0
-   },
-   "stationsBefore": ["9400ZZMAWWD2"]
-  }
- },
- "Hollinwood": {
-  "9400ZZMAHOL1": {
-   "line": "Oldham & Rochdale",
-   "direction": "Outgoing",
-   "tla": "HOL",
-   "map": {
-    "x": 9,
-    "y": 0.5
-   },
-   "stationsBefore": ["9400ZZMAFWH1"]
-  },
-  "9400ZZMAHOL2": {
-   "line": "Oldham & Rochdale",
-   "direction": "Incoming",
-   "tla": "HOL",
-   "map": {
-    "x": 9,
-    "y": 0
-   },
-   "stationsBefore": ["9400ZZMASCH2"]
-  }
- },
- "Kingsway Business Park": {
-  "9400ZZMAKNY1": {
-   "line": "Oldham & Rochdale",
-   "direction": "Outgoing",
-   "tla": "KIN",
-   "map": {
-    "x": 20,
-    "y": 0.5
-   },
-   "stationsBefore": ["9400ZZMAMIL1"]
-  },
-  "9400ZZMAKNY2": {
-   "line": "Oldham & Rochdale",
-   "direction": "Incoming",
-   "tla": "KIN",
-   "map": {
-    "x": 20,
-    "y": 0
-   },
-   "stationsBefore": ["9400ZZMANBD2"]
-  }
- },
- "Milnrow": {
-  "9400ZZMAMIL1": {
-   "line": "Oldham & Rochdale",
-   "direction": "Outgoing",
-   "tla": "MIL",
-   "map": {
-    "x": 19,
-    "y": 0.5
-   },
-   "stationsBefore": ["9400ZZMANHY1"]
-  },
-  "9400ZZMAMIL2": {
-   "line": "Oldham & Rochdale",
-   "direction": "Incoming",
-   "tla": "MIL",
-   "map": {
-    "x": 19,
-    "y": 0
-   },
-   "stationsBefore": ["9400ZZMAKNY2"]
-  }
- },
- "Monsall": {
-  "9400ZZMAMON1": {
-   "line": "Oldham & Rochdale",
-   "direction": "Outgoing",
-   "tla": "MON",
-   "map": {
-    "x": 5,
-    "y": 0.5
-   },
-   "stationsBefore": ["9400ZZMAVIC1", "9400ZZMAVIC2"]
-  },
-  "9400ZZMAMON2": {
-   "line": "Oldham & Rochdale",
-   "direction": "Incoming",
-   "tla": "MON",
-   "map": {
-    "x": 5,
-    "y": 0
-   },
-   "stationsBefore": ["9400ZZMACTP1"]
-  }
- },
- "Newbold": {
-  "9400ZZMANBD1": {
-   "line": "Oldham & Rochdale",
-   "direction": "Outgoing",
-   "tla": "NEB",
-   "map": {
-    "x": 21,
-    "y": 0.5
-   },
-   "stationsBefore": ["9400ZZMAKNY1"]
-  },
-  "9400ZZMANBD2": {
-   "line": "Oldham & Rochdale",
-   "direction": "Incoming",
-   "tla": "NEB",
-   "map": {
-    "x": 21,
-    "y": 0
-   },
-   "stationsBefore": ["9400ZZMARRS2"]
-  }
- },
- "Newhey": {
-  "9400ZZMANHY1": {
-   "line": "Oldham & Rochdale",
-   "direction": "Outgoing",
-   "tla": "NEH",
-   "map": {
-    "x": 18,
-    "y": 0.5
-   },
-   "stationsBefore": ["9400ZZMASHA1"]
-  },
-  "9400ZZMANHY2": {
-   "line": "Oldham & Rochdale",
-   "direction": "Incoming",
-   "tla": "NEH",
-   "map": {
-    "x": 18,
-    "y": 0
-   },
-   "stationsBefore": ["9400ZZMAMIL2"]
-  }
- },
- "Newton Heath and Moston": {
-  "9400ZZMANEW1": {
-   "line": "Oldham & Rochdale",
-   "direction": "Incoming",
-   "tla": "NHM",
-   "map": {
-    "x": 7,
-    "y": 0
-   },
-   "stationsBefore": ["9400ZZMAFWH2"]
-  },
-  "9400ZZMANEW2": {
-   "line": "Oldham & Rochdale",
-   "direction": "Outgoing",
-   "tla": "NHM",
-   "map": {
-    "x": 7,
-    "y": 0.5
-   },
-   "stationsBefore": ["9400ZZMACTP2"]
-  }
- },
- "Oldham Central": {
-  "9400ZZMAOMC1": {
-   "line": "Oldham & Rochdale",
-   "direction": "Outgoing",
-   "tla": "OHC",
-   "map": {
-    "x": 14,
-    "y": 0.5
-   },
-   "stationsBefore": ["9400ZZMAOKS1"]
-  },
-  "9400ZZMAOMC2": {
-   "line": "Oldham & Rochdale",
-   "direction": "Incoming",
-   "tla": "OHC",
-   "map": {
-    "x": 14,
-    "y": 0
-   },
-   "stationsBefore": ["9400ZZMAOMP2"]
-  }
- },
- "Oldham King Street": {
-  "9400ZZMAOKS1": {
-   "line": "Oldham & Rochdale",
-   "direction": "Outgoing",
-   "tla": "OHK",
-   "map": {
-    "x": 13,
-    "y": 0.5
-   },
-   "stationsBefore": ["9400ZZMAWWD1"]
-  },
-  "9400ZZMAOKS2": {
-   "line": "Oldham & Rochdale",
-   "direction": "Incoming",
-   "tla": "OHK",
-   "map": {
-    "x": 13,
-    "y": 0
-   },
-   "stationsBefore": ["9400ZZMAOMC2"]
-  }
- },
- "Oldham Mumps": {
-  "9400ZZMAOMP1": {
-   "line": "Oldham & Rochdale",
-   "direction": "Outgoing",
-   "tla": "OHM",
-   "map": {
-    "x": 15,
-    "y": 0.5
-   },
-   "stationsBefore": ["9400ZZMAOMC1"]
-  },
-  "9400ZZMAOMP2": {
-   "line": "Oldham & Rochdale",
-   "direction": "Incoming",
-   "tla": "OHM",
-   "map": {
-    "x": 15,
-    "y": 0
-   },
-   "stationsBefore": ["9400ZZMADER2"]
-  }
- },
- "Rochdale Railway Station": {
-  "9400ZZMARRS1": {
-   "line": "Oldham & Rochdale",
-   "direction": "Outgoing",
-   "tla": "ROC",
-   "map": {
-    "x": 22,
-    "y": 0.5
-   },
-   "stationsBefore": ["9400ZZMANBD1"]
-  },
-  "9400ZZMARRS2": {
-   "line": "Oldham & Rochdale",
-   "direction": "Incoming",
-   "tla": "ROC",
-   "map": {
-    "x": 22,
-    "y": 0
-   },
-   "stationsBefore": ["9400ZZMARIN2", "9400ZZMARIN1"]
-  }
- },
- "Rochdale Town Centre": {
-  "9400ZZMARIN1": {
-   "line": "Oldham & Rochdale",
-   "direction": "Incoming",
-   "tla": "RTC",
-   "map": {
-    "x": 23,
-    "y": 0.5
-   },
-   "stationsBefore": ["9400ZZMARRS1"]
-  },
-  "9400ZZMARIN2": {
-   "line": "Oldham & Rochdale",
-   "direction": "Incoming",
-   "tla": "RTC",
-   "map": {
-    "x": 23,
-    "y": 0
-   },
-   "stationsBefore": ["9400ZZMARRS1"]
-  }
- },
- "Shaw and Crompton": {
-  "9400ZZMASHA1": {
-   "line": "Oldham & Rochdale",
-   "direction": "Outgoing",
-   "tla": "SHC",
-   "map": {
-    "x": 17,
-    "y": 0.6
-   },
-   "stationsBefore": ["9400ZZMADER1"]
-  },
-  "9400ZZMASHA2": {
-   "line": "Oldham & Rochdale",
-   "direction": "Incoming",
-   "tla": "SHC",
-   "map": {
-    "x": 17,
-    "y": 0.3
-   },
-   "stationsBefore": ["9400ZZMANHY2"]
-  },
-  "9400ZZMASHA3": {
-   "line": "Oldham & Rochdale",
-   "direction": "Incoming",
-   "tla": "SHC",
-   "terminating": true,
-   "map": {
-    "x": 17,
-    "y": 0
-   },
-   "stationsBefore": ["9400ZZMADER1"]
-  }
- },
- "South Chadderton": {
-  "9400ZZMASCH1": {
-   "line": "Oldham & Rochdale",
-   "direction": "Outgoing",
-   "tla": "SOC",
-   "map": {
-    "x": 10,
-    "y": 0.5
-   },
-   "stationsBefore": ["9400ZZMAHOL1"]
-  },
-  "9400ZZMASCH2": {
-   "line": "Oldham & Rochdale",
-   "direction": "Incoming",
-   "tla": "SOC",
-   "map": {
-    "x": 10,
-    "y": 0
-   },
-   "stationsBefore": ["9400ZZMAFRE2"]
-  }
- },
- "Westwood": {
-  "9400ZZMAWWD1": {
-   "line": "Oldham & Rochdale",
-   "direction": "Outgoing",
-   "tla": "WWD",
-   "map": {
-    "x": 12,
-    "y": 0.5
-   },
-   "stationsBefore": ["9400ZZMAFRE1"]
-  },
-  "9400ZZMAWWD2": {
-   "line": "Oldham & Rochdale",
-   "direction": "Incoming",
-   "tla": "WWD",
-   "map": {
-    "x": 12,
-    "y": 0
-   },
-   "stationsBefore": ["9400ZZMAOKS2"]
-  }
- },
- "Burton Road": {
-  "9400ZZMABNR2": {
-   "line": "South Manchester",
-   "direction": "Outgoing",
-   "tla": "BRT",
-   "map": {
-    "x": -8,
-    "y": -2
-   },
-   "stationsBefore": ["9400ZZMAWIT2"]
-  },
-  "9400ZZMABNR1": {
-   "line": "South Manchester",
-   "direction": "Incoming",
-   "tla": "BRT",
-   "map": {
-    "x": -8,
-    "y": -1.5
-   },
-   "stationsBefore": ["9400ZZMAWTD1"]
-  }
- },
- "Chorlton": {
-  "9400ZZMACHO1": {
-   "line": "South Manchester",
-   "direction": "Outgoing",
-   "tla": "CHO",
-   "map": {
-    "x": -5,
-    "y": -1
-   },
-   "stationsBefore": ["9400ZZMAFIR2"]
-  },
-  "9400ZZMACHO2": {
-   "line": "South Manchester",
-   "direction": "Incoming",
-   "tla": "CHO",
-   "map": {
-    "x": -5,
-    "y": -0.5
-   },
-   "stationsBefore": ["9400ZZMASTW1"]
-  }
- },
- "Didsbury Village": {
-  "9400ZZMADID2": {
-   "line": "South Manchester",
-   "direction": "Outgoing",
-   "tla": "DDV",
-   "map": {
-    "x": -10,
-    "y": -2
-   },
-   "stationsBefore": ["9400ZZMAWTD2"]
-  },
-  "9400ZZMADID1": {
-   "line": "South Manchester",
-   "direction": "Incoming",
-   "tla": "DDV",
-   "map": {
-    "x": -10,
-    "y": -1.5
-   },
-   "stationsBefore": ["9400ZZMAEDY2", "9400ZZMAEDY1"]
-  }
- },
- "East Didsbury": {
-  "9400ZZMAEDY2": {
-   "line": "South Manchester",
-   "direction": "Incoming",
-   "tla": "EDD",
-   "map": {
-    "x": -11,
-    "y": -2
-   },
-   "stationsBefore": ["9400ZZMADID2"]
-  },
-  "9400ZZMAEDY1": {
-   "line": "South Manchester",
-   "direction": "Incoming",
-   "tla": "EDD",
-   "map": {
-    "x": -11,
-    "y": -1.5
-   },
-   "stationsBefore": ["9400ZZMADID2"]
-  }
- },
- "Firswood": {
-  "9400ZZMAFIR2": {
-   "line": "South Manchester",
-   "direction": "Outgoing",
-   "tla": "FIR",
-   "map": {
-    "x": -4,
-    "y": -1
-   },
-   "stationsBefore": ["9400ZZMATRA2"]
-  },
-  "9400ZZMAFIR1": {
-   "line": "South Manchester",
-   "direction": "Incoming",
-   "tla": "FIR",
-   "map": {
-    "x": -4,
-    "y": -0.5
-   },
-   "stationsBefore": ["9400ZZMACHO2"]
-  }
- },
- "St Werburgh\u2019s Road": {
-  "9400ZZMASTW2": {
-   "line": "South Manchester",
-   "direction": "Outgoing",
-   "tla": "SWR",
-   "map": {
-    "x": -6,
-    "y": -1
-   },
-   "stationsBefore": ["9400ZZMACHO1"]
-  },
-  "9400ZZMASTW1": {
-   "line": "South Manchester",
-   "direction": "Incoming",
-   "tla": "SWR",
-   "map": {
-    "x": -6,
-    "y": -0.5
-   },
-   "stationsBefore": ["9400ZZMABAR2", "9400ZZMAWIT1"]
-  }
- },
- "West Didsbury": {
-  "9400ZZMAWTD2": {
-   "line": "South Manchester",
-   "direction": "Outgoing",
-   "tla": "WDD",
-   "map": {
-    "x": -9,
-    "y": -2
-   },
-   "stationsBefore": ["9400ZZMABNR2"]
-  },
-  "9400ZZMAWTD1": {
-   "line": "South Manchester",
-   "direction": "Incoming",
-   "tla": "WDD",
-   "map": {
-    "x": -9,
-    "y": -1.5
-   },
-   "stationsBefore": ["9400ZZMADID1"]
-  }
- },
- "Withington": {
-  "9400ZZMAWIT2": {
-   "line": "South Manchester",
-   "direction": "Outgoing",
-   "tla": "WTH",
-   "map": {
-    "x": -7,
-    "y": -2
-   },
-   "stationsBefore": ["9400ZZMASTW2"]
-  },
-  "9400ZZMAWIT1": {
-   "line": "South Manchester",
-   "direction": "Incoming",
-   "tla": "WTH",
-   "map": {
-    "x": -7,
-    "y": -1.5
-   },
-   "stationsBefore": ["9400ZZMABNR1"]
-  }
- },
- "St Peters Square": {
-  "9400ZZMASTP4": {
-   "line": "Eccles",
-   "direction": "Outgoing",
-   "tla": "SPS",
-   "map": {
-    "x": 0,
-    "y": 0
-   },
-   "stationsBefore": ["9400ZZMAPGD2", "9400ZZMAMKT1"]
-  },
-  "9400ZZMASTP1": {
-   "line": "Eccles",
-   "direction": "Incoming",
-   "tla": "SPS",
-   "map": {
-    "x": 0,
-    "y": 0.75
-   },
-   "stationsBefore": ["9400ZZMAGMX1", "9400ZZMAGMX2"]
-  },
-  "9400ZZMASTP3": {
-   "line": "Eccles",
-   "direction": "Outgoing",
-   "tla": "SPS",
-   "map": {
-    "x": 0,
-    "y": 0.25
-   },
-   "stationsBefore": ["9400ZZMAEXS1"]
-  },
-  "9400ZZMASTP2": {
-   "line": "Eccles",
-   "direction": "Incoming",
-   "tla": "SPS",
-   "map": {
-    "x": 0,
-    "y": 0.5
-   },
-   "stationsBefore": ["9400ZZMAGMX1", "9400ZZMAGMX2"]
-  }
- },
- "Navigation Road": {
-  "9400ZZMANAV1": {
-   "line": "Altrincham",
-   "direction": "Incoming",
-   "tla": "NAV",
-   "map": {
-    "x": -10,
-    "y": 0.5
-   },
-   "stationsBefore": ["9400ZZMAALT1", "9400ZZMAALT2"]
-  },
-  "9400ZZMANAV2": {
-   "line": "Altrincham",
-   "direction": "Outgoing",
-   "tla": "NAV",
-   "map": {
-    "x": -10,
-    "y": 0
-   },
-   "stationsBefore": ["9400ZZMATIM1"]
-  }
- }
 }
