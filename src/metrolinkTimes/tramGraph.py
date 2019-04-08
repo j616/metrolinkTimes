@@ -36,6 +36,7 @@ class TramGraph:
                 self.DG.nodes[nodeID]["tramsDue"] = []
 
                 self.DG.nodes[nodeID]["tramsApproaching"] = []
+                self.DG.nodes[nodeID]["tramsApproachingDeb"] = []
                 self.DG.nodes[nodeID]["prevTramsHere"] = []
                 self.DG.nodes[nodeID]["tramsHere"] = []
                 self.DG.nodes[nodeID]["tramsHereDeb"] = []
@@ -521,6 +522,50 @@ class TramGraph:
                         node, departTime, tram)
                     tram["predictions"][node] = departTime
 
+    def debounceNewApproaching(self, node):
+        newDeb = []
+        newAppr = []
+
+        self.DG.nodes[node]["tramsApproaching"].sort(
+            key=lambda x: x["wait"]
+            )
+        self.DG.nodes[node]["tramsApproachingDeb"].sort(
+            key=lambda x: x["wait"]
+            )
+
+        for tram in self.DG.nodes[node]["tramsApproaching"]:
+            found = False
+            for dTram in self.DG.nodes[node]["tramsApproachingDeb"]:
+                if (
+                   (tram["dest"] == dTram["dest"])
+                   and (tram["carriages"] == dTram["carriages"])
+                   and (tram["wait"]
+                        <= dTram["wait"])
+                   and (not dTram.get("matched", False))
+                   ):
+                    found = True
+                    dTram["matched"] = True
+
+                    if dTram["debCount"] >= self.debounceCount:
+                        newAppr.append(tram)
+
+                    tram["debCount"] = dTram["debCount"] + 1
+                    newDeb.append(tram)
+
+                    break
+
+            if not found:
+                tram["debCount"] = 1
+                newDeb.append(tram)
+
+        for tram in self.DG.nodes[node]["tramsApproachingDeb"]:
+            if not tram.get("matched", False):
+                logging.info(
+                    "Dropping debounced tram approaching {}".format(node))
+
+        self.DG.nodes[node]["tramsApproaching"] = newAppr
+        self.DG.nodes[node]["tramsApproachingDeb"] = newDeb
+
     def debounceNewHere(self, node):
         newDeb = []
         newHere = []
@@ -560,6 +605,7 @@ class TramGraph:
 
     def debounceNew(self):
         for node in nx.nodes(self.DG):
+            self.debounceNewApproaching(node)
             self.debounceNewHere(node)
 
     def gatherTramPredictions(self, statuses):
