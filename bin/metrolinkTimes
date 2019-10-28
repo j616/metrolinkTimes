@@ -165,6 +165,8 @@ class GraphUpdater:
         # routes being run on day of testing
         self.graph.finalisePredictions()
 
+        self.graph.setLocalUpdateTime(datetime.now())
+
         tramsAts = self.graph.getTramsHeres()
         tramsAt = 0
 
@@ -399,13 +401,16 @@ class StationNamePlatHandler(BaseHandler):
 class HealthHandler(BaseHandler):
     def get(self):
         now = datetime.now()
-        lastUpdated = max(graph.getLastUpdateTimes().values())
+        lastUpdated = graph.getLocalUpdateTime()
         updateDelta = now - lastUpdated
+
+        logging.debug("DEBUG: update delta {}".format(updateDelta))
 
         if updateDelta > timedelta(seconds=30):
             exit(1)
 
         self.write("ok")
+
 
 async def main():
     gu = GraphUpdater(graph)

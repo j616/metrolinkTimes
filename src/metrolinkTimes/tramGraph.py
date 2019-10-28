@@ -17,6 +17,7 @@ class TramGraph:
         self.stations = []
         self.firstRun = True
         self.debounceCount = 2
+        self.localUpdateTime = None
 
         data = json.load(open("{}/data/stations.json".format(
             os.path.dirname(__file__))))
@@ -752,6 +753,12 @@ class TramGraph:
             if len(self.DG.edges[edge]["transitTimes"]) == 0:
                 edges.append(edge)
         return edges
+
+    def setLocalUpdateTime(self, time):
+        self.localUpdateTime = time
+
+    def getLocalUpdateTime(self):
+        return self.localUpdateTime
 
 
 def main():
