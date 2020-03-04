@@ -53,7 +53,8 @@ class GraphUpdater:
             "MCUK": "MediaCityUK",
             "Newton Heath": "Newton Heath and Moston",
             "Victoria Millgate Siding": "Victoria",
-            "Rochdale Stn": "Rochdale Railway Station"
+            "Rochdale Stn": "Rochdale Railway Station",
+            "Trafford Centre": "intu Trafford Centre"
         }
 
     def update(self):
@@ -69,7 +70,7 @@ class GraphUpdater:
             for platform in data[station]:
                 nodeID = "{}_{}".format(station, platform)
                 if nodeID not in self.graph.getNodes():
-                    logging.error("ERROR: Unknonw platfrom {}".format(nodeID))
+                    logging.error("ERROR: Unknown platfrom {}".format(nodeID))
                     continue
 
                 pidTramData = []

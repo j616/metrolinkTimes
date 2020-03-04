@@ -415,7 +415,7 @@
       "terminating": true,
       "map": {
         "x": -1,
-        "y": 0.3
+        "y": 0.25
       },
       "stationsBefore": ["9400ZZMASTP3", "9400ZZMACRN1", "9400ZZMASTP4"]
     },
@@ -435,7 +435,7 @@
       "tla": "GMX",
       "map": {
         "x": -1,
-        "y": 0.6
+        "y": 0.5
       },
       "stationsBefore": ["9400ZZMACRN1"]
     }
@@ -622,17 +622,17 @@
       "direction": "Incoming",
       "tla": "ABM",
       "map": {
-        "x": 7,
+        "x": 6,
         "y": 1
       },
-      "stationsBefore": ["9400ZZMACRU2"]
+      "stationsBefore": ["9400ZZMACRU2", "9400ZZMACRU3"]
     },
     "9400ZZMAABM1": {
       "line": "Bury",
       "direction": "Outgoing",
       "tla": "ABM",
       "map": {
-        "x": 7,
+        "x": 6,
         "y": 1.5
       },
       "stationsBefore": ["9400ZZMAQRD1"]
@@ -722,6 +722,17 @@
       "map": {
         "x": 7,
         "y": 1.5
+      },
+      "stationsBefore": ["9400ZZMAABM1"]
+    },
+    "9400ZZMACRU3": {
+      "line": "Bury",
+      "direction": "Incoming",
+      "tla": "CRP",
+      "terminating": true,
+      "map": {
+        "x": 7,
+        "y": 0.75
       },
       "stationsBefore": ["9400ZZMAABM1"]
     }
@@ -1363,7 +1374,7 @@
         "x": -3,
         "y": 1.5
       },
-      "stationsBefore": ["9400ZZMAEXC2"]
+      "stationsBefore": ["9400ZZMAEXC2", "9400ZZMAIWM1"]
     },
     "9400ZZMAPOM2": {
       "line": "Eccles",
@@ -1779,7 +1790,7 @@
       "tla": "SHC",
       "map": {
         "x": 17,
-        "y": 0.6
+        "y": 0.5
       },
       "stationsBefore": ["9400ZZMADER1"]
     },
@@ -1789,7 +1800,7 @@
       "tla": "SHC",
       "map": {
         "x": 17,
-        "y": 0.3
+        "y": 0
       },
       "stationsBefore": ["9400ZZMANHY2"]
     },
@@ -1797,10 +1808,9 @@
       "line": "Oldham & Rochdale",
       "direction": "Incoming",
       "tla": "SHC",
-      "terminating": true,
       "map": {
         "x": 17,
-        "y": 0
+        "y": -0.25
       },
       "stationsBefore": ["9400ZZMADER1"]
     }
@@ -2087,6 +2097,138 @@
         "y": 0
       },
       "stationsBefore": ["9400ZZMATIM1"]
+    }
+  },
+  "intu Trafford Centre": {
+    "9400ZZMATRC1": {
+      "line": "Trafford Park",
+      "direction": "Incoming",
+      "tla": "TRC",
+      "map": {
+        "x": -9,
+        "y": 1.5
+      },
+      "stationsBefore": ["9400ZZMAEVC2"]
+    },
+    "9400ZZMATRC2": {
+      "line": "Trafford Park",
+      "direction": "Outgoing",
+      "tla": "TRC",
+      "map": {
+        "x": -9,
+        "y": 1
+      },
+      "stationsBefore": ["9400ZZMAEVC2"]
+    }
+  },
+  "Barton Dock Road": {
+    "9400ZZMAEVC1": {
+      "line": "Trafford Park",
+      "direction": "Incoming",
+      "tla": "EVC",
+      "map": {
+        "x": -8,
+        "y": 1.5
+      },
+      "stationsBefore": ["9400ZZMATRC1", "9400ZZMATRC2"]
+    },
+    "9400ZZMAEVC2": {
+      "line": "Trafford Park",
+      "direction": "Outgoing",
+      "tla": "EVC",
+      "map": {
+        "x": -8,
+        "y": 1
+      },
+      "stationsBefore": ["9400ZZMAPAR2"]
+    }
+  },
+  "Parkway": {
+    "9400ZZMAPAR1": {
+      "line": "Trafford Park",
+      "direction": "Incoming",
+      "tla": "PAR",
+      "map": {
+        "x": -7,
+        "y": 1.5
+      },
+      "stationsBefore": ["9400ZZMAEVC1"]
+    },
+    "9400ZZMAPAR2": {
+      "line": "Trafford Park",
+      "direction": "Outgoing",
+      "tla": "PAR",
+      "map": {
+        "x": -7,
+        "y": 1
+      },
+      "stationsBefore": ["9400ZZMAVLG2"]
+    }
+  },
+  "Village": {
+    "9400ZZMAVLG1": {
+      "line": "Trafford Park",
+      "direction": "Incoming",
+      "tla": "VLG",
+      "map": {
+        "x": -6,
+        "y": 1.5
+      },
+      "stationsBefore": ["9400ZZMAPAR1"]
+    },
+    "9400ZZMAVLG2": {
+      "line": "Trafford Park",
+      "tla": "VLG",
+      "direction": "Outgoing",
+      "map": {
+        "x": -6,
+        "y": 1
+      },
+      "stationsBefore": ["9400ZZMAIWM2"]
+    }
+  },
+  "Imperial War Museum": {
+    "9400ZZMAIWM1": {
+      "line": "Trafford Park",
+      "direction": "Incoming",
+      "tla": "IWM",
+      "map": {
+        "x": -5,
+        "y": 1.5
+      },
+      "stationsBefore": ["9400ZZMAVLG1"]
+    },
+    "9400ZZMAIWM2": {
+      "line": "Trafford Park",
+      "direction": "Outgoing",
+      "tla": "IWM",
+      "map": {
+        "x": -5,
+        "y": 1
+      },
+      "stationsBefore": ["9400ZZMAWFS2"]
+    }
+  },
+  "Wharfside": {
+    "9400ZZMAWFS1": {
+      "line": "Trafford Park",
+      "direction": "Incoming",
+      "tla": "WSD",
+      "map": {
+        "x": -4,
+        "y": 1.5
+      },
+      "stationsBefore": ["9400ZZMAIWM1"]
+    },
+    "9400ZZMAWFS2": {
+      "line": "Trafford Park",
+      "direction": "Outgoing",
+      "tla": "WSD",
+      "map": {
+        "x": -4,
+        "y": 1
+      },
+      "stationsBefore": ["9400ZZMAPOM2"]
     }
   }
 }
