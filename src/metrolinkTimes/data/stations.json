@@ -732,7 +732,7 @@
       "terminating": true,
       "map": {
         "x": 7,
-        "y": 0.75
+        "y": 1.25
       },
       "stationsBefore": ["9400ZZMAABM1"]
     }
@@ -1810,7 +1810,7 @@
       "tla": "SHC",
       "map": {
         "x": 17,
-        "y": -0.25
+        "y": 0.25
       },
       "stationsBefore": ["9400ZZMADER1"]
     }
@@ -2052,7 +2052,7 @@
       "tla": "SPS",
       "map": {
         "x": 0,
-        "y": 0.75
+        "y": 0.25
       },
       "stationsBefore": ["9400ZZMAGMX1", "9400ZZMAGMX2"]
     },
@@ -2062,7 +2062,7 @@
       "tla": "SPS",
       "map": {
         "x": 0,
-        "y": 0.25
+        "y": 0.5
       },
       "stationsBefore": ["9400ZZMAEXS1"]
     },
@@ -2072,7 +2072,7 @@
       "tla": "SPS",
       "map": {
         "x": 0,
-        "y": 0.5
+        "y": 0.75
       },
       "stationsBefore": ["9400ZZMAGMX1", "9400ZZMAGMX2"]
     }
