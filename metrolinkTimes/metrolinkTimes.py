@@ -226,9 +226,9 @@ class BaseHandler(RequestHandler):
         self.graph = graph
 
     def set_default_headers(self, *args, **kwargs):
-        origin = "*"
         with open("/etc/metrolinkTimes/metrolinkTimes.conf") as conf_file:
-            origin = json.load(conf_file)["Access-Control-Allow-Origin"]
+            origin = json.load(conf_file).get(
+                "Access-Control-Allow-Origin", "*")
         self.set_header("Access-Control-Allow-Origin", origin)
         self.set_header("Access-Control-Allow-Headers", "x-requested-with")
         self.set_header("Access-Control-Allow-Methods", "GET, OPTIONS")
