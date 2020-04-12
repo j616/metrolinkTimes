@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "metrolinkTimes"
+version = "1.8"
+description = "Track trams on the metrolink network & estimate their due times"
+authors = ["James Sandford <metrolinktimes@j616s.co.uk>"]
+license = "GPL-3.0"
+readme = "README.md"
+packages = [{ include = "metrolinkTimes" }]
+
+[tool.poetry.scripts]
+metrolinkTimes = "metrolinkTimes.__main__:main"
+
+[tool.poetry.dependencies]
+python = ">=3.7"
+poetry = "^1.0.5"
+networkx = "^2.4"
+matplotlib = "^3.2.1"
+tornado = "^6.0.4"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
