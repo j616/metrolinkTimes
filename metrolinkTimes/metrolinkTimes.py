@@ -3,6 +3,7 @@ import asyncio
 import json
 from datetime import datetime, timedelta
 from sys import exit
+from os import path
 import logging
 
 import tornado.web
@@ -13,10 +14,17 @@ from tornado.httpserver import HTTPServer
 from metrolinkTimes.tfgmMetrolinksAPI import TFGMMetrolinksAPI
 from metrolinkTimes.tramGraph import TramGraph
 
-logging.basicConfig(filename='/var/log/metrolinkTimes/metrolinkTimes.log',
-                    format='%(asctime)s %(levelname)s %(pathname)s %(lineno)s '
-                           '%(message)s',
-                    level=logging.ERROR)
+logFormat = '%(asctime)s %(levelname)s %(pathname)s %(lineno)s %(message)s'
+logLevel = logging.ERROR
+logFile = '/var/log/metrolinkTimes/metrolinkTimes.log'
+
+if path.isdir(path.dirname(logFile)):
+    logging.basicConfig(filename=logFile,
+                        format=logFormat,
+                        level=logLevel)
+else:
+    logging.basicConfig(format=logFormat,
+                        level=logLevel)
 
 
 def dt_handler(obj):
