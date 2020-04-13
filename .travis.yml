@@ -9,6 +9,9 @@ install:
   - pip install poetry
   - poetry install
 
+script:
+  - poetry run pytest
+
 # Note: Deployment refers to multiple environment variables, both public and private.
 # Public values should be set in the .env file in the repository.
 #
