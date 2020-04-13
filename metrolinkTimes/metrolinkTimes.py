@@ -3,21 +3,28 @@ import asyncio
 import json
 from datetime import datetime, timedelta
 from sys import exit
+from os import path
 import logging
 
-from tornado.ioloop import IOLoop
 import tornado.web
-from tornado.httpserver import HTTPServer
 from tornado.web import RequestHandler
 from tornado import escape
+from tornado.httpserver import HTTPServer
 
 from metrolinkTimes.tfgmMetrolinksAPI import TFGMMetrolinksAPI
 from metrolinkTimes.tramGraph import TramGraph
 
-logging.basicConfig(filename='/var/log/metrolinkTimes/metrolinkTimes.log',
-                    format='%(asctime)s %(levelname)s %(pathname)s %(lineno)s '
-                           '%(message)s',
-                    level=logging.ERROR)
+logFormat = '%(asctime)s %(levelname)s %(pathname)s %(lineno)s %(message)s'
+logLevel = logging.ERROR
+logFile = '/var/log/metrolinkTimes/metrolinkTimes.log'
+
+if path.isdir(path.dirname(logFile)):
+    logging.basicConfig(filename=logFile,
+                        format=logFormat,
+                        level=logLevel)
+else:
+    logging.basicConfig(format=logFormat,
+                        level=logLevel)
 
 
 def dt_handler(obj):
@@ -215,10 +222,13 @@ class GraphUpdater:
 
 
 class BaseHandler(RequestHandler):
+    def initialize(self, graph):
+        self.graph = graph
+
     def set_default_headers(self, *args, **kwargs):
-        origin = "*"
         with open("/etc/metrolinkTimes/metrolinkTimes.conf") as conf_file:
-            origin = json.load(conf_file)["Access-Control-Allow-Origin"]
+            origin = json.load(conf_file).get(
+                "Access-Control-Allow-Origin", "*")
         self.set_header("Access-Control-Allow-Origin", origin)
         self.set_header("Access-Control-Allow-Headers", "x-requested-with")
         self.set_header("Access-Control-Allow-Methods", "GET, OPTIONS")
@@ -235,13 +245,13 @@ class MainHandler(BaseHandler):
 
 class DebugHandler(BaseHandler):
     def get(self):
-        here = graph.getTramsHeres()
-        dep = graph.getTramsDeparteds()
-        start = graph.getTramsStarting()
+        here = self.graph.getTramsHeres()
+        dep = self.graph.getTramsDeparteds()
+        start = self.graph.getTramsStarting()
         ret = {
             "missingAverages": {
-                "platforms": graph.nodesNoAvDwell(),
-                "edges": graph.edgesNoAvTrans()
+                "platforms": self.graph.nodesNoAvDwell(),
+                "edges": self.graph.edgesNoAvTrans()
             },
             "trams": {
                 "here": {k: here[k] for k in here if here[k] != []},
@@ -255,7 +265,7 @@ class DebugHandler(BaseHandler):
 
 class StationHandler(BaseHandler):
     def get(self):
-        ret = ["{}/".format(station) for station in graph.getStations()]
+        ret = ["{}/".format(station) for station in self.graph.getStations()]
         self.write({"stations": ret})
 
 
@@ -270,38 +280,38 @@ class StationNameHandler(BaseHandler):
 
             return arg
 
-        if stationName not in graph.getStations():
+        if stationName not in self.graph.getStations():
             raise tornado.web.HTTPError(404)
 
         ret = {}
 
         if getArg("verbose", "false").lower() != "true":
+            stationPlatforms = self.graph.getStationPlatforms(stationName)
             ret["platforms"] = [
-                "{}/".format(platID) for platID in graph.getStationPlatforms(
-                    stationName)]
+                "{}/".format(platID) for platID in stationPlatforms]
         else:
             ret["platforms"] = {}
-            for platID in graph.getStationPlatforms(stationName):
+            for platID in self.graph.getStationPlatforms(stationName):
                 nodeID = "{}_{}".format(stationName, platID)
                 ret["platforms"][platID] = {
-                    "updateTime": graph.getLastUpdateTime(nodeID),
+                    "updateTime": self.graph.getLastUpdateTime(nodeID),
                 }
 
                 if getArg("predictions", "true").lower() == "true":
-                    predictions = graph.getNodePredictions()[nodeID]
+                    predictions = self.graph.getNodePredictions()[nodeID]
                     if getArg("tramPredictions", "true").lower() == "false":
                         for tram in predictions:
                             del(tram["predictions"])
                     ret["platforms"][platID]["predictions"] = predictions
-                    ret["platforms"][platID]["here"] = graph.getTramsHeres()[
-                        nodeID]
+                    ret["platforms"][platID]["here"] = (
+                        self.graph.getTramsHeres()[nodeID])
 
                 if getArg("message", "true").lower() == "true":
-                    ret["platforms"][platID]["message"] = graph.getMessage(
-                        nodeID)
+                    ret["platforms"][platID]["message"] = (
+                        self.graph.getMessage(nodeID))
 
                 if getArg("meta", "false").lower() == "true":
-                    dwellTimes = graph.getDwellTimes()[nodeID]
+                    dwellTimes = self.graph.getDwellTimes()[nodeID]
                     averageDwell = timedelta()
                     for dwellTime in dwellTimes:
                         averageDwell = averageDwell + dwellTime
@@ -311,19 +321,20 @@ class StationNameHandler(BaseHandler):
                         averageDwell = None
 
                     pred = {}
-                    for pNodeID in graph.getNodePreds(nodeID):
+                    for pNodeID in self.graph.getNodePreds(nodeID):
                         pred[pNodeID] = {
-                            "transitTimes": graph.getTransit(pNodeID, nodeID)
+                            "transitTimes": self.graph.getTransit(
+                                pNodeID, nodeID)
                             }
 
                         (pred[pNodeID]["averageTransitTime"],
-                            isDirectAverage) = graph.getAverageTransit(
+                            isDirectAverage) = self.graph.getAverageTransit(
                                 pNodeID,
                                 nodeID)
 
                     ret["platforms"][platID]["mapPos"] = {
-                        "x": graph.getMapPos(nodeID)[0],
-                        "y": graph.getMapPos(nodeID)[1]
+                        "x": self.graph.getMapPos(nodeID)[0],
+                        "y": self.graph.getMapPos(nodeID)[1]
                         }
                     ret["platforms"][platID]["dwellTimes"] = dwellTimes
                     ret["platforms"][platID]["averageDwellTime"] = averageDwell
@@ -331,7 +342,7 @@ class StationNameHandler(BaseHandler):
 
             if getArg("departed", "false").lower() == "true":
                 ret["platforms"][platID]["departed"] = (
-                    graph.getTramsDeparteds()[nodeID])
+                    self.graph.getTramsDeparteds()[nodeID])
 
         self.write(ret)
 
@@ -348,26 +359,26 @@ class StationNamePlatHandler(BaseHandler):
             return arg
 
         nodeID = "{}_{}".format(stationName, platID)
-        if nodeID not in graph.getNodes():
+        if nodeID not in self.graph.getNodes():
             raise tornado.web.HTTPError(404)
 
         ret = {
-            "updateTime": graph.getLastUpdateTime(nodeID),
+            "updateTime": self.graph.getLastUpdateTime(nodeID),
         }
 
         if getArg("predictions", "true").lower() == "true":
-            predictions = graph.getNodePredictions()[nodeID]
+            predictions = self.graph.getNodePredictions()[nodeID]
             if getArg("tramPredictions", "true").lower() == "false":
                 for tram in predictions:
                     del(tram["predictions"])
             ret["predictions"] = predictions
-            ret["here"] = graph.getTramsHeres()[nodeID]
+            ret["here"] = self.graph.getTramsHeres()[nodeID]
 
         if getArg("message", "true").lower() == "true":
-            ret["message"] = graph.getMessage(nodeID)
+            ret["message"] = self.graph.getMessage(nodeID)
 
         if getArg("meta", "false").lower() == "true":
-            dwellTimes = graph.getDwellTimes()[nodeID]
+            dwellTimes = self.graph.getDwellTimes()[nodeID]
             averageDwell = timedelta()
             for dwellTime in dwellTimes:
                 averageDwell = averageDwell + dwellTime
@@ -377,24 +388,25 @@ class StationNamePlatHandler(BaseHandler):
                 averageDwell = None
 
             pred = {}
-            for pNodeID in graph.getNodePreds(nodeID):
+            for pNodeID in self.graph.getNodePreds(nodeID):
                 pred[pNodeID] = {
-                    "transitTimes": graph.getTransit(pNodeID, nodeID)
+                    "transitTimes": self.graph.getTransit(pNodeID, nodeID)
                     }
 
                 (pred[pNodeID]["averageTransitTime"],
-                    isDirectAverage) = graph.getAverageTransit(pNodeID, nodeID)
+                    isDirectAverage) = self.graph.getAverageTransit(
+                        pNodeID, nodeID)
 
             ret["mapPos"] = {
-                "x": graph.getMapPos(nodeID)[0],
-                "y": graph.getMapPos(nodeID)[1]
+                "x": self.graph.getMapPos(nodeID)[0],
+                "y": self.graph.getMapPos(nodeID)[1]
                 }
             ret["dwellTimes"] = dwellTimes
             ret["averageDwellTime"] = averageDwell
             ret["predecessors"] = pred
 
         if getArg("departed", "false").lower() == "true":
-            ret["departed"] = graph.getTramsDeparteds()[nodeID]
+            ret["departed"] = self.graph.getTramsDeparteds()[nodeID]
 
         self.write(ret)
 
@@ -402,7 +414,7 @@ class StationNamePlatHandler(BaseHandler):
 class HealthHandler(BaseHandler):
     def get(self):
         now = datetime.now()
-        lastUpdated = graph.getLocalUpdateTime()
+        lastUpdated = self.graph.getLocalUpdateTime()
         updateDelta = now - lastUpdated
 
         logging.debug("DEBUG: update delta {}".format(updateDelta))
@@ -413,30 +425,29 @@ class HealthHandler(BaseHandler):
         self.write("ok")
 
 
-async def main():
-    gu = GraphUpdater(graph)
-    loop = asyncio.get_event_loop()
-    ul = loop.create_task(gu.updateLoop())
+class Application():
+    async def run():
+        graph = TramGraph()
+        gu = GraphUpdater(graph)
+        loop = asyncio.get_event_loop()
+        ul = loop.create_task(gu.updateLoop())
 
-    application = tornado.web.Application([
-       (r"/", MainHandler),
-       (r"/debug/?", DebugHandler),
-       (r"/health/?", HealthHandler),
-       (r"/station/?", StationHandler),
-       (r"/station/([^/]*)/?", StationNameHandler),
-       (r"/station/([^/]*)/([^/]*)/?", StationNamePlatHandler),
-    ])
+        handlerArgs = {"graph": graph}
 
-    port = None
-    with open("/etc/metrolinkTimes/metrolinkTimes.conf") as conf_file:
-        port = json.load(conf_file).get("port", 5000)
+        application = tornado.web.Application([
+           (r"/", MainHandler, handlerArgs),
+           (r"/debug/?", DebugHandler, handlerArgs),
+           (r"/health/?", HealthHandler, handlerArgs),
+           (r"/station/?", StationHandler, handlerArgs),
+           (r"/station/([^/]*)/?", StationNameHandler, handlerArgs),
+           (r"/station/([^/]*)/([^/]*)/?", StationNamePlatHandler, handlerArgs
+            ),
+        ])
 
-    server = HTTPServer(application)
-    server.listen(port)
+        with open("/etc/metrolinkTimes/metrolinkTimes.conf") as conf_file:
+            port = json.load(conf_file).get("port", 5000)
 
-    await ul
+        server = HTTPServer(application)
+        server.listen(port)
 
-if __name__ == '__main__':
-    graph = TramGraph()
-    io_loop = IOLoop.current()
-    io_loop.run_sync(main)
+        await ul

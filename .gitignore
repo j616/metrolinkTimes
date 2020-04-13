@@ -1,1 +1,7 @@
 build
+.python-version
+*.egg-info
+*.pyc
+dist/
+docker/dist/
+docker/requirements.txt

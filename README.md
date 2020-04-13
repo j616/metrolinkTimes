@@ -4,18 +4,51 @@ Metrolink Times provides an API that serves estimates for tram arrival times on 
 
 ## Installation
 
-Run
+### Install from source
 
-```
-useradd -r -s /usr/bin/nologin mltimes
-./setup.py install
+The following is used to install install in a venv for testing.
+
+Install pyenv
+```bash
+curl https://pyenv.run | bash
 ```
 
-This should add the service user and install/update the API. You will have to edit the config in `/etc/metrolinkTimes/metrolinkTimes.conf` to include your API Key for the [TfGM API](https://developer.tfgm.com/) and if you want to change the CORS Access Control Origin settings from allow all. The API **will not work** if you do not add a key for the TfGM API. If you want to change the default port the API is served on from 5000, add a `"port": <portNum>` line to the config. The config shouldn't be overwritten if you re-run install but you may have to manually add any new parameters that are added in the future.
+Install Python 3.7
+```bash
+pyenv install 3.7.7
+```
+After installing, it may suggest to add initialization code to `~/.bashrc`. Do that.
+
+Install Poetry
+```bash
+pip3 install --user poetry
+```
+
+Configure and install the environment used for this project.
+__Run in the root of the cloned brewblox-tilt directory__
+```bash
+pyenv local 3.7.7
+poetry install
+```
+
+During development, you need to have your environment activated. When it is activated, your terminal prompt is prefixed with (.venv).
+
+Visual Studio code with suggested settings does this automatically whenever you open a .py file. If you prefer using a different editor, you can do it manually by running:
+```bash
+poetry shell
+```
+
+### Install using docker
+
+A docker image for this package is available on [Docker Hub](https://hub.docker.com/r/j616s/metrolinkTimes).
+
+### Configure
+
+Copy the [example config](https://github.com/j616/metrolinkTimes/blob/master/config/metrolinkTimes.conf) to `/etc/metrolinkTimes/metrolinkTimes.conf`. OR if you're using docker, mount it at that location in the container. Edit the config to include your API Key for the [TfGM API](https://developer.tfgm.com/) and if you want to change the CORS Access Control Origin settings from allow all. The API **will not work** if you do not add a key for the TfGM API. If you want to change the default port the API is served on from 5000, add a `"port": <portNum>` line to the config.
 
 ## Usage
 
-The API will present itself on port on port 5000 by default. A systemd service named `metrolinkTimes` is installed and can be enabled if you wish. Otherwise, just run metrolinkTimes from the command line. Logs are in `/var/log/metrolinkTimes.log`.
+The API will present itself on port on port 5000 by default. If you're installing from source, run metrolinkTimes from the command line in the repo directory. Logs are placed in `/var/log/metrolinkTimes.log` if running locally or are available through `docker logs` in docker.
 
 ### /
 

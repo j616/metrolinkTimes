@@ -1,9 +1,0 @@
-[Unit]
-Description=metrolinkTimes
-Wants=network-online.target
-After=network.target network-online.target
-
-[Service]
-User=mltimes
-ExecStart=/usr/bin/env metrolinkTimes
-Restart=always
