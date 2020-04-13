@@ -40,7 +40,7 @@ poetry shell
 
 ### Install using docker
 
-A docker image for this package is available on [Docker Hub](https://hub.docker.com/r/j616s/metrolinkTimes).
+A docker image for this package is available on [Docker Hub](https://hub.docker.com/r/j616s/metrolinktimes).
 
 ### Configure
 
