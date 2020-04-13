@@ -444,7 +444,8 @@ class Application():
             ),
         ])
 
-        port = 5000
+        with open("/etc/metrolinkTimes/metrolinkTimes.conf") as conf_file:
+            port = json.load(conf_file).get("port", 5000)
 
         server = HTTPServer(application)
         server.listen(port)
