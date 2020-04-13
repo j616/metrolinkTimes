@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "metrolinkTimes"
-version = "1.8"
+version = "1.9"
 description = "Track trams on the metrolink network & estimate their due times"
 authors = ["James Sandford <metrolinktimes@j616s.co.uk>"]
 license = "GPL-3.0"
