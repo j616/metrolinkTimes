@@ -58,7 +58,6 @@ deploy:
     script: >-
       docker buildx build
       --tag ${DOCKER_REPO}:latest
-      --tag ${DOCKER_REPO}:rpi-latest
       --build-arg service_info="$(git describe) @ $(date)"
       --push
       --platform linux/amd64,linux/arm/v7
@@ -72,7 +71,6 @@ deploy:
     script: >-
       docker buildx build
       --tag ${DOCKER_REPO}:$TAG
-      --tag ${DOCKER_REPO}:rpi-$TAG
       --build-arg service_info="$(git describe) @ $(date)"
       --push
       --platform linux/amd64,linux/arm/v7
