@@ -61,7 +61,8 @@ class GraphUpdater:
             "Newton Heath": "Newton Heath and Moston",
             "Victoria Millgate Siding": "Victoria",
             "Rochdale Stn": "Rochdale Railway Station",
-            "Trafford Centre": "intu Trafford Centre",
+            "Trafford Centre": "The Trafford Centre",
+            "intu Trafford Centre": "The Trafford Centre",
             "Wythen. Town": "Wythenshawe Town Centre"
         }
 
