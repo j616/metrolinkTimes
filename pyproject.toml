@@ -12,7 +12,7 @@ metrolinkTimes = "metrolinkTimes.__main__:main"
 
 [tool.poetry.dependencies]
 python = ">=3.7"
-poetry = "^1.0.5"
+poetry = "^1.1.9"
 networkx = "^2.4"
 matplotlib = "^3.2.1"
 tornado = "^6.0.4"
