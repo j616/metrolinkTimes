@@ -763,11 +763,12 @@ class TramGraph:
 
 def main():
     graph = TramGraph()
-    plt.subplot(121)
+    plt.figure(3,figsize=(100,12)) 
+    # plt.subplot(121)
     nx.draw_networkx(
         graph.DG, pos=graph.pos, with_labels=True, node_size=20, font_size=6)
 
-    plt.show()
+    plt.savefig("trams.png")
 
 
 if __name__ == "__main__":
