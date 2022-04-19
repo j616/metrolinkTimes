@@ -2108,7 +2108,7 @@
         "x": -9,
         "y": 1.5
       },
-      "stationsBefore": ["9400ZZMAEVC2"]
+      "stationsBefore": ["9400ZZMAEVC1"]
     },
     "9400ZZMATRC2": {
       "line": "Trafford Park",
@@ -2118,21 +2118,11 @@
         "x": -9,
         "y": 1
       },
-      "stationsBefore": ["9400ZZMAEVC2"]
+      "stationsBefore": ["9400ZZMAEVC1"]
     }
   },
   "Barton Dock Road": {
     "9400ZZMAEVC1": {
-      "line": "Trafford Park",
-      "direction": "Incoming",
-      "tla": "EVC",
-      "map": {
-        "x": -8,
-        "y": 1.5
-      },
-      "stationsBefore": ["9400ZZMATRC1", "9400ZZMATRC2"]
-    },
-    "9400ZZMAEVC2": {
       "line": "Trafford Park",
       "direction": "Outgoing",
       "tla": "EVC",
@@ -2141,6 +2131,16 @@
         "y": 1
       },
       "stationsBefore": ["9400ZZMAPAR2"]
+    },
+    "9400ZZMAEVC2": {
+      "line": "Trafford Park",
+      "direction": "Incoming",
+      "tla": "EVC",
+      "map": {
+        "x": -8,
+        "y": 1.5
+      },
+      "stationsBefore": ["9400ZZMATRC1", "9400ZZMATRC2"]
     }
   },
   "Parkway": {
@@ -2152,7 +2152,7 @@
         "x": -7,
         "y": 1.5
       },
-      "stationsBefore": ["9400ZZMAEVC1"]
+      "stationsBefore": ["9400ZZMAEVC2"]
     },
     "9400ZZMAPAR2": {
       "line": "Trafford Park",
