@@ -19,24 +19,13 @@ pyenv install 3.7.7
 ```
 After installing, it may suggest to add initialization code to `~/.bashrc`. Do that.
 
-Install Poetry
-```bash
-pip3 install --user poetry
-```
-
 Configure and install the environment used for this project.
-__Run in the root of the cloned brewblox-tilt directory__
 ```bash
 pyenv local 3.7.7
-poetry install
+pip3 install .
 ```
 
 During development, you need to have your environment activated. When it is activated, your terminal prompt is prefixed with (.venv).
-
-Visual Studio code with suggested settings does this automatically whenever you open a .py file. If you prefer using a different editor, you can do it manually by running:
-```bash
-poetry shell
-```
 
 ### Install using docker
 

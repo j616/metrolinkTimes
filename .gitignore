@@ -5,3 +5,5 @@ build
 dist/
 docker/dist/
 docker/requirements.txt
+pkg/
+metrolinkTimes/trams.png
