@@ -247,9 +247,38 @@ class MainHandler(BaseHandler):
 
 class DebugHandler(BaseHandler):
     def get(self):
+        def getArg(name, default):
+            arg = self.get_query_arguments(name)
+            if arg == []:
+                arg = default
+            else:
+                arg = arg[0]
+
+            return arg
+
         here = self.graph.getTramsHeres()
         dep = self.graph.getTramsDeparteds()
         start = self.graph.getTramsStarting()
+
+        stations = {}
+        for stationName in self.graph.getStations():
+            stations[stationName] = {}
+
+            for platID in self.graph.getStationPlatforms(stationName):
+                nodeID = "{}_{}".format(stationName, platID)
+                stations[stationName][platID] = {
+                    "x": self.graph.getMapPos(nodeID)[0],
+                    "y": self.graph.getMapPos(nodeID)[1],
+                    "averageDwellTime": self.graph.getAverageDwell(nodeID),
+                    "predecessors": {}
+                    }
+
+                for pNode in self.graph.getNodePreds(nodeID):
+                    stations[stationName][platID]["predecessors"][pNode] = {
+                        "averageTransit": self.graph.getAverageTransit(pNode, nodeID)
+                        }
+
+
         ret = {
             "missingAverages": {
                 "platforms": self.graph.nodesNoAvDwell(),
@@ -261,6 +290,9 @@ class DebugHandler(BaseHandler):
                 "starting": {k: start[k] for k in start if start[k] != []}
             }
         }
+
+        if getArg("meta", "false").lower() == "true":
+            ret["stations"] = stations
 
         self.write(ret)
 
