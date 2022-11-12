@@ -22,6 +22,7 @@ After installing, it may suggest to add initialization code to `~/.bashrc`. Do t
 Configure and install the environment used for this project.
 ```bash
 pyenv local 3.7.7
+mkdir pkg
 pip3 install .
 ```
 
