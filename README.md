@@ -38,7 +38,7 @@ Copy the [example config](https://github.com/j616/metrolinkTimes/blob/master/con
 
 ## Usage
 
-The API will present itself on port on port 5000 by default. If you're installing from source, run metrolinkTimes from the command line in the repo directory. Logs are placed in `/var/log/metrolinkTimes.log` if running locally or are available through `docker logs` in docker.
+The API will present itself on port on port 5000 by default. If you're installing from source, run metrolinkTimes from the command line in the repo directory with ` python3 -m metrolinkTimes`. Logs are placed in `/var/log/metrolinkTimes.log` if running locally or are available through `docker logs` in docker.
 
 ### /
 
